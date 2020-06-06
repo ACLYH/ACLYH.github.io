@@ -9,7 +9,7 @@
 <meta name="description" content="IOI AK me">
 <meta name="theme-color" content="#000">
 <title>LYHのblog</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1591404425868">
+<link rel="shortcut icon" href="/favicon.ico?v=1591416361792">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -184,19 +184,19 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">1</span>
+        <span class="site-item-stat-count">3</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="">
-        <span class="site-item-stat-count">1</span>
+        <span class="site-item-stat-count">3</span>
         <span class="site-item-stat-name language" data-lan="category">分类</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="/tags/">
-        <span class="site-item-stat-count">1</span>
+        <span class="site-item-stat-count">3</span>
         <span class="site-item-stat-name language" data-lan="tag">标签</span>
       </a>
     </div>
@@ -245,12 +245,24 @@
       
       
       
-      <a href="https://ACLYH.github.io/post/hello-gridea/">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <a href="https://ACLYH.github.io/post/hello-world/">
         <div class="motion-warpper">
           <div class="tag-post-node">
             <h1>
               12-12
-              <small>Hello Gridea</small>
+              <small>Hello world</small>
             </h1>
           </div>
         </div>
@@ -474,6 +486,176 @@
     <div class="result" id="result">
       
       <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://ACLYH.github.io/post/dan-diao-dui-lie/"" data-c="
+          &lt;h4 id=&#34;单调队列的性质&#34;&gt;&lt;strong&gt;单调队列的性质&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;单调就是指一直增或一直减，例如1，2，3，4就是单调增，4，3，2，1就是单调减。而单调队列就有这种性质。&lt;br&gt;
+所以，单调队列具有单调性以及队列的性质。&lt;/p&gt;
+&lt;h4 id=&#34;操作方式&#34;&gt;&lt;strong&gt;操作方式&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;数据结构队列是先进先出，相当于数列3,7,5,9,现在有一个数2要进队，那么，按队列的操作应该将数列变为7,5,9,2。&lt;/p&gt;
+&lt;p&gt;然而单调队列就不一样。假设有一条队列7,6,3,4，现在又有一个数5要进队，却看见3，4都比5要弱~~（类似MYJ在某STARLbast中将LYH打爆的行为）~~，所以就有了一种类似插队的方法，5将3和4挤掉，来到了6的后面，构成了这种队列：&lt;br&gt;
+&lt;img src=&#34;https://i.loli.net/2019/08/12/QXpNaTmjAouB4sD.png&#34; alt=&#34;此处输入图片的描述&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;所以单调队列维护单调性就是通过插队把队尾破坏了单调的数全部从队尾退队，使队列元素维持单调（单调队列与队列不同就是单调队列既可以从队首出队，也可以从队尾出队）。&lt;br&gt;
+看看一道模板&lt;s&gt;水&lt;/s&gt;题&lt;br&gt;
+&lt;a href=&#34;https://www.luogu.org/problem/P1886&#34;&gt;P1886 滑动窗口&lt;/a&gt;&lt;br&gt;
+&lt;s&gt;据说可以用线段树，树状数组什么的，但单调队列是拯救蒟蒻的做法(逃&lt;/s&gt;&lt;/p&gt;
+&lt;p&gt;所以说，这道题到底怎么做？&lt;br&gt;
+其实只需要枚举所有的连续子序列，使用单调队列找出最大值。&lt;br&gt;
+开始&lt;s&gt;乱搞&lt;/s&gt;写代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int n,k;
+int a[1000001]={0},q[10000001]={0};q数组表示单调队列，a表示其所对应的在原列表里的下标
+int head=1;//头指针
+int tail=1;//队尾指针
+int main(){
+	cin &amp;gt;&amp;gt; n&amp;gt;&amp;gt;k;
+	for(int i=1;i&amp;lt;=n;i++){
+		cin&amp;gt;&amp;gt;a[i];
+	}
+	for(int i=1;i&amp;lt;=n;i++){
+		while(head&amp;lt;tail&amp;amp;&amp;amp;a[q[tail-1]]&amp;gt;a[i]){
+			tail--;//插队，将后面的数踢掉，以维护单调性
+		}
+		q[tail++]=i;//存编号
+        while(head&amp;lt;tail&amp;amp;&amp;amp;q[head]&amp;lt;=i-k){
+        	head++;//队首元素太old了，就出队。
+		}
+        if(i&amp;gt;=k){
+        	cout &amp;lt;&amp;lt;a[q[head]]&amp;lt;&amp;lt; &amp;quot; &amp;quot;;//按题目要求的输出
+		}
+	}
+	cout &amp;lt;&amp;lt; endl;
+	--------------------------------------------------------------------------------------------
+	head=1,tail=1;
+
+	for(int i=1;i&amp;lt;=n;i++){
+		while(head&amp;lt;tail&amp;amp;&amp;amp;a[q[tail-1]]&amp;lt;a[i]){//队列中存在元素，又队尾元素比下一个处理的值大，即表示队尾元素太old，就让队尾元素出队。当队尾元素小于下一个处理值，单调性成立。
+			tail--;
+		}
+		q[tail++]=i;//存编号
+        while(head&amp;lt;tail&amp;amp;&amp;amp;q[head]&amp;lt;=i-k){
+        	head++;//队首元素太old了，就出队。
+		}
+        if(i&amp;gt;=k){
+        	cout &amp;lt;&amp;lt; a[q[head]] &amp;lt;&amp;lt; &amp;quot; &amp;quot;;//cout队首元素，即最大值
+		}
+	}
+	cout &amp;lt;&amp;lt; endl;
+	return 0;
+	//实际上分割线上下代码都差不多，只是维护单调性的while循环不一样
+}
+&lt;/code&gt;&lt;/pre&gt;
+">单调队列</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://ACLYH.github.io/post/youxian/"" data-c="
+          &lt;hr&gt;
+&lt;p&gt;优先队列，是，一个跟单调队列一样神奇的数据结构。&lt;br&gt;
+手写优先队列不会，只能用STL库自带的priority_queue。&lt;/p&gt;
+&lt;h2 id=&#34;声明priority_queue的头文件&#34;&gt;声明priority_queue的头文件&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;#include&amp;lt;queue&amp;gt;或#include&amp;lt;bits/stdc++.h&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;定义&#34;&gt;定义&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;priority_queue&amp;lt;int,vector&amp;lt;int&amp;gt;,less&amp;lt;int&amp;gt;&amp;gt; a; //less&amp;lt;int&amp;gt;递增函数
+priority_queue&amp;lt;int,vector&amp;lt;int&amp;gt;,greater&amp;lt;int&amp;gt; &amp;gt;q;//depue双端队列，greater&amp;lt;int&amp;gt;递减函数
+priority_queue&amp;lt;int&amp;gt;a;
+priority_queue&amp;lt;double&amp;gt;a;
+---------------------------------------------------
+struct node{
+~~~~~
+}
+priority_queue&amp;lt;node&amp;gt;a;
+--------------------------------------------------
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;priority_queue的操作&#34;&gt;priority_queue的操作&lt;/h2&gt;
+&lt;p&gt;实际上就是那些：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;priority_queue&amp;lt;int&amp;gt;q;
+q.empty()——队列是否为空，空为true，否则为false
+q.pop()——删除队顶元素
+q.push()——压入一个元素
+q.size()——返回优先队列中的元素个数
+q.top()——返回q的第一个元素
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;priority_queue的排序方式&#34;&gt;priority_queue的排序方式&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;priority_queue&amp;lt;int&amp;gt; q;//优先队列自带排序，元素从大到小的顺序排序出队
+priority_queue&amp;lt;int,vector&amp;lt;int&amp;gt;, greater&amp;lt;int&amp;gt; &amp;gt; q;//greater&amp;lt;int&amp;gt;，按照元素从小到大的顺序排序出队
+struct cmp{
+	int x,y;
+	bool operator&amp;lt; (const node &amp;amp; a)const{
+		return x&amp;lt;a.x;
+	}
+};//自定义结构体，重载&amp;lt;；
+
+priority_queue&amp;lt;int,vector&amp;lt;int&amp;gt;,less&amp;lt;int&amp;gt; &amp;gt; a;//less排序从大到小
+priority_queue&amp;lt;int,vector&amp;lt;int&amp;gt;,greater&amp;lt;int&amp;gt; &amp;gt;a; //greater排序从小到大
+//less和greater后的两个&amp;gt;之间要打&amp;quot; &amp;quot;，不然错哪里都不知道~~（绝对没有体验过）~~
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;所以，优先队列实际上就是一个自带从大到小排序的队列，最大元素会排在队首，然后，跟队列一样先进先出~~（感觉比单调队列半路插队要好写一些？）~~&lt;br&gt;
+那就做一道例题吧~~（绝对没有滑动窗口的普及+/提高）~~&lt;br&gt;
+&lt;a href=&#34;https://www.luogu.org/problem/P3887&#34;&gt;P3887 [GDOI2014]世界杯&lt;/a&gt;&lt;br&gt;
+读题可知，这道题有四个综合水平值，说明了什么？&lt;br&gt;
+当然是开四个优先队列啦~~（逃~~&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+
+priority_queue&amp;lt;int,vector&amp;lt;int&amp;gt;, less&amp;lt;int&amp;gt; &amp;gt; k,d,m,f;//根据题目开的四个优先队列，也可以打四次priority_queue&amp;lt;int,vector&amp;lt;int&amp;gt;, less&amp;lt;int&amp;gt; &amp;gt;，不然考试背不到priority_queue就完了
+int q;
+int a,b,c,e;//守门员、后卫、中场和前锋供挑选的球员人数
+int main(){
+	int cnt;//存储
+	cin &amp;gt;&amp;gt; a&amp;gt;&amp;gt;b&amp;gt;&amp;gt;c&amp;gt;&amp;gt;e;
+	for(int i=1;i&amp;lt;=a;i++){
+		cin &amp;gt;&amp;gt; cnt;
+		f.push(cnt);
+	}
+	for(int i=1;i&amp;lt;=b;i++){
+		cin &amp;gt;&amp;gt; cnt;
+		m.push(cnt);
+	}
+	for(int i=1;i&amp;lt;=c;i++){
+		cin &amp;gt;&amp;gt; cnt;
+		d.push(cnt);
+	}
+	for(int i=1;i&amp;lt;=e;i++){
+		cin &amp;gt;&amp;gt; cnt;
+		k.push(cnt); 
+	}//守门员、后卫、中场和前锋的能力值，分push进自己优先队列
+	cin &amp;gt;&amp;gt;q;
+	int x,y,z;
+	
+	for(int i=1;i&amp;lt;=q;i++){//对综合水平值的计算
+		int ans=0;//ans放外面的值就不会清零了，所以放在for内
+		cin &amp;gt;&amp;gt; x &amp;gt;&amp;gt; y &amp;gt;&amp;gt;z;
+		while(z--){
+			int cnt=k.top();
+			k.pop();
+			ans+=cnt;
+		}//出队，当前总能力值+上cnt 
+		while(y--){
+			int cnt=d.top();
+			d.pop();
+			ans+=cnt;
+		}同上
+		while(x--){
+			int cnt=m.top();
+			m.pop();
+			ans+=cnt;
+		}同上
+		ans+=f.top();
+		f.pop();题目所说不把守门员计算在内，单独处理
+		printf(&amp;quot;%.2lf\n&amp;quot;,ans*1.0/11);//关于输出两位数的处理
+	}
+	
+
+	return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+">初涉优先队列</a>
+      </div>
+      
+      <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://ACLYH.github.io/post/about/"" data-c="
           &lt;blockquote&gt;
 &lt;p&gt;欢迎来到我的小站呀，很高兴遇见你！🤝&lt;/p&gt;
@@ -486,29 +668,17 @@
       </div>
       
       <div class="item">
-        <a class="result-title" style="opacity: 0;" href="https://ACLYH.github.io/post/hello-gridea/"" data-c="
-          &lt;p&gt;👏  欢迎使用 &lt;strong&gt;Gridea&lt;/strong&gt; ！&lt;br&gt;
-✍️  &lt;strong&gt;Gridea&lt;/strong&gt; 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...&lt;/p&gt;
-&lt;!-- more --&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/getgridea/gridea&#34;&gt;Github&lt;/a&gt;&lt;br&gt;
-&lt;a href=&#34;https://gridea.dev/&#34;&gt;Gridea 主页&lt;/a&gt;&lt;br&gt;
-&lt;a href=&#34;http://fehey.com/&#34;&gt;示例网站&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;特性&#34;&gt;特性👇&lt;/h2&gt;
-&lt;p&gt;📝  你可以使用最酷的 &lt;strong&gt;Markdown&lt;/strong&gt; 语法，进行快速创作&lt;/p&gt;
-&lt;p&gt;🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片&lt;/p&gt;
-&lt;p&gt;🏷️  你可以对文章进行标签分组&lt;/p&gt;
-&lt;p&gt;📋  你可以自定义菜单，甚至可以创建外部链接菜单&lt;/p&gt;
-&lt;p&gt;💻  你可以在 &lt;strong&gt;Windows&lt;/strong&gt;，&lt;strong&gt;MacOS&lt;/strong&gt; 或 &lt;strong&gt;Linux&lt;/strong&gt; 设备上使用此客户端&lt;/p&gt;
-&lt;p&gt;🌎  你可以使用 &lt;strong&gt;𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌&lt;/strong&gt; 或 &lt;strong&gt;Coding Pages&lt;/strong&gt; 向世界展示，未来将支持更多平台&lt;/p&gt;
-&lt;p&gt;💬  你可以进行简单的配置，接入 &lt;a href=&#34;https://github.com/gitalk/gitalk&#34;&gt;Gitalk&lt;/a&gt; 或 &lt;a href=&#34;https://github.com/SukkaW/DisqusJS&#34;&gt;DisqusJS&lt;/a&gt; 评论系统&lt;/p&gt;
-&lt;p&gt;🇬🇧  你可以使用&lt;strong&gt;中文简体&lt;/strong&gt;或&lt;strong&gt;英语&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力&lt;/p&gt;
-&lt;p&gt;🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步&lt;/p&gt;
-&lt;p&gt;🌱 当然 &lt;strong&gt;Gridea&lt;/strong&gt; 还很年轻，有很多不足，但请相信，它会不停向前 🏃&lt;/p&gt;
-&lt;p&gt;未来，它一定会成为你离不开的伙伴&lt;/p&gt;
-&lt;p&gt;尽情发挥你的才华吧！&lt;/p&gt;
-&lt;p&gt;😘 Enjoy~&lt;/p&gt;
-">Hello Gridea</a>
+        <a class="result-title" style="opacity: 0;" href="https://ACLYH.github.io/post/hello-world/"" data-c="
+          &lt;pre&gt;&lt;code&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int main(){
+    cout &amp;lt;&amp;lt; &amp;quot;Hello world&amp;quot;&amp;lt;&amp;lt;endl;
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;about-me&#34;&gt;About me&lt;/h2&gt;
+&lt;p&gt;一个&lt;strong&gt;CQ&lt;/strong&gt;的蒟蒻OIer&lt;/p&gt;
+">Hello world</a>
       </div>
       
     </div>
