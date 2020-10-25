@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ACLYH.github.io</id>
-    <title>LYHのblog</title>
-    <updated>2020-10-25T06:09:21.287Z</updated>
+    <title>Lanthanum</title>
+    <updated>2020-10-25T06:18:29.331Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ACLYH.github.io"/>
     <link rel="self" href="https://ACLYH.github.io/atom.xml"/>
-    <subtitle>IOI AK me</subtitle>
+    <subtitle>心之所向，素履以往，生如逆旅，一苇以航。</subtitle>
     <logo>https://ACLYH.github.io/images/avatar.png</logo>
     <icon>https://ACLYH.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, LYHのblog</rights>
+    <rights>All rights reserved 2020, Lanthanum</rights>
     <entry>
         <title type="html"><![CDATA[单调队列]]></title>
         <id>https://ACLYH.github.io/post/dan-diao-dui-lie/</id>
