@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ACLYH.github.io</id>
     <title>Lanthanum</title>
-    <updated>2020-10-28T13:29:21.128Z</updated>
+    <updated>2020-10-28T13:40:27.864Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ACLYH.github.io"/>
     <link rel="self" href="https://ACLYH.github.io/atom.xml"/>
@@ -10,6 +10,455 @@
     <logo>https://ACLYH.github.io/images/avatar.png</logo>
     <icon>https://ACLYH.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Lanthanum</rights>
+    <entry>
+        <title type="html"><![CDATA[最小生成树模板]]></title>
+        <id>https://ACLYH.github.io/post/zui-xiao-sheng-cheng-shu-mo-ban/</id>
+        <link href="https://ACLYH.github.io/post/zui-xiao-sheng-cheng-shu-mo-ban/">
+        </link>
+        <updated>2020-10-28T13:39:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>题目描述</p>
+<p>如题，给出一个无向图，求出最小生成树，如果该图不连通，则输出orz</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>题目描述</p>
+<p>如题，给出一个无向图，求出最小生成树，如果该图不连通，则输出orz</p>
+<!-- more -->
+<p>输入输出格式<br>
+输入格式：</p>
+<p>第一行包含两个整数N、M，表示该图共有N个结点和M条无向边。（N&lt;=5000，M&lt;=200000）</p>
+<p>接下来M行每行包含三个整数Xi、Yi、Zi，表示有一条长度为Zi的无向边连接结点Xi、Yi</p>
+<p>输出格式：</p>
+<p>输出包含一个数，即最小生成树的各边的长度之和；如果该图不连通则输出orz</p>
+<p>输入输出样例<br>
+输入样例#1：</p>
+<p>4 5<br>
+1 2 2<br>
+1 3 2<br>
+1 4 3<br>
+2 3 4<br>
+3 4 3</p>
+<p>输出样例#1：</p>
+<p>7</p>
+<p>数据规模：</p>
+<p>对于20%的数据：N&lt;=5，M&lt;=20</p>
+<p>对于40%的数据：N&lt;=50，M&lt;=2500</p>
+<p>对于70%的数据：N&lt;=500，M&lt;=10000</p>
+<p>对于100%的数据：N&lt;=5000，M&lt;=200000</p>
+<p>样例解释：<br>
+<img src="https://img-blog.csdnimg.cn/20190609135251535.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxMzM0OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" loading="lazy"><br>
+所以最小生成树的总边权为2+2+3=7</p>
+<p>并查集<br>
+既然最小，那么重载cmp函数。</p>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int n,m;
+struct node{
+    int u;
+    int w;
+    int v;
+}g[1110000];
+bool cmp(node a,node b){
+    return a.w&lt;b.w;
+}
+int fa[10010];
+void init(){
+    for(int i=1;i&lt;=n;i++){
+        fa[i]=i;
+    }
+}
+int get(int x){
+    if(fa[x]==x){
+        return x;
+    }else{
+        int y=get(fa[x]);
+        fa[x]=y;
+        return y;
+    }
+}
+int main(){
+    cin&gt;&gt;n&gt;&gt;m;
+    for(int i=1;i&lt;=m;i++){
+        cin&gt;&gt;g[i].u&gt;&gt;g[i].v&gt;&gt;g[i].w;
+    }
+    init();
+    sort(g+1,g+1+m,cmp);
+    int ans=0;
+    for(int i=1;i&lt;=m;i++){
+        if(get(g[i].u)!=get(g[i].v)){
+            ans+=g[i].w;
+            fa[get(g[i].u)]=get(g[i].v);
+        }
+    }
+    cout&lt;&lt;ans;
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[最短路（单源）]]></title>
+        <id>https://ACLYH.github.io/post/zui-duan-lu-dan-yuan/</id>
+        <link href="https://ACLYH.github.io/post/zui-duan-lu-dan-yuan/">
+        </link>
+        <updated>2020-10-28T13:36:36.000Z</updated>
+        <summary type="html"><![CDATA[<p>Dijkstra算法和SPFA算法用于求单源最短路。<br>
+最短路就是求两点之间的最短路径。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Dijkstra算法和SPFA算法用于求单源最短路。<br>
+最短路就是求两点之间的最短路径。</p>
+<!-- more -->
+<p>最短路径怎么求呢？<br>
+更新就是了（松弛）。<br>
+<img src="https://img-blog.csdnimg.cn/20190419201104445.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxMzM0OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" loading="lazy">先赋予厚望（先假设无穷大）<br>
+<img src="https://img-blog.csdnimg.cn/20190419201303886.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxMzM0OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" loading="lazy">然后依次更新<br>
+<img src="https://img-blog.csdnimg.cn/20190419202104933.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxMzM0OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" loading="lazy"><br>
+通过起点1来比较哪条路到终点20最短</p>
+<p><img src="https://img-blog.csdnimg.cn/20190419202225404.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxMzM0OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" loading="lazy">暂时选择这条绿色的路<br>
+继续比较<br>
+<img src="https://img-blog.csdnimg.cn/20190419202710202.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxMzM0OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" loading="lazy"><br>
+所以蓝色的路是最短的。<br>
+然后看一道纯模板题。</p>
+<pre><code>骑车比赛
+
+Description
+
+小信准备去参加骑车比赛，比赛在 n 个城市间进行，编号从 1 到 n。选手们都从城市 1 出发，终点在城市 n。
+
+已知城市间有 m 条道路，每条道路连接两个城市，注意道路是双向的。现在小信知道了他经过每条道路需要花费的时间，他想请你帮他计算一下，他这次比赛最少需要花多少时间完成。
+
+Input
+
+第一行输入两个整数 n,m（1≤n≤1,000,1≤m≤5,000），分别代表城市个数和道路总数。接下来输入 m 行，每行输入三个数字 a,b,c（1≤a,b≤n,1≤c≤200），分别代表道路的起点和道路的终点，以及小信骑车通过这条道路需要花费的时间。保证输入的图是连通的。
+
+Output
+
+输出一行，输出一个整数，输出小信完成比赛需要的最少时间。
+
+Sample Input 1
+
+5 6
+1 2 2
+2 3 3
+2 5 5
+3 4 2
+3 5 1
+4 5 1
+
+Sample Output 1
+
+6
+
+
+</code></pre>
+<p>典型的最短路<br>
+Dijkstra模板：</p>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+
+
+int n,m;
+
+struct node{//结构体
+	int v,w;
+	node(){ };
+	node(int _v,int _w){
+		v=_v;
+		w=_w;
+	}
+};
+
+vector &lt;node&gt; g[10100];
+
+bool vis[10100];
+int dst[10100];
+
+void add(int u,int v,int w){//建图
+	g[u].push_back(node(v,w));
+	g[v].push_back(node(u,w));
+}
+
+
+void dij(int s){
+	memset(dst,0x3f,sizeof dst);
+	
+	int u = s;
+	dst[u]=0;
+	vis[u]=1;
+	
+	int nn=n;
+	while(nn--){
+		for(int j=0;j&lt;g[u].size();j++){
+			
+			int v = g[u][j].v;
+			int w = g[u][j].w;
+			dst[v] = min(dst[v],dst[u]+w);
+			
+		}
+		
+		int mi=0x3f3f3f3f;//无穷大
+		for(int j=1;j&lt;=n;j++){
+			if(!vis[j]&amp;&amp;mi&gt;dst[j]){
+				mi = dst[j];
+				u = j;	
+			}
+		}
+		vis[u] = 1;	
+	}
+}
+
+
+int main(){
+	cin &gt;&gt; n &gt;&gt;m;
+	int u,v,w;
+	while (m--){
+		cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;
+		add(u,v,w);
+	}
+	
+	dij(1);
+	cout &lt;&lt; dst[n];
+	
+	return 0;
+}
+</code></pre>
+<p>SPFA模板</p>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+
+const int maxn=1010;
+const int inf=0x3f3f3f3f;
+
+int n,m;
+
+struct node{
+	int v,w;
+	node(){ }
+	node(int _v,int _w){
+		v=_v;
+		w=_w;
+	}
+};
+
+vector &lt;node&gt; g[maxn];
+int dst[maxn];
+queue &lt;int&gt; qu;
+int inq[maxn];
+
+int add(int u,int v,int w){
+	g[u].push_back(node(v,w));
+	g[v].push_back(node(u,w));
+}
+
+void spfa(int s){
+	memset(dst,inf,sizeof dst);
+	int u=s;
+	dst[u]=0;
+	qu.push(u);
+	inq[u]=1;
+	while(!qu.empty()){
+		u=qu.front();
+		qu.pop();
+		inq[u]=0;
+		for(int i=0;i&lt;g[u].size();i++){
+			int v=g[u][i].v;
+			int w=g[u][i].w;
+			if(dst[v]&gt;dst[u]+w){
+				dst[v]=dst[u]+w;
+				if(!inq[v]){
+					qu.push(v);
+					inq[v]=1;
+				}
+			}
+		}
+	}
+}
+
+
+int main(){
+	cin &gt;&gt; n &gt;&gt; m;
+	int u , v , w; 
+	while (m--){
+		cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;
+		add(u,v,w);
+	}
+	spfa(1);
+	cout &lt;&lt; dst[n]&lt;&lt;endl;
+	return 0;
+}
+</code></pre>
+<pre><code>迷阵突围
+
+Description
+
+小信陷入了坐标系上的一个迷阵，迷阵上有 n个点，编号从 1 到 n。小信在编号为 1 的位置，他想到编号为 n 的位置上。小信当然想尽快到达目的地，但是他觉得最短的路径可能有风险，所以他会选择第二短的路径。现在小信知道了 n 个点的坐标，以及哪些点之间是相连的，他想知道第二短的路径长度是多少。
+
+注意，每条路径上不能重复经过同一个点。
+
+Input
+
+第一行输入两个整数 n (1≤n≤200) 和 m，表示一共有 n 个点和 m 条边。
+
+接下来输入 n 行，每行输入两个整数 xi,yi (−500≤xi,yi≤500)，代表第 i 个点的坐标。
+
+接下来输入 m 行，每行输入两个整数 pj,qj (1≤pj,qj≤n)，表示点 pj 和点 qj 之间相连。
+
+Output
+
+输出一行，输出包含一个数，表示第二短的路径长度（小数点后面保留两位），如果第一短路径有多条，则答案就是第一最短路径的长度；如果第二最短路径不存在，则输出 -1。
+
+Sample Input 1
+
+3 3
+1 1
+2 2
+3 2
+1 2
+2 3
+1 3
+
+Sample Output 1
+
+2.41
+
+
+</code></pre>
+<p>模板改进。（两个dij函数）</p>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+
+int n,m;
+
+struct node{
+	int v;
+	double w;
+	node(){ };
+	node(int _v,double _w){
+		v=_v;
+		w=_w;
+	}
+};
+
+vector &lt;node&gt; g[10100];
+
+bool vis[10100];
+double dst[10100];
+
+int x[10100],y[10100];
+int pre[10100];
+void add(int u,int v,double w){
+	g[u].push_back(node(v,w));
+	g[v].push_back(node(u,w));
+}
+
+
+void dij(int s){
+
+	memset(vis,0,sizeof vis);
+	for(int i=1;i&lt;=n;i++){
+		dst[i]=1e20;
+	}
+	
+	int u = s;
+	dst[u]=0;
+	vis[u]=1;
+	
+	int nn=n;
+	while(nn--){
+		for(int j=0;j&lt;g[u].size();j++){
+			
+			int v = g[u][j].v;
+			double w = g[u][j].w;
+	
+			if(dst[v]&gt;dst[u]+w){
+				dst[v]=dst[u]+w;
+				pre[v]=u;
+			}
+		}
+		
+		double mi=1e20;
+		for(int j=1;j&lt;=n;j++){
+			if(!vis[j]&amp;&amp;mi&gt;dst[j]){
+				mi = dst[j];
+				u = j;	
+			}
+		}
+		vis[u] = 1;	
+	}
+
+}
+
+
+void dij2(int s,int uu,int vv){
+	
+	memset(vis,0,sizeof vis);
+	for(int i=1;i&lt;=n;i++){
+		dst[i]=1e20;
+	}
+	
+	int u = s;
+	dst[u]=0;
+	vis[u]=1;
+	
+	int nn=n;
+	while(nn--){
+		for(int j=0;j&lt;g[u].size();j++){
+			int v = g[u][j].v;
+			double w = g[u][j].w;
+	
+			if(uu ==u &amp;&amp; vv==v || uu==v &amp;&amp; vv == u){
+				continue;
+			}
+	
+			dst[v] = min(dst[v],dst[u]+w);
+
+	}
+		double mi=1e20;
+		for(int j=1;j&lt;=n;j++){
+			if(!vis[j]&amp;&amp;mi&gt;dst[j]){
+				mi = dst[j];
+				u = j;	
+			}
+		}
+		vis[u] = 1;	
+	 
+	}
+
+}
+
+
+int main(){
+	cin &gt;&gt; n &gt;&gt;m;
+	int u,v;
+	double w;
+	
+	for(int i=1;i&lt;=n;i++){
+		cin &gt;&gt; x[i] &gt;&gt;y[i];
+	}
+	
+	while (m--){
+		cin &gt;&gt; u &gt;&gt; v;
+		w=sqrt((x[u]-x[v])*(x[u]-x[v])+(y[u]-y[v])*(y[u]-y[v]));
+		add(u,v,w);
+	}
+	
+	dij(1);
+
+	
+	double mi=1e20;
+	for(int i=n;pre[i]!=0;i=pre[i]){
+		dij2(1,i,pre[i]);
+		mi=min(mi,dst[n]);
+	}
+	     if(mi == 1e20){
+	      cout &lt;&lt; &quot;-1&quot;&lt;&lt;endl;
+		 }else{
+			 cout&lt;&lt;fixed&lt;&lt;setprecision(2)&lt;&lt;mi&lt;&lt;endl;
+		}
+	
+	return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[二分查找法]]></title>
         <id>https://ACLYH.github.io/post/er-fen-cha-zhao-fa/</id>
@@ -2349,193 +2798,6 @@ int main(){
         }
     }
     return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[单调队列]]></title>
-        <id>https://ACLYH.github.io/post/dan-diao-dui-lie/</id>
-        <link href="https://ACLYH.github.io/post/dan-diao-dui-lie/">
-        </link>
-        <updated>2020-06-06T04:03:59.000Z</updated>
-        <summary type="html"><![CDATA[<h4 id="单调队列的性质"><strong>单调队列的性质</strong></h4>
-<p>单调就是指一直增或一直减，例如1，2，3，4就是单调增，4，3，2，1就是单调减。而单调队列就有这种性质。<br>
-所以，单调队列具有单调性以及队列的性质。</p>
-]]></summary>
-        <content type="html"><![CDATA[<h4 id="单调队列的性质"><strong>单调队列的性质</strong></h4>
-<p>单调就是指一直增或一直减，例如1，2，3，4就是单调增，4，3，2，1就是单调减。而单调队列就有这种性质。<br>
-所以，单调队列具有单调性以及队列的性质。</p>
-<!-- more -->
-<h4 id="操作方式"><strong>操作方式</strong></h4>
-<p>数据结构队列是先进先出，相当于数列3,7,5,9,现在有一个数2要进队，那么，按队列的操作应该将数列变为7,5,9,2。</p>
-<p>然而单调队列就不一样。假设有一条队列7,6,3,4，现在又有一个数5要进队，却看见3，4都比5要弱~~（类似MYJ在某STARLbast中将LYH打爆的行为）~~，所以就有了一种类似插队的方法，5将3和4挤掉，来到了6的后面，构成了这种队列：<br>
-<img src="https://i.loli.net/2019/08/12/QXpNaTmjAouB4sD.png" alt="此处输入图片的描述" loading="lazy"></p>
-<p>所以单调队列维护单调性就是通过插队把队尾破坏了单调的数全部从队尾退队，使队列元素维持单调（单调队列与队列不同就是单调队列既可以从队首出队，也可以从队尾出队）。<br>
-看看一道模板<s>水</s>题<br>
-<a href="https://www.luogu.org/problem/P1886">P1886 滑动窗口</a><br>
-<s>据说可以用线段树，树状数组什么的，但单调队列是拯救蒟蒻的做法(逃</s></p>
-<p>所以说，这道题到底怎么做？<br>
-其实只需要枚举所有的连续子序列，使用单调队列找出最大值。<br>
-开始<s>乱搞</s>写代码：</p>
-<pre><code>#include&lt;bits/stdc++.h&gt;
-using namespace std;
-int n,k;
-int a[1000001]={0},q[10000001]={0};q数组表示单调队列，a表示其所对应的在原列表里的下标
-int head=1;//头指针
-int tail=1;//队尾指针
-int main(){
-	cin &gt;&gt; n&gt;&gt;k;
-	for(int i=1;i&lt;=n;i++){
-		cin&gt;&gt;a[i];
-	}
-	for(int i=1;i&lt;=n;i++){
-		while(head&lt;tail&amp;&amp;a[q[tail-1]]&gt;a[i]){
-			tail--;//插队，将后面的数踢掉，以维护单调性
-		}
-		q[tail++]=i;//存编号
-        while(head&lt;tail&amp;&amp;q[head]&lt;=i-k){
-        	head++;//队首元素太old了，就出队。
-		}
-        if(i&gt;=k){
-        	cout &lt;&lt;a[q[head]]&lt;&lt; &quot; &quot;;//按题目要求的输出
-		}
-	}
-	cout &lt;&lt; endl;
-	--------------------------------------------------------------------------------------------
-	head=1,tail=1;
-
-	for(int i=1;i&lt;=n;i++){
-		while(head&lt;tail&amp;&amp;a[q[tail-1]]&lt;a[i]){//队列中存在元素，又队尾元素比下一个处理的值大，即表示队尾元素太old，就让队尾元素出队。当队尾元素小于下一个处理值，单调性成立。
-			tail--;
-		}
-		q[tail++]=i;//存编号
-        while(head&lt;tail&amp;&amp;q[head]&lt;=i-k){
-        	head++;//队首元素太old了，就出队。
-		}
-        if(i&gt;=k){
-        	cout &lt;&lt; a[q[head]] &lt;&lt; &quot; &quot;;//cout队首元素，即最大值
-		}
-	}
-	cout &lt;&lt; endl;
-	return 0;
-	//实际上分割线上下代码都差不多，只是维护单调性的while循环不一样
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[初涉优先队列]]></title>
-        <id>https://ACLYH.github.io/post/youxian/</id>
-        <link href="https://ACLYH.github.io/post/youxian/">
-        </link>
-        <updated>2020-06-06T03:31:49.000Z</updated>
-        <summary type="html"><![CDATA[<hr>
-<p>优先队列，是，一个跟单调队列一样神奇的数据结构。<br>
-手写优先队列不会，只能用STL库自带的priority_queue。</p>
-<h2 id="声明priority_queue的头文件">声明priority_queue的头文件</h2>
-]]></summary>
-        <content type="html"><![CDATA[<hr>
-<p>优先队列，是，一个跟单调队列一样神奇的数据结构。<br>
-手写优先队列不会，只能用STL库自带的priority_queue。</p>
-<h2 id="声明priority_queue的头文件">声明priority_queue的头文件</h2>
-<!-- more -->
-<pre><code>#include&lt;queue&gt;或#include&lt;bits/stdc++.h&gt;
-</code></pre>
-<h2 id="定义">定义</h2>
-<pre><code>priority_queue&lt;int,vector&lt;int&gt;,less&lt;int&gt;&gt; a; //less&lt;int&gt;递增函数
-priority_queue&lt;int,vector&lt;int&gt;,greater&lt;int&gt; &gt;q;//depue双端队列，greater&lt;int&gt;递减函数
-priority_queue&lt;int&gt;a;
-priority_queue&lt;double&gt;a;
----------------------------------------------------
-struct node{
-~~~~~
-}
-priority_queue&lt;node&gt;a;
---------------------------------------------------
-</code></pre>
-<h2 id="priority_queue的操作">priority_queue的操作</h2>
-<p>实际上就是那些：</p>
-<pre><code>priority_queue&lt;int&gt;q;
-q.empty()——队列是否为空，空为true，否则为false
-q.pop()——删除队顶元素
-q.push()——压入一个元素
-q.size()——返回优先队列中的元素个数
-q.top()——返回q的第一个元素
-</code></pre>
-<h2 id="priority_queue的排序方式">priority_queue的排序方式</h2>
-<pre><code>priority_queue&lt;int&gt; q;//优先队列自带排序，元素从大到小的顺序排序出队
-priority_queue&lt;int,vector&lt;int&gt;, greater&lt;int&gt; &gt; q;//greater&lt;int&gt;，按照元素从小到大的顺序排序出队
-struct cmp{
-	int x,y;
-	bool operator&lt; (const node &amp; a)const{
-		return x&lt;a.x;
-	}
-};//自定义结构体，重载&lt;；
-
-priority_queue&lt;int,vector&lt;int&gt;,less&lt;int&gt; &gt; a;//less排序从大到小
-priority_queue&lt;int,vector&lt;int&gt;,greater&lt;int&gt; &gt;a; //greater排序从小到大
-//less和greater后的两个&gt;之间要打&quot; &quot;，不然错哪里都不知道~~（绝对没有体验过）~~
-
-</code></pre>
-<p>所以，优先队列实际上就是一个自带从大到小排序的队列，最大元素会排在队首，然后，跟队列一样先进先出~~（感觉比单调队列半路插队要好写一些？）~~<br>
-那就做一道例题吧~~（绝对没有滑动窗口的普及+/提高）~~<br>
-<a href="https://www.luogu.org/problem/P3887">P3887 [GDOI2014]世界杯</a><br>
-读题可知，这道题有四个综合水平值，说明了什么？<br>
-当然是开四个优先队列啦~~（逃~~</p>
-<pre><code>#include&lt;bits/stdc++.h&gt;
-using namespace std;
-
-priority_queue&lt;int,vector&lt;int&gt;, less&lt;int&gt; &gt; k,d,m,f;//根据题目开的四个优先队列，也可以打四次priority_queue&lt;int,vector&lt;int&gt;, less&lt;int&gt; &gt;，不然考试背不到priority_queue就完了
-int q;
-int a,b,c,e;//守门员、后卫、中场和前锋供挑选的球员人数
-int main(){
-	int cnt;//存储
-	cin &gt;&gt; a&gt;&gt;b&gt;&gt;c&gt;&gt;e;
-	for(int i=1;i&lt;=a;i++){
-		cin &gt;&gt; cnt;
-		f.push(cnt);
-	}
-	for(int i=1;i&lt;=b;i++){
-		cin &gt;&gt; cnt;
-		m.push(cnt);
-	}
-	for(int i=1;i&lt;=c;i++){
-		cin &gt;&gt; cnt;
-		d.push(cnt);
-	}
-	for(int i=1;i&lt;=e;i++){
-		cin &gt;&gt; cnt;
-		k.push(cnt); 
-	}//守门员、后卫、中场和前锋的能力值，分push进自己优先队列
-	cin &gt;&gt;q;
-	int x,y,z;
-	
-	for(int i=1;i&lt;=q;i++){//对综合水平值的计算
-		int ans=0;//ans放外面的值就不会清零了，所以放在for内
-		cin &gt;&gt; x &gt;&gt; y &gt;&gt;z;
-		while(z--){
-			int cnt=k.top();
-			k.pop();
-			ans+=cnt;
-		}//出队，当前总能力值+上cnt 
-		while(y--){
-			int cnt=d.top();
-			d.pop();
-			ans+=cnt;
-		}同上
-		while(x--){
-			int cnt=m.top();
-			m.pop();
-			ans+=cnt;
-		}同上
-		ans+=f.top();
-		f.pop();题目所说不把守门员计算在内，单独处理
-		printf(&quot;%.2lf\n&quot;,ans*1.0/11);//关于输出两位数的处理
-	}
-	
-
-	return 0;
 }
 </code></pre>
 ]]></content>
