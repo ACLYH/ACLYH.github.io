@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="心之所向，素履以往，生如逆旅，一苇以航。">
 <meta name="theme-color" content="#000">
-<title>单调队列 | Lanthanum</title>
+<title>[DFS]排队（间隔排列） | Lanthanum</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1603891755147">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -38,8 +38,8 @@
 
 
 
-  <meta name="description" content="单调队列" />
-  <meta name="keywords" content="C++,数据结构" />
+  <meta name="description" content="[DFS]排队（间隔排列）" />
+  <meta name="keywords" content="DFS,C++" />
 </head>
 
 <body>
@@ -235,16 +235,11 @@
     <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97%E7%9A%84%E6%80%A7%E8%B4%A8"><strong>单调队列的性质</strong></a></li>
-<li><a href="#%E6%93%8D%E4%BD%9C%E6%96%B9%E5%BC%8F"><strong>操作方式</strong></a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li><a href="#description">Description</a></li>
+<li><a href="#input">Input</a></li>
+<li><a href="#output">Output</a></li>
+<li><a href="#sample-input">Sample Input</a></li>
+<li><a href="#sample-output">Sample Output</a></li>
 </ul>
 </li>
 </ul>
@@ -512,8 +507,8 @@
           <div class="section bg-color post post-page">
             <header class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://ACLYH.github.io/post/dan-diao-dui-lie/">
-      单调队列
+    <a class="post-title-link" href="https://ACLYH.github.io/post/dfspai-dui-jian-ge-pai-lie/">
+      [DFS]排队（间隔排列）
     </a>
   </h1>
   <div class="post-meta">
@@ -521,7 +516,7 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span>2020-06-06</span>
+      <span>2020-10-28</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -530,14 +525,14 @@
       <span class="pc-show language" data-lan="category-in">分类于</span>
       
       
-      <a href="https://ACLYH.github.io/tag/9uX8VkzGC/">
-        <span>C++</span>
+      <a href="https://ACLYH.github.io/tag/s_vfV_cMy/">
+        <span>DFS</span>
       </a>、
       
       
       
-      <a href="https://ACLYH.github.io/tag/TSrwZ4k9Eg/">
-        <span>数据结构</span>
+      <a href="https://ACLYH.github.io/tag/9uX8VkzGC/">
+        <span>C++</span>
       </a>
       
       
@@ -551,69 +546,91 @@
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>704<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>543<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
   </div>
 </header>
             <div class="post-body next-md-body" id="post_body">
-              <h4 id="单调队列的性质"><strong>单调队列的性质</strong></h4>
-<p>单调就是指一直增或一直减，例如1，2，3，4就是单调增，4，3，2，1就是单调减。而单调队列就有这种性质。<br>
-所以，单调队列具有单调性以及队列的性质。</p>
+              <h2 id="description">Description</h2>
+<p>小Q是班长。在校运动会上，小Q班要进行队列表演。小Q要选出2*N名同学编队，每人都被编上一个号，每一个从1到N的自然数都被某2名同学佩戴，现在要求将他们排成一列，使两个编号为1的同学中间恰好夹1名同学，两个编号为2的同学中间恰好夹2名同学，……，两个编号为N的同学中间恰好夹N名同学，小Q希望知道这样的排法能否实现。</p>
 <!-- more -->
-<h4 id="操作方式"><strong>操作方式</strong></h4>
-<p>数据结构队列是先进先出，相当于数列3,7,5,9,现在有一个数2要进队，那么，按队列的操作应该将数列变为7,5,9,2。</p>
-<p>然而单调队列就不一样。假设有一条队列7,6,3,4，现在又有一个数5要进队，却看见3，4都比5要弱~~（类似MYJ在某STARLbast中将LYH打爆的行为）~~，所以就有了一种类似插队的方法，5将3和4挤掉，来到了6的后面，构成了这种队列：<br>
-<img src="https://i.loli.net/2019/08/12/QXpNaTmjAouB4sD.png" alt="此处输入图片的描述" loading="lazy"></p>
-<p>所以单调队列维护单调性就是通过插队把队尾破坏了单调的数全部从队尾退队，使队列元素维持单调（单调队列与队列不同就是单调队列既可以从队首出队，也可以从队尾出队）。<br>
-看看一道模板<s>水</s>题<br>
-<a href="https://www.luogu.org/problem/P1886">P1886 滑动窗口</a><br>
-<s>据说可以用线段树，树状数组什么的，但单调队列是拯救蒟蒻的做法(逃</s></p>
-<p>所以说，这道题到底怎么做？<br>
-其实只需要枚举所有的连续子序列，使用单调队列找出最大值。<br>
-开始<s>乱搞</s>写代码：</p>
+<h2 id="input">Input</h2>
+<p>输入文件仅包括一行，即要处理的N。N&lt;=13</p>
+<h2 id="output">Output</h2>
+<p>输出有多少种排列顺序.</p>
+<h2 id="sample-input">Sample Input</h2>
+<p>3</p>
+<h2 id="sample-output">Sample Output</h2>
+<p>2</p>
+<p>先理解一下题目，题目中所述，每一个从1到N的自然数都被某2名同学佩戴，说明共有2N名同学，两个编号为N的同学中间恰好夹N名同学，就可以得到一个排列（以n==3为例）：</p>
+<p><img src="https://img-blog.csdnimg.cn/20190714092334172.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxMzM0OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" loading="lazy"><br>
+然后，就可以用DFS搜索了。</p>
 <pre><code>#include&lt;bits/stdc++.h&gt;
 using namespace std;
-int n,k;
-int a[1000001]={0},q[10000001]={0};q数组表示单调队列，a表示其所对应的在原列表里的下标
-int head=1;//头指针
-int tail=1;//队尾指针
-int main(){
-	cin &gt;&gt; n&gt;&gt;k;
-	for(int i=1;i&lt;=n;i++){
-		cin&gt;&gt;a[i];
-	}
-	for(int i=1;i&lt;=n;i++){
-		while(head&lt;tail&amp;&amp;a[q[tail-1]]&gt;a[i]){
-			tail--;//插队，将后面的数踢掉，以维护单调性
-		}
-		q[tail++]=i;//存编号
-        while(head&lt;tail&amp;&amp;q[head]&lt;=i-k){
-        	head++;//队首元素太old了，就出队。
-		}
-        if(i&gt;=k){
-        	cout &lt;&lt;a[q[head]]&lt;&lt; &quot; &quot;;//按题目要求的输出
-		}
-	}
-	cout &lt;&lt; endl;
-	--------------------------------------------------------------------------------------------
-	head=1,tail=1;
 
-	for(int i=1;i&lt;=n;i++){
-		while(head&lt;tail&amp;&amp;a[q[tail-1]]&lt;a[i]){//队列中存在元素，又队尾元素比下一个处理的值大，即表示队尾元素太old，就让队尾元素出队。当队尾元素小于下一个处理值，单调性成立。
-			tail--;
-		}
-		q[tail++]=i;//存编号
-        while(head&lt;tail&amp;&amp;q[head]&lt;=i-k){
-        	head++;//队首元素太old了，就出队。
-		}
-        if(i&gt;=k){
-        	cout &lt;&lt; a[q[head]] &lt;&lt; &quot; &quot;;//cout队首元素，即最大值
+int n,ans=0;
+int flag[100]={0};
+
+void dfs(int dep){
+	
+	if(dep&gt;n){
+		ans++;
+		return ;
+	}
+	for(int i=1;i&lt;=2*n-dep-1;i++){
+		if(!flag[i]&amp;&amp;!flag[i+dep+1]){//考虑当前位置有无其他数，和它的间隔有没有其他数
+			flag[i]=flag[i+dep+1]=1;
+			dfs(dep+1);
+			flag[i]=flag[i+dep+1]=0;
 		}
 	}
-	cout &lt;&lt; endl;
+}
+int main(){
+	cin &gt;&gt; n;
+	dfs(1);
+	cout &lt;&lt; ans;
+	
 	return 0;
-	//实际上分割线上下代码都差不多，只是维护单调性的while循环不一样
+}
+</code></pre>
+<p>但是，可以发现，当程序运行12或13时，耗时很长，那么就可以想到剪枝优化。</p>
+<pre><code>	if(n%4==1||n%4==2){
+		return ; 
+	}
+</code></pre>
+<p>现在，就可以证明一下这个剪枝的得到。<br>
+设问题的一个解为a1+a2···+an,a1表示1。<br>
+那么可以得到  a1+a2+…+an+(a1+1+1)+(a2+2+1)+…+(an+n+1) ，最后解得 4(a1+a2+…+an)=n(3n-1) ，所以n%4<mark>1或n%4</mark>2无解。</p>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+
+int n,ans=0;
+int flag[100]={0};
+
+void dfs(int dep){
+	
+	if(n%4==1||n%4==2){
+		return ; 
+	}
+	if(dep&gt;n){
+		ans++;
+		return ;
+	}
+	for(int i=1;i&lt;=2*n-dep-1;i++){
+		if(!flag[i]&amp;&amp;!flag[i+dep+1]){
+			flag[i]=flag[i+dep+1]=1;
+			dfs(dep+1);
+			flag[i]=flag[i+dep+1]=0;
+		}
+	}
+}
+int main(){
+	cin &gt;&gt; n;
+	dfs(1);
+	cout &lt;&lt; ans;
+	
+	return 0;
 }
 </code></pre>
 
@@ -628,7 +645,7 @@ int main(){
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://ACLYH.github.io/post/dan-diao-dui-lie/" title="单调队列">https://ACLYH.github.io/post/dan-diao-dui-lie/</a>
+      <a href="https://ACLYH.github.io/post/dfspai-dui-jian-ge-pai-lie/" title="[DFS]排队（间隔排列）">https://ACLYH.github.io/post/dfspai-dui-jian-ge-pai-lie/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -637,23 +654,23 @@ int main(){
   </ul>
   <div class="tags">
     
-      <a href="https://ACLYH.github.io/tag/9uX8VkzGC/"># C++</a>
+      <a href="https://ACLYH.github.io/tag/s_vfV_cMy/"># DFS</a>
     
-      <a href="https://ACLYH.github.io/tag/TSrwZ4k9Eg/"># 数据结构</a>
+      <a href="https://ACLYH.github.io/tag/9uX8VkzGC/"># C++</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
         <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="并查集（Disjoint Set Union）" href="https://ACLYH.github.io/post/bing-cha-ji-disjoint-set-union/">并查集（Disjoint Set Union）</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="并查集（Disjoint Set Union）" href="https://ACLYH.github.io/post/bing-cha-ji-disjoint-set-union/">上一篇</a>
+        <a class="nav-pc-next" title="最短路算法" href="https://ACLYH.github.io/post/zui-duan-lu-suan-fa/">最短路算法</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="最短路算法" href="https://ACLYH.github.io/post/zui-duan-lu-suan-fa/">上一篇</a>
       
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="初涉优先队列" href="https://ACLYH.github.io/post/youxian/">初涉优先队列</a>
-        <a class="nav-mobile-next" title="初涉优先队列" href="https://ACLYH.github.io/post/youxian/">下一篇</a>
+        <a class="nav-pc-next" title="2020-10-27 模拟考" href="https://ACLYH.github.io/post/2020-10-27-mo-ni-kao/">2020-10-27 模拟考</a>
+        <a class="nav-mobile-next" title="2020-10-27 模拟考" href="https://ACLYH.github.io/post/2020-10-27-mo-ni-kao/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

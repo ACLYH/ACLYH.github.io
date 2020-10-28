@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="心之所向，素履以往，生如逆旅，一苇以航。">
 <meta name="theme-color" content="#000">
-<title>单调队列 | Lanthanum</title>
+<title>最短路算法 | Lanthanum</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1603891755147">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -38,8 +38,8 @@
 
 
 
-  <meta name="description" content="单调队列" />
-  <meta name="keywords" content="C++,数据结构" />
+  <meta name="description" content="最短路算法" />
+  <meta name="keywords" content="最短路,C++" />
 </head>
 
 <body>
@@ -239,12 +239,22 @@
 <ul>
 <li>
 <ul>
-<li><a href="#%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97%E7%9A%84%E6%80%A7%E8%B4%A8"><strong>单调队列的性质</strong></a></li>
-<li><a href="#%E6%93%8D%E4%BD%9C%E6%96%B9%E5%BC%8F"><strong>操作方式</strong></a></li>
+<li><a href="#1dijkstra">1.Dijkstra</a></li>
+<li><a href="#2spfa">2.SPFA</a></li>
+<li><a href="#floyd">Floyd</a></li>
+<li><a href="#%E4%B8%80%E4%BA%9B%E6%9C%80%E7%9F%AD%E8%B7%AF%E7%9A%84%E9%A2%98%E7%9B%AE">一些最短路的题目</a>
+<ul>
+<li><a href="#1%E8%BF%B7%E9%98%B5%E7%AA%81%E5%9B%B4">1.迷阵突围</a></li>
+<li><a href="#2p1359-%E7%A7%9F%E7%94%A8%E6%B8%B8%E8%89%87">2.P1359 租用游艇</a></li>
+<li><a href="#3p3371-%E6%A8%A1%E6%9D%BF%E5%8D%95%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E5%BC%B1%E5%8C%96%E7%89%88">3.P3371 【模板】单源最短路径（弱化版）</a></li>
+<li><a href="#4p1339-usaco09oct%E7%83%AD%E6%B5%AAheat-wave">4.P1339 [USACO09OCT]热浪Heat Wave</a></li>
 </ul>
 </li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF">欧拉回路</a></li>
 </ul>
 </li>
 </ul>
@@ -512,8 +522,8 @@
           <div class="section bg-color post post-page">
             <header class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://ACLYH.github.io/post/dan-diao-dui-lie/">
-      单调队列
+    <a class="post-title-link" href="https://ACLYH.github.io/post/zui-duan-lu-suan-fa/">
+      最短路算法
     </a>
   </h1>
   <div class="post-meta">
@@ -521,7 +531,7 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span>2020-06-06</span>
+      <span>2020-10-28</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -530,14 +540,14 @@
       <span class="pc-show language" data-lan="category-in">分类于</span>
       
       
-      <a href="https://ACLYH.github.io/tag/9uX8VkzGC/">
-        <span>C++</span>
+      <a href="https://ACLYH.github.io/tag/LB26NJ90t/">
+        <span>最短路</span>
       </a>、
       
       
       
-      <a href="https://ACLYH.github.io/tag/TSrwZ4k9Eg/">
-        <span>数据结构</span>
+      <a href="https://ACLYH.github.io/tag/9uX8VkzGC/">
+        <span>C++</span>
       </a>
       
       
@@ -546,75 +556,685 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>3<span class="language" data-lan="minute">分钟</span></span>
+      <span>19<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>704<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>3817<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
   </div>
 </header>
             <div class="post-body next-md-body" id="post_body">
-              <h4 id="单调队列的性质"><strong>单调队列的性质</strong></h4>
-<p>单调就是指一直增或一直减，例如1，2，3，4就是单调增，4，3，2，1就是单调减。而单调队列就有这种性质。<br>
-所以，单调队列具有单调性以及队列的性质。</p>
+              <h4 id="1dijkstra">1.Dijkstra</h4>
+<p>Dijkstra用于计算一个顶点到其他所有顶点的最短路径。Dijkstra 算<br>
+法的主要特点是以起点为中心，逐层向外扩展一个点，每次都会取一个最近点继续扩展，直到取完所有点为止。但Dijkstra 算法要求图中不能出现负权边。</p>
 <!-- more -->
-<h4 id="操作方式"><strong>操作方式</strong></h4>
-<p>数据结构队列是先进先出，相当于数列3,7,5,9,现在有一个数2要进队，那么，按队列的操作应该将数列变为7,5,9,2。</p>
-<p>然而单调队列就不一样。假设有一条队列7,6,3,4，现在又有一个数5要进队，却看见3，4都比5要弱~~（类似MYJ在某STARLbast中将LYH打爆的行为）~~，所以就有了一种类似插队的方法，5将3和4挤掉，来到了6的后面，构成了这种队列：<br>
-<img src="https://i.loli.net/2019/08/12/QXpNaTmjAouB4sD.png" alt="此处输入图片的描述" loading="lazy"></p>
-<p>所以单调队列维护单调性就是通过插队把队尾破坏了单调的数全部从队尾退队，使队列元素维持单调（单调队列与队列不同就是单调队列既可以从队首出队，也可以从队尾出队）。<br>
-看看一道模板<s>水</s>题<br>
-<a href="https://www.luogu.org/problem/P1886">P1886 滑动窗口</a><br>
-<s>据说可以用线段树，树状数组什么的，但单调队列是拯救蒟蒻的做法(逃</s></p>
-<p>所以说，这道题到底怎么做？<br>
-其实只需要枚举所有的连续子序列，使用单调队列找出最大值。<br>
-开始<s>乱搞</s>写代码：</p>
+<pre><code>//模板
+#include&lt;bits/stdc++.h&gt;
+using namespace std;
+
+
+int n,m;
+
+struct node{
+	int v,w;
+	node(){ };
+	node(int _v,int _w){
+		v=_v;
+		w=_w;
+	}
+};
+
+vector &lt;node&gt; g[10100];
+
+bool vis[10100];
+int dst[10100];
+
+void add(int u,int v,int w){
+	g[u].push_back(node(v,w));
+	g[v].push_back(node(u,w));
+}
+
+
+void dij(int s){
+	memset(dst,0x3f,sizeof dst);
+	
+	int u = s;
+	dst[u]=0;
+	vis[u]=1;
+	
+	int nn=n;
+	while(nn--){
+		for(int j=0;j&lt;g[u].size();j++){
+			
+			int v = g[u][j].v;
+			int w = g[u][j].w;
+			dst[v] = min(dst[v],dst[u]+w);
+			
+		}
+		
+		int mi=0x3f3f3f3f;
+		for(int j=1;j&lt;=n;j++){
+			if(!vis[j]&amp;&amp;mi&gt;dst[j]){
+				mi = dst[j];
+				u = j;	
+			}
+		}
+		vis[u] = 1;	
+	}
+}
+
+
+int main(){
+	cin &gt;&gt; n &gt;&gt;m;
+	int u,v,w;
+	while (m--){
+		cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;
+		add(u,v,w);
+	}
+	
+	dij(1);
+	cout &lt;&lt; dst[n];
+	
+	return 0;
+}
+</code></pre>
+<h4 id="2spfa">2.SPFA</h4>
+<p>SPFA算法是单源最短路径的一种算法，通常被认为是 Bellmanford算法的队列优化，在代码形式上接近宽度优先搜索 BFS，是一个在实践中非常高效的单源最短路算法。它会在每次更新了最短路以后又重新入队从而去更新后续结点的最短路。同时有些题有卡SPFA的数据，所以也可以换成Dijkstra。但Dijkstra 不能处理有负权的图，而 SPFA 可以处理不含负环的图的最短路，并能 判断是否存在负环。</p>
+<pre><code>//模板
+#include&lt;bits/stdc++.h&gt;
+using namespace std;
+
+const int maxn=1010;
+const int inf=0x3f3f3f3f;
+
+int n,m;
+
+struct node{
+	int v,w;
+	node(){ }
+	node(int _v,int _w){
+		v=_v;
+		w=_w;
+	}
+};
+
+vector &lt;node&gt; g[maxn];
+int dst[maxn];
+queue &lt;int&gt; qu;
+int inq[maxn];
+
+int add(int u,int v,int w){
+	g[u].push_back(node(v,w));
+	g[v].push_back(node(u,w));
+}
+
+void spfa(int s){
+	memset(dst,inf,sizeof dst);
+	int u=s;
+	dst[u]=0;
+	qu.push(u);
+	inq[u]=1;
+	while(!qu.empty()){
+		u=qu.front();
+		qu.pop();
+		inq[u]=0;
+		for(int i=0;i&lt;g[u].size();i++){
+			int v=g[u][i].v;
+			int w=g[u][i].w;
+			if(dst[v]&gt;dst[u]+w){
+				dst[v]=dst[u]+w;
+				if(!inq[v]){
+					qu.push(v);
+					inq[v]=1;
+				}
+			}
+		}
+	}
+}
+
+
+int main(){
+	cin &gt;&gt; n &gt;&gt; m;
+	int u , v , w; 
+	while (m--){
+		cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;
+		add(u,v,w);
+	}
+	spfa(1);
+	cout &lt;&lt; dst[n]&lt;&lt;endl;
+	return 0;
+}
+</code></pre>
+<h4 id="floyd">Floyd</h4>
+<p>基于动态规划思想，个人认为Floyd较Dijkstra和SPFA更难理解，所以就不写太多，但代码很短。</p>
 <pre><code>#include&lt;bits/stdc++.h&gt;
 using namespace std;
-int n,k;
-int a[1000001]={0},q[10000001]={0};q数组表示单调队列，a表示其所对应的在原列表里的下标
-int head=1;//头指针
-int tail=1;//队尾指针
-int main(){
-	cin &gt;&gt; n&gt;&gt;k;
-	for(int i=1;i&lt;=n;i++){
-		cin&gt;&gt;a[i];
-	}
-	for(int i=1;i&lt;=n;i++){
-		while(head&lt;tail&amp;&amp;a[q[tail-1]]&gt;a[i]){
-			tail--;//插队，将后面的数踢掉，以维护单调性
-		}
-		q[tail++]=i;//存编号
-        while(head&lt;tail&amp;&amp;q[head]&lt;=i-k){
-        	head++;//队首元素太old了，就出队。
-		}
-        if(i&gt;=k){
-        	cout &lt;&lt;a[q[head]]&lt;&lt; &quot; &quot;;//按题目要求的输出
+const int N = 1e2 + 9;
+const int inf = 0x3f3f3f3f;
+int mp[N][N];
+void floyd(int n) {
+	for (int k = 1; k &lt;= n; ++k) {
+		for (int i = 1; i &lt;= n; ++i) {
+			for (int j = 1; j &lt;= n; ++j) {
+				mp[i][j] = min(mp[i][j], mp[i][k] + mp[k][j]);
+			}
 		}
 	}
-	cout &lt;&lt; endl;
-	--------------------------------------------------------------------------------------------
-	head=1,tail=1;
-
-	for(int i=1;i&lt;=n;i++){
-		while(head&lt;tail&amp;&amp;a[q[tail-1]]&lt;a[i]){//队列中存在元素，又队尾元素比下一个处理的值大，即表示队尾元素太old，就让队尾元素出队。当队尾元素小于下一个处理值，单调性成立。
-			tail--;
-		}
-		q[tail++]=i;//存编号
-        while(head&lt;tail&amp;&amp;q[head]&lt;=i-k){
-        	head++;//队首元素太old了，就出队。
-		}
-        if(i&gt;=k){
-        	cout &lt;&lt; a[q[head]] &lt;&lt; &quot; &quot;;//cout队首元素，即最大值
-		}
-	}
-	cout &lt;&lt; endl;
-	return 0;
-	//实际上分割线上下代码都差不多，只是维护单调性的while循环不一样
 }
+int main() {
+	memset(mp, inf, sizeof mp);
+	for (int i = 0; i &lt; N; ++i) {
+		mp[i][i] = 0;
+	}
+int n, m;
+int u, v, w;
+cin &gt;&gt; n &gt;&gt; m;
+	while (m--) {
+		cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;
+		mp[u][v] = mp[v][u] = w;
+	}
+	floyd(n);
+	for (int i = 1; i &lt;= n; ++i) {
+		for (int j = 1; j &lt;= n; ++j) {
+			cout &lt;&lt; mp[i][j] &lt;&lt; &quot; &quot;;
+		}
+		cout &lt;&lt; endl;
+	}
+return 0;
+}
+</code></pre>
+<h4 id="一些最短路的题目">一些最短路的题目</h4>
+<h5 id="1迷阵突围">1.迷阵突围</h5>
+<pre><code>
+
+Description
+
+小信陷入了坐标系上的一个迷阵，迷阵上有 n个点，编号从 1 到 n。小信在编号为 1 的位置，他想到编号为 n 的位置上。小信当然想尽快到达目的地，但是他觉得最短的路径可能有风险，所以他会选择第二短的路径。现在小信知道了 n 个点的坐标，以及哪些点之间是相连的，他想知道第二短的路径长度是多少。
+
+注意，每条路径上不能重复经过同一个点。
+
+Input
+
+第一行输入两个整数 n (1≤n≤200) 和 m，表示一共有 n 个点和 m 条边。
+
+接下来输入 n 行，每行输入两个整数 xi,yi (−500≤xi,yi≤500)，代表第 i 个点的坐标。
+
+接下来输入 m 行，每行输入两个整数 pj,qj (1≤pj,qj≤n)，表示点 pj 和点 qj 之间相连。
+
+Output
+
+输出一行，输出包含一个数，表示第二短的路径长度（小数点后面保留两位），如果第一短路径有多条，则答案就是第一最短路径的长度；如果第二最短路径不存在，则输出 -1。
+
+Sample Input 1
+
+3 3
+1 1
+2 2
+3 2
+1 2
+2 3
+1 3
+
+Sample Output 1
+
+2.41
+
+
+</code></pre>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+
+int n,m;
+
+struct node{
+	int v;
+	double w;
+	node(){ };
+	node(int _v,double _w){
+		v=_v;
+		w=_w;
+	}
+};
+
+vector &lt;node&gt; g[10100];
+
+bool vis[10100];
+double dst[10100];
+
+int x[10100],y[10100];
+int pre[10100];
+void add(int u,int v,double w){
+	g[u].push_back(node(v,w));
+	g[v].push_back(node(u,w));
+}
+
+
+void dij(int s){
+
+	memset(vis,0,sizeof vis);
+	for(int i=1;i&lt;=n;i++){
+		dst[i]=1e20;
+	}
+	
+	int u = s;
+	dst[u]=0;
+	vis[u]=1;
+	
+	int nn=n;
+	while(nn--){
+		for(int j=0;j&lt;g[u].size();j++){
+			
+			int v = g[u][j].v;
+			double w = g[u][j].w;
+	
+			if(dst[v]&gt;dst[u]+w){
+				dst[v]=dst[u]+w;
+				pre[v]=u;
+			}
+		}
+		
+		double mi=1e20;
+		for(int j=1;j&lt;=n;j++){
+			if(!vis[j]&amp;&amp;mi&gt;dst[j]){
+				mi = dst[j];
+				u = j;	
+			}
+		}
+		vis[u] = 1;	
+	}
+
+}
+
+
+void dij2(int s,int uu,int vv){
+	
+	memset(vis,0,sizeof vis);
+	for(int i=1;i&lt;=n;i++){
+		dst[i]=1e20;
+	}
+	
+	int u = s;
+	dst[u]=0;
+	vis[u]=1;
+	
+	int nn=n;
+	while(nn--){
+		for(int j=0;j&lt;g[u].size();j++){
+			int v = g[u][j].v;
+			double w = g[u][j].w;
+	
+			if(uu ==u &amp;&amp; vv==v || uu==v &amp;&amp; vv == u){
+				continue;
+			}
+	
+			dst[v] = min(dst[v],dst[u]+w);
+
+	}
+		double mi=1e20;
+		for(int j=1;j&lt;=n;j++){
+			if(!vis[j]&amp;&amp;mi&gt;dst[j]){
+				mi = dst[j];
+				u = j;	
+			}
+		}
+		vis[u] = 1;	
+	 
+	}
+
+}
+
+
+int main(){
+	cin &gt;&gt; n &gt;&gt;m;
+	int u,v;
+	double w;
+	
+	for(int i=1;i&lt;=n;i++){
+		cin &gt;&gt; x[i] &gt;&gt;y[i];
+	}
+	
+	while (m--){
+		cin &gt;&gt; u &gt;&gt; v;
+		w=sqrt((x[u]-x[v])*(x[u]-x[v])+(y[u]-y[v])*(y[u]-y[v]));
+		add(u,v,w);
+	}
+	
+	dij(1);
+
+	
+	double mi=1e20;
+	for(int i=n;pre[i]!=0;i=pre[i]){
+		dij2(1,i,pre[i]);
+		mi=min(mi,dst[n]);
+	}
+	     if(mi == 1e20){
+	      cout &lt;&lt; &quot;-1&quot;&lt;&lt;endl;
+		 }else{
+			 cout&lt;&lt;fixed&lt;&lt;setprecision(2)&lt;&lt;mi&lt;&lt;endl;
+		}
+	
+	return 0;
+}
+</code></pre>
+<h5 id="2p1359-租用游艇">2.P1359 租用游艇</h5>
+<pre><code>
+题目描述
+
+长江游艇俱乐部在长江上设置了n 个游艇出租站1，2，…，n。游客可在这些游艇出租站租用游艇，并在下游的任何一个游艇出租站归还游艇。游艇出租站i 到游艇出租站j 之间的租金为r(i,j),1&lt;=i&lt;=j&lt;=n。试设计一个算法，计算出从游艇出租站1 到游艇出租站n 所需的最少租金。
+
+对于给定的游艇出租站i 到游艇出租站j 之间的租金为r(i,j),1&lt;=i&lt;j&lt;=n，编程计算从游艇出租站1 到游艇出租站n所需的最少租金。
+
+保证计算过程中任何时刻数值都不超过10^6
+输入输出格式
+输入格式：
+
+由文件提供输入数据。文件的第1 行中有1 个正整数n（n&lt;=200），表示有n个游艇出租站。接下来的n-1 行是一个半矩阵r(i,j),1&lt;=i&lt;j&lt;=n。
+
+输出格式：
+
+程序运行结束时，将计算出的从游艇出租站1 到游艇出租站n所需的最少租金输出到文件中。
+
+输入输出样例
+输入样例#1： 
+
+3
+5 15
+7
+
+输出样例#1： 
+
+12
+
+
+</code></pre>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+
+using namespace std;
+int maxn=0x3f3f3f3f; 
+int vis[100001];
+int dist[10001];
+int a[1001][1001];
+int main(){
+   int n,j,k,l,i;
+     cin&gt;&gt;n;
+   for(j=0;j&lt;=n;j++){
+     for(k=0;k&lt;=n;k++){
+        a[j][k]=maxn;
+        if(j==k)
+            a[j][k]=0;
+     }
+     dist[j]=maxn;
+   }
+ 
+   for(j=1;j&lt;=n;j++){
+      for(k=j+1;k&lt;=n;k++){
+         cin&gt;&gt;a[j][k];
+      }
+   }
+ 
+   for(j=1;j&lt;=n;j++){
+      dist[j]=a[1][j];
+   }
+   memset(vis,0,sizeof vis);
+   vis[1]=1;
+   for(j=1;j&lt;=n;j++){
+      int mi=maxn;
+      for(i=1;i&lt;=n;i++){
+          if(!vis[i]&amp;&amp;dist[i]&lt;mi){
+              mi=dist[i];
+              k=i;
+          }
+      }
+      vis[k]=1;
+ 
+      for(i=1;i&lt;=n;i++){
+          if(!vis[i]&amp;&amp;a[k][i]+dist[k]&lt;dist[i]){
+              dist[i]=dist[k]+a[k][i];
+          }
+      }
+  
+   }
+   cout&lt;&lt;dist[n]&lt;&lt;endl;
+ 
+   return 0;
+}
+</code></pre>
+<h5 id="3p3371-模板单源最短路径弱化版">3.P3371 【模板】单源最短路径（弱化版）</h5>
+<p><a href="https://blog.csdn.net/weixin_43913349/article/details/89278981">传送门</a></p>
+<h5 id="4p1339-usaco09oct热浪heat-wave">4.P1339 [USACO09OCT]热浪Heat Wave</h5>
+<pre><code>
+题目描述
+
+The good folks in Texas are having a heatwave this summer. Their Texas Longhorn cows make for good eating but are not so adept at creating creamy delicious dairy products. Farmer John is leading the charge to deliver plenty of ice cold nutritious milk to Texas so the Texans will not suffer the heat too much.
+
+FJ has studied the routes that can be used to move milk from Wisconsin to Texas. These routes have a total of T (1 &lt;= T &lt;= 2,500) towns conveniently numbered 1..T along the way (including the starting and ending towns). Each town (except the source and destination towns) is connected to at least two other towns by bidirectional roads that have some cost of traversal (owing to gasoline consumption, tolls, etc.). Consider this map of seven towns; town 5 is the
+
+source of the milk and town 4 is its destination (bracketed integers represent costs to traverse the route):
+
+
+                              [1]----1---[3]-
+                             /               \
+                      [3]---6---[4]---3--[3]--4
+                     /               /       /|
+                    5         --[3]--  --[2]- |
+                     \       /        /       |
+                      [5]---7---[2]--2---[3]---
+                            |       /
+                           [1]------
+
+Traversing 5-6-3-4 requires spending 3 (5-&gt;6) + 4 (6-&gt;3) + 3 (3-&gt;4) = 10 total expenses.
+
+Given a map of all the C (1 &lt;= C &lt;= 6,200) connections (described as two endpoints R1i and R2i (1 &lt;= R1i &lt;= T; 1 &lt;= R2i &lt;= T) and costs (1 &lt;= Ci &lt;= 1,000), find the smallest total expense to traverse from the starting town Ts (1 &lt;= Ts &lt;= T) to the destination town Te (1 &lt;= Te &lt;= T).
+
+德克萨斯纯朴的民眾们这个夏天正在遭受巨大的热浪！！！他们的德克萨斯长角牛吃起来不错，可是他们并不是很擅长生產富含奶油的乳製品。Farmer John此时以先天下之忧而忧，后天下之乐而乐的精神，身先士卒地承担起向德克萨斯运送大量的营养冰凉的牛奶的重任，以减轻德克萨斯人忍受酷暑的痛苦。
+
+FJ已经研究过可以把牛奶从威斯康星运送到德克萨斯州的路线。这些路线包括起始点和终点先一共经过T (1 &lt;= T &lt;= 2,500)个城镇，方便地标号為1到T。除了起点和终点外地每个城镇由两条双向道路连向至少两个其它地城镇。每条道路有一个通过费用（包括油费，过路费等等）。
+
+给定一个地图，包含C (1 &lt;= C &lt;= 6,200)条直接连接2个城镇的道路。每条道路由道路的起点Rs，终点Re (1 &lt;= Rs &lt;= T; 1 &lt;= Re &lt;= T)，和花费(1 &lt;= Ci &lt;= 1,000)组成。求从起始的城镇Ts (1 &lt;= Ts &lt;= T)到终点的城镇Te(1 &lt;= Te &lt;= T)最小的总费用。
+输入输出格式
+输入格式：
+
+第一行: 4个由空格隔开的整数: T, C, Ts, Te
+
+第2到第C+1行: 第i+1行描述第i条道路。有3个由空格隔开的整数: Rs, Re和Ci
+
+输出格式：
+
+一个单独的整数表示从Ts到Te的最小总费用。数据保证至少存在一条道路。
+
+输入输出样例
+输入样例#1： 复制
+
+7 11 5 4
+2 4 2
+1 4 3
+7 2 2
+3 4 3
+5 7 5
+7 3 3
+6 1 1
+6 3 4
+2 4 3
+5 6 3
+7 2 1
+
+输出样例#1： 复制
+
+7
+
+说明
+
+【样例说明】
+
+5-&gt;6-&gt;1-&gt;4 (3 + 1 + 3)
+
+</code></pre>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+
+const int inf=10100;
+queue&lt;int&gt; qu;
+int dst[inf];
+bool inq[inf];
+struct node{
+    int t,dist;
+};
+vector&lt;node&gt; g[inf];
+bool spfa(int s){
+    memset(dst,0x7f,sizeof(dst));
+    memset(inq,0,sizeof(inq));
+    dst[s]=0;
+    qu.push(s);
+    inq[s]=true;
+    while(!qu.empty()){
+        int u=qu.front();
+        qu.pop();
+        inq[u]=0;
+        for(int i=0;i&lt;g[u].size();i++){
+            int v=g[u][i].t;
+            int w=g[u][i].dist;
+            if(dst[u]+w&lt;dst[v]){
+                dst[v]=dst[u]+w;
+                if(!inq[v])
+                {
+                    qu.push(v);
+                    inq[v]=1;
+                }
+            }
+        }
+    }
+}
+int main()
+{
+    int n,m,st,en;
+    cin&gt;&gt;n&gt;&gt;m&gt;&gt;st&gt;&gt;en;
+    for(int i=0;i&lt;m;i++){
+        int x,y,v;
+        cin&gt;&gt;x&gt;&gt;y&gt;&gt;v;
+        g[x].push_back((node){y,v});
+        g[y].push_back((node){x,v});
+    }
+    spfa(st);
+    cout&lt;&lt;dst[en];
+    return 0;
+}
+</code></pre>
+<p><s>可能你已经发现没有一个用的Floyd，只是因为太蒟了。</s></p>
+<h2 id="欧拉回路">欧拉回路</h2>
+<p>若图中存在这样一条路径，使得它恰好通过图中每条边一次，则称该路径为 欧拉路径。若该路径<br>
+是一个环路，则称为 欧拉（Euler）回路。</p>
+<p>1.无向图有欧拉回路的条件<br>
+一个无向图存在欧拉回路，当且仅当该图所有顶点度数都为偶数,且该图是连通图。<br>
+2.有向图有欧拉回路的条件<br>
+一个有向图存在欧拉回路，所有顶点的入度等于出度且该图是连通图。</p>
+<p>然后，其实也挺简单的。</p>
+<p>一道模板题：</p>
+<pre><code>题目背景
+
+Farmer John每年有很多栅栏要修理。他总是骑着马穿过每一个栅栏并修复它破损的地方。
+题目描述
+
+John是一个与其他农民一样懒的人。他讨厌骑马，因此从来不两次经过一个栅栏。你必须编一个程序，读入栅栏网络的描述，并计算出一条修栅栏的路径，使每个栅栏都恰好被经过一次。John能从任何一个顶点(即两个栅栏的交点)开始骑马，在任意一个顶点结束。
+
+每一个栅栏连接两个顶点，顶点用1到500标号(虽然有的农场并没有500个顶点)。一个顶点上可连接任意多(&gt;=1)个栅栏。两顶点间可能有多个栅栏。所有栅栏都是连通的(也就是你可以从任意一个栅栏到达另外的所有栅栏)。
+
+你的程序必须输出骑马的路径(用路上依次经过的顶点号码表示)。我们如果把输出的路径看成是一个500进制的数，那么当存在多组解的情况下，输出500进制表示法中最小的一个 (也就是输出第一位较小的，如果还有多组解，输出第二位较小的，等等)。
+
+输入数据保证至少有一个解。
+输入输出格式
+输入格式：
+
+第1行: 一个整数F(1 &lt;= F &lt;= 1024)，表示栅栏的数目
+
+第2到F+1行: 每行两个整数i, j(1 &lt;= i,j &lt;= 500)表示这条栅栏连接i与j号顶点。
+
+输出格式：
+
+输出应当有F+1行，每行一个整数，依次表示路径经过的顶点号。注意数据可能有多组解，但是只有上面题目要求的那一组解是认为正确的。
+
+输入输出样例
+输入样例#1： 复制
+
+9
+1 2
+2 3
+3 4
+4 2
+4 5
+2 5
+5 6
+5 7
+4 6
+
+输出样例#1： 复制
+
+1
+2
+3
+4
+2
+5
+4
+6
+5
+7
+
+
+</code></pre>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+
+const int maxn = 1010;
+int n;
+int eul[maxn][maxn],lu[maxn];
+int sum=0;
+
+stack&lt;int&gt; sta;
+
+
+void dfs(int s){
+    for(int i=1;i&lt;=500;i++){
+        if(eul[s][i]){
+        eul[i][s]--;
+        eul[s][i]--;
+        
+        dfs(i);	
+        }
+    }
+    sta.push(s);
+}
+
+
+int main(){
+    
+    cin &gt;&gt; n;
+    for(int i=1;i&lt;=n;i++){
+    	int x;
+    	int y;
+    	cin&gt;&gt; x &gt;&gt; y;
+    	eul[x][y]++;
+    	eul[y][x]++;
+    	lu[x]++;
+    	lu[y]++;
+    }
+    int num=1;
+    for(int i=1;i&lt;=500;i++){
+        if(lu[i]%2){
+            num=i;
+            break;
+        }
+    }
+    dfs(num);
+    while(!sta.empty()){
+    	cout &lt;&lt; sta.top()&lt;&lt;endl;
+    	sta.pop();
+    }
+    	
+    return 0;
+} 
 </code></pre>
 
             </div>
@@ -628,7 +1248,7 @@ int main(){
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://ACLYH.github.io/post/dan-diao-dui-lie/" title="单调队列">https://ACLYH.github.io/post/dan-diao-dui-lie/</a>
+      <a href="https://ACLYH.github.io/post/zui-duan-lu-suan-fa/" title="最短路算法">https://ACLYH.github.io/post/zui-duan-lu-suan-fa/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -637,23 +1257,23 @@ int main(){
   </ul>
   <div class="tags">
     
-      <a href="https://ACLYH.github.io/tag/9uX8VkzGC/"># C++</a>
+      <a href="https://ACLYH.github.io/tag/LB26NJ90t/"># 最短路</a>
     
-      <a href="https://ACLYH.github.io/tag/TSrwZ4k9Eg/"># 数据结构</a>
+      <a href="https://ACLYH.github.io/tag/9uX8VkzGC/"># C++</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
         <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="并查集（Disjoint Set Union）" href="https://ACLYH.github.io/post/bing-cha-ji-disjoint-set-union/">并查集（Disjoint Set Union）</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="并查集（Disjoint Set Union）" href="https://ACLYH.github.io/post/bing-cha-ji-disjoint-set-union/">上一篇</a>
+        <a class="nav-pc-next" title="二分查找法" href="https://ACLYH.github.io/post/er-fen-cha-zhao-fa/">二分查找法</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="二分查找法" href="https://ACLYH.github.io/post/er-fen-cha-zhao-fa/">上一篇</a>
       
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="初涉优先队列" href="https://ACLYH.github.io/post/youxian/">初涉优先队列</a>
-        <a class="nav-mobile-next" title="初涉优先队列" href="https://ACLYH.github.io/post/youxian/">下一篇</a>
+        <a class="nav-pc-next" title="[DFS]排队（间隔排列）" href="https://ACLYH.github.io/post/dfspai-dui-jian-ge-pai-lie/">[DFS]排队（间隔排列）</a>
+        <a class="nav-mobile-next" title="[DFS]排队（间隔排列）" href="https://ACLYH.github.io/post/dfspai-dui-jian-ge-pai-lie/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

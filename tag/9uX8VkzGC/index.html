@@ -9,7 +9,7 @@
 <meta name="description" content="心之所向，素履以往，生如逆旅，一苇以航。">
 <meta name="theme-color" content="#000">
 <title>Lanthanum</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1603890796200">
+<link rel="shortcut icon" href="/favicon.ico?v=1603891755147">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -184,19 +184,19 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">8</span>
+        <span class="site-item-stat-count">11</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="">
-        <span class="site-item-stat-count">7</span>
+        <span class="site-item-stat-count">9</span>
         <span class="site-item-stat-name language" data-lan="category">分类</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="/tags/">
-        <span class="site-item-stat-count">7</span>
+        <span class="site-item-stat-count">9</span>
         <span class="site-item-stat-name language" data-lan="tag">标签</span>
       </a>
     </div>
@@ -235,6 +235,42 @@
           <small class="language" data-lan="tag">标签</small>
         </h2>
       </div>
+      
+      
+      
+      
+      
+      
+      
+      <a href="https://ACLYH.github.io/post/zui-duan-lu-suan-fa/">
+        <div class="motion-warpper">
+          <div class="tag-post-node">
+            <h1>
+              10-28
+              <small>最短路算法</small>
+            </h1>
+          </div>
+        </div>
+      </a>
+      
+      
+      
+      
+      
+      
+      
+      <a href="https://ACLYH.github.io/post/dfspai-dui-jian-ge-pai-lie/">
+        <div class="motion-warpper">
+          <div class="tag-post-node">
+            <h1>
+              10-28
+              <small>[DFS]排队（间隔排列）</small>
+            </h1>
+          </div>
+        </div>
+      </a>
+      
+      
       
       
       
@@ -514,6 +550,1141 @@
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://ACLYH.github.io/post/er-fen-cha-zhao-fa/"" data-c="
+          &lt;p&gt;二分查找法是从区间[i，j]上连续不断将sum（a）·sum（b）&amp;lt;0的函数ans=sum（x），通过循环实现把函数sum（x）的0点所在区间一分为二，如此循环，使区间[i,j]的两个端点逐渐像0点靠近，得到0点近似值的方法。可以实现空间优化，适用于数据较大的题目。时间复杂第O（log（2n））。&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;p&gt;在使用c++的二分查找法，要先将数据排序，二分查找法的基本思想可以这样总结：我们设数据是按升序排序的，根据题目中的数a，从序列的中间进行二分，如果当前i位置值等于a，则停止查找 ；假如a小于当前位置i，则在数列的前部分中查找；若a大于当前位置i，就在数列的后段进行查找，如果还没找到，再次二分，直到找到了a值。&lt;/p&gt;
+&lt;p&gt;二分例题：&lt;/p&gt;
+&lt;p&gt;小信的猜想&lt;br&gt;
+Description&lt;br&gt;
+有一天小信突发奇想，他有一个猜想，任意一个大于 2 的偶数好像总能写成 2 个质数的和。小信查了资料，发现这个猜想很早就被一个叫哥德巴赫的人提出来了，称为哥德巴赫猜想。目前还没有证明这个猜想的正确性。小信告诉你一个整数 n ，让你用这个数去验证。注意 1 不是质数。&lt;/p&gt;
+&lt;p&gt;Input&lt;/p&gt;
+&lt;p&gt;输入一个偶数 n(2&amp;lt;n≤8000000)。&lt;/p&gt;
+&lt;p&gt;Output&lt;/p&gt;
+&lt;p&gt;输出一个整数表示有多少对 (x,y) 满足 x+y=n(x≤y) 且 x,y 均为质数。&lt;/p&gt;
+&lt;p&gt;Sample Input 1&lt;br&gt;
+6&lt;br&gt;
+Sample Output 1&lt;br&gt;
+1&lt;br&gt;
+Sample Input 2&lt;br&gt;
+10&lt;br&gt;
+Sample Output 2&lt;br&gt;
+2&lt;br&gt;
+——摘自YCOJ&lt;br&gt;
+对，是一道哥德巴赫猜想。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int a[9000000];
+bool b[9000000];
+int main(){
+	int n,cnt=0,k=0;
+	cin &amp;gt;&amp;gt; n;
+	for(int i=2;i&amp;lt;n;i++){
+		if(b[i]==0){
+		 for(int j=i+i;j&amp;lt;n;j+=i){
+			b[j]=1;
+		}
+		a[k]=i;
+		k++;
+	}
+}
+	for(int i=0;i&amp;lt;k;i++){
+			//查找 
+			int tmp = n-a[i];
+			
+			int l=i,r=k-1,mid;
+			while(r-l&amp;gt;1){
+				mid=(l+r)/2;
+				if(a[mid]&amp;lt;tmp){
+					l=mid+1;
+				}else{
+					r=mid;
+				}
+			}
+			if(a[l] == tmp || a[r]==tmp){
+				cnt++;
+			}
+		}
+	cout &amp;lt;&amp;lt; cnt;
+	return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这道题就运用到了二分查找法，正片程序可以看做两部分，一边是主程序，一边是二分查找法的实现，用&lt;code&gt;while(r-l&amp;gt;1)&lt;/code&gt;比较并循环，判断数据是在上半部分还是下半部分，再用&lt;code&gt;mid=(l+r)/2;&lt;/code&gt;进行折半查找。&lt;/p&gt;
+&lt;h4 id=&#34;查找&#34;&gt;查找&lt;/h4&gt;
+&lt;p&gt;Description&lt;/p&gt;
+&lt;p&gt;给出一个有 n 个元素的数列 a 和两个整数 k 和 s，其中数列 a 的元素是按照升序排列的。&lt;/p&gt;
+&lt;p&gt;请你在数列中找出一个元素 x，使得的 x+k=s。&lt;/p&gt;
+&lt;p&gt;Input&lt;/p&gt;
+&lt;p&gt;输入第一行一个整数 n(1≤n≤10^5)，表示数列中的元素个数。&lt;/p&gt;
+&lt;p&gt;接下来一行输入 n 个空格隔开的整数，表示输入的数列 a，保证是升序排列，并且 −10&lt;sup&gt;9≤ai≤10&lt;/sup&gt;9。&lt;/p&gt;
+&lt;p&gt;接下来一行输入两个整数 k,s(−10&lt;sup&gt;9≤k,s≤10&lt;/sup&gt;9)。&lt;/p&gt;
+&lt;p&gt;Output&lt;/p&gt;
+&lt;p&gt;如果能找到满足条件的数，输出&amp;quot;Yes&amp;quot;，否者输出&amp;quot;No&amp;quot;。&lt;/p&gt;
+&lt;p&gt;Sample Input 1&lt;/p&gt;
+&lt;p&gt;5&lt;br&gt;
+1 2 3 4 5&lt;br&gt;
+-1 4&lt;br&gt;
+Sample Output 1&lt;/p&gt;
+&lt;p&gt;Yes&lt;br&gt;
+——摘自YCOJ&lt;br&gt;
+题目中给出了，一个重要词——升序排列，所以我们可以看出，这道题应该用二分查找法。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int main () {
+  int n;
+  cin &amp;gt;&amp;gt; n;
+  int a[n];
+  for(int i = 0; i &amp;lt; n; i++){
+  	cin &amp;gt;&amp;gt; a [i];
+  }
+  int k, s;
+  cin &amp;gt;&amp;gt; k &amp;gt;&amp;gt; s;
+  int l = 0, r = n,x = s-k;
+  int mid;
+  while(l &amp;lt; r ){
+  	int mid=(l+r)/2;
+  	if (a[mid]&amp;lt;x){
+  	  l = mid + 1;
+  }else{
+	  r=mid;
+	}
+  }
+  
+
+	if(a[l]==x||a[r]==x) {
+		cout &amp;lt;&amp;lt; &amp;quot;Yes&amp;quot; &amp;lt;&amp;lt; endl;
+	}
+	else {
+		cout &amp;lt;&amp;lt; &amp;quot;No&amp;quot; ;
+	}
+	return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;两数之和&#34;&gt;两数之和&lt;/h4&gt;
+&lt;p&gt;Description&lt;/p&gt;
+&lt;p&gt;给出一个有 n 个元素的数列 a 和一个整数 s，其中数列 a 的元素是按照升序排列的。&lt;/p&gt;
+&lt;p&gt;请你在数列中找出两个元素 x,y使得的 x+y=s。&lt;/p&gt;
+&lt;p&gt;Input&lt;/p&gt;
+&lt;p&gt;输入第一行一个整数 n(1≤n≤10^5)，表示数列中的元素个数。&lt;/p&gt;
+&lt;p&gt;接下来一个输入 n 个空格隔开的整数，表示输入的数列 a，保证是升序排列，并且 −10&lt;sup&gt;9≤ai≤10&lt;/sup&gt;9。&lt;/p&gt;
+&lt;p&gt;接下来一行输入一个整数 s(−10&lt;sup&gt;9≤x,s≤10&lt;/sup&gt;9)。&lt;/p&gt;
+&lt;p&gt;Output&lt;/p&gt;
+&lt;p&gt;如果能找到满足条件的两个数，输出&amp;quot;Yes&amp;quot;，否者输出&amp;quot;No&amp;quot;。&lt;br&gt;
+——摘自YCOJ&lt;br&gt;
+Sample Input 1&lt;/p&gt;
+&lt;p&gt;5&lt;br&gt;
+1 2 3 4 5&lt;br&gt;
+4&lt;br&gt;
+Sample Output 1&lt;/p&gt;
+&lt;p&gt;Yes&lt;br&gt;
+Sample Input 2&lt;/p&gt;
+&lt;p&gt;5&lt;br&gt;
+1 2 4 4 5&lt;br&gt;
+4&lt;br&gt;
+Sample Output 2&lt;/p&gt;
+&lt;p&gt;No&lt;br&gt;
+同样的，二分查找。单独用两层for循环枚举是要超时的。&lt;br&gt;
+——摘自YCOJ&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int a[1000010];
+int main(){
+	 int  n;
+	 cin &amp;gt;&amp;gt; n;
+	 int ans=0;
+	 for(int i=1;i&amp;lt;=n;i++){
+	 	cin &amp;gt;&amp;gt; a[i];
+	 }
+	 int s;
+	 cin &amp;gt;&amp;gt; s;
+	 for(int i=1;i&amp;lt;=n;i++){
+	 		int l =1, r = n, x = s - a [i];
+			while(r-l&amp;gt;1){
+			int	min=(l+r)/2;
+				if(a[min]&amp;lt;x){
+					l=min+1;
+				}else{
+					r=min;
+				}
+			}
+			if(a[l] == x ||a[r]==x){
+				ans++;
+			}
+		}
+if (ans&amp;gt;1) {
+  cout &amp;lt;&amp;lt; &amp;quot;Yes&amp;quot; &amp;lt;&amp;lt; endl;
+  }else {
+  cout &amp;lt;&amp;lt; &amp;quot;No&amp;quot; &amp;lt;&amp;lt; endl;
+}
+	return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;割绳子&#34;&gt;割绳子&lt;/h4&gt;
+&lt;p&gt;Description&lt;/p&gt;
+&lt;p&gt;现有 N 条绳子，它们的长度分别为 L1，L2，……，Ln，如果从它们中切割出 K 条长度相同的绳子，这 K 条绳子每条最长能有多长?&lt;/p&gt;
+&lt;p&gt;Input&lt;/p&gt;
+&lt;p&gt;输入共有两行，第一行包含两个正整数 N 和 K（1≤N≤1000，1≤K≤1000），用一个空格分隔；第二行包含 N 个数，依次表示 N 条绳子的长度，两数间用一个空格分隔。每条绳子的长度的小数不超过两位（1≤Li≤10000）。&lt;/p&gt;
+&lt;p&gt;Output&lt;/p&gt;
+&lt;p&gt;输出仅包含一个数，表示所得 K 条绳子的最大长度。答案四舍五入保留小数点后两位。&lt;/p&gt;
+&lt;p&gt;Sample Input 1&lt;/p&gt;
+&lt;p&gt;4 11&lt;br&gt;
+8.02 7.43 4.57 5.39&lt;br&gt;
+Sample Output 1&lt;/p&gt;
+&lt;p&gt;2.01&lt;br&gt;
+——摘自YCOJ&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+double a[10000001];
+int n,k;
+int mid(double l){
+	int ans=0;
+	for(int i=0;i&amp;lt;n;i++){
+		ans+=a[i]/l;
+	}
+	return ans;
+}
+
+
+int main(){
+	double mim;
+	cin &amp;gt;&amp;gt; n &amp;gt;&amp;gt; k;
+	
+	for(int i=0;i&amp;lt;n;i++){
+		cin &amp;gt;&amp;gt; a[i];
+		mim = max(mim,a[i]); 
+	}
+	
+	double l = 0,m;
+	double r=mim;
+	while (r-l&amp;gt;=1e-9){       
+		m=(l+r)/2;
+		if(mid(m)&amp;gt;=k){
+			l=m;
+		}else{
+			r=m;
+		}
+	}
+	printf(&amp;quot;%.2lf&amp;quot;,m);
+	return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;切割钢管&#34;&gt;切割钢管&lt;/h4&gt;
+&lt;p&gt;Description&lt;/p&gt;
+&lt;p&gt;小白在工地干活。工地现有 nn 根钢管，第 ii 根钢管的长度为 a_ia&lt;br&gt;
+i&lt;br&gt;
+​	&lt;br&gt;
+。&lt;/p&gt;
+&lt;p&gt;现在小白想用这 nn 根钢管来做一个支撑用的柱子。工人可以切割这些钢管成为更短的钢管，但是不能缝合两根钢管。为了安全起见，柱子必须用 至少 kk 根长度相同的钢管加上混凝土制成，并且要求钢管长度必须为 整数。&lt;/p&gt;
+&lt;p&gt;小白想知道，这个柱子最高能建成多高。&lt;/p&gt;
+&lt;p&gt;Input&lt;/p&gt;
+&lt;p&gt;输入第一行一个整数 n, k (1 \le n, k \le 10000)n,k(1≤n,k≤10000)。&lt;/p&gt;
+&lt;p&gt;接下来一行输入 nn 个空格隔开的整数 a_i(1 \le l_i \le 10^8)a&lt;br&gt;
+i&lt;br&gt;
+​	&lt;br&gt;
+(1≤l&lt;br&gt;
+i&lt;br&gt;
+​	&lt;br&gt;
+≤10&lt;br&gt;
+8&lt;br&gt;
+)，表示每根钢管的长度。&lt;/p&gt;
+&lt;p&gt;Output&lt;/p&gt;
+&lt;p&gt;输出能够得到的柱子最大高度。&lt;/p&gt;
+&lt;p&gt;Sample Input 1&lt;/p&gt;
+&lt;p&gt;2 4&lt;br&gt;
+8 4&lt;br&gt;
+Sample Output 1&lt;/p&gt;
+&lt;p&gt;2&lt;br&gt;
+Sample Input 2&lt;/p&gt;
+&lt;p&gt;8 8&lt;br&gt;
+12 3 14 12 14 20 4 8&lt;br&gt;
+Sample Output 2&lt;/p&gt;
+&lt;p&gt;7&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#include &amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int a[1000010];
+int n,k;
+int cnt(int len){
+	int ans=0;
+	for (int i=0;i&amp;lt;n;i++){ 
+		ans +=a[i]/len;
+	}
+	return ans;
+}
+int main(){
+	cin &amp;gt;&amp;gt; n &amp;gt;&amp;gt; k;
+ int mx=0;
+	for (int i=0;i&amp;lt;n;i++){
+		cin &amp;gt;&amp;gt; a[i];
+      mx=max(mx,a[i]);
+	}
+	int l=0,r=mx,x;
+	while (r-l &amp;gt; 1){
+		x=(l+r)/2;
+		if (cnt(x)&amp;gt;=k){
+			l = x;
+		}
+		else {
+			r = x - 1;
+		}
+	}
+	
+    if(cnt(r) &amp;lt; k){
+    	r=l;
+	}
+	cout &amp;lt;&amp;lt; r;
+	return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;火车站台连锁店&#34;&gt;火车站台连锁店&lt;/h4&gt;
+&lt;p&gt;Description&lt;/p&gt;
+&lt;p&gt;蒜头君建立了一家火车站台连锁店，要在一条铁路线的所有车站里，选择一部分车站开办连锁店，销售各种口味的大蒜。&lt;/p&gt;
+&lt;p&gt;铁路线上有 nn 个车站，假设这条铁路线是一条直线，其中每个站点的坐标为 x_1,x_2,\ldots,x_nx&lt;br&gt;
+1&lt;br&gt;
+​	&lt;br&gt;
+,x&lt;br&gt;
+2&lt;br&gt;
+​	&lt;br&gt;
+,…,x&lt;br&gt;
+n&lt;br&gt;
+​	&lt;br&gt;
+。&lt;/p&gt;
+&lt;p&gt;蒜头君一共要开办 mm 个连锁店，并且不希望连锁店离得太近，以使得整体的收益最大化。他希望他的连锁店之间的最近距离尽可能大，你能帮他算出这个最大的最近距离吗？&lt;/p&gt;
+&lt;p&gt;Input&lt;/p&gt;
+&lt;p&gt;第一行输入用空格分隔的两个整数 n,m(2 \10^5, 2 \ m  n)n,m(2≤n≤10&lt;br&gt;
+5&lt;br&gt;
+,2≤m≤n)，分别表示车站数量和连锁店数量。&lt;/p&gt;
+&lt;p&gt;接下来一共 nn 行，每行一个整数 x_i{0 \leq x_i \leq 10^9}x&lt;br&gt;
+i&lt;br&gt;
+​	&lt;br&gt;
+0≤x&lt;br&gt;
+i&lt;br&gt;
+​	&lt;br&gt;
+≤10&lt;br&gt;
+9&lt;br&gt;
+，表示车站的坐标。&lt;/p&gt;
+&lt;p&gt;Output&lt;/p&gt;
+&lt;p&gt;输出一行整数，表示最大的最近距离。&lt;/p&gt;
+&lt;p&gt;Sample Input 1&lt;/p&gt;
+&lt;p&gt;6 3&lt;br&gt;
+1&lt;br&gt;
+3&lt;br&gt;
+5&lt;br&gt;
+2&lt;br&gt;
+7&lt;br&gt;
+9&lt;br&gt;
+Sample Output 1&lt;/p&gt;
+&lt;p&gt;4&lt;br&gt;
+Sample Input 2&lt;/p&gt;
+&lt;p&gt;5 4&lt;br&gt;
+5&lt;br&gt;
+7&lt;br&gt;
+10&lt;br&gt;
+28&lt;br&gt;
+9&lt;br&gt;
+Sample Output 2&lt;/p&gt;
+&lt;p&gt;2&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#include&amp;lt;bits/stdc++.h&amp;gt; 
+using namespace std;
+int a[1000010];
+int n,m;
+int cnt(int len){
+	int tot=1;
+	int last = 0;
+	for(int i = 1;i&amp;lt;n;i++){
+		if(a[i] - a[last] &amp;gt;= len){
+		   	tot++;
+			last = i;
+        }
+    }
+	return tot;
+}
+int main (){ 
+	cin &amp;gt;&amp;gt; n &amp;gt;&amp;gt; m;
+	for(int i=0;i&amp;lt;n;i++){
+		cin &amp;gt;&amp;gt; a[i];
+	}
+	sort(a,a+n);
+	int l=0,r=a[n - 1],ans;
+	while (r - l &amp;gt; 1){
+	    ans=(l+r)/2;
+		if (cnt(ans) &amp;gt;= m){
+			l = ans;
+	    }
+		else{
+			r = ans;
+		}
+	}
+	if(cnt(r)&amp;lt;m){
+		r = l;
+	}
+	cout &amp;lt;&amp;lt; r;
+	return 0; 
+}
+&lt;/code&gt;&lt;/pre&gt;
+">二分查找法</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://ACLYH.github.io/post/zui-duan-lu-suan-fa/"" data-c="
+          &lt;h4 id=&#34;1dijkstra&#34;&gt;1.Dijkstra&lt;/h4&gt;
+&lt;p&gt;Dijkstra用于计算一个顶点到其他所有顶点的最短路径。Dijkstra 算&lt;br&gt;
+法的主要特点是以起点为中心，逐层向外扩展一个点，每次都会取一个最近点继续扩展，直到取完所有点为止。但Dijkstra 算法要求图中不能出现负权边。&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;pre&gt;&lt;code&gt;//模板
+#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+
+
+int n,m;
+
+struct node{
+	int v,w;
+	node(){ };
+	node(int _v,int _w){
+		v=_v;
+		w=_w;
+	}
+};
+
+vector &amp;lt;node&amp;gt; g[10100];
+
+bool vis[10100];
+int dst[10100];
+
+void add(int u,int v,int w){
+	g[u].push_back(node(v,w));
+	g[v].push_back(node(u,w));
+}
+
+
+void dij(int s){
+	memset(dst,0x3f,sizeof dst);
+	
+	int u = s;
+	dst[u]=0;
+	vis[u]=1;
+	
+	int nn=n;
+	while(nn--){
+		for(int j=0;j&amp;lt;g[u].size();j++){
+			
+			int v = g[u][j].v;
+			int w = g[u][j].w;
+			dst[v] = min(dst[v],dst[u]+w);
+			
+		}
+		
+		int mi=0x3f3f3f3f;
+		for(int j=1;j&amp;lt;=n;j++){
+			if(!vis[j]&amp;amp;&amp;amp;mi&amp;gt;dst[j]){
+				mi = dst[j];
+				u = j;	
+			}
+		}
+		vis[u] = 1;	
+	}
+}
+
+
+int main(){
+	cin &amp;gt;&amp;gt; n &amp;gt;&amp;gt;m;
+	int u,v,w;
+	while (m--){
+		cin &amp;gt;&amp;gt; u &amp;gt;&amp;gt; v &amp;gt;&amp;gt; w;
+		add(u,v,w);
+	}
+	
+	dij(1);
+	cout &amp;lt;&amp;lt; dst[n];
+	
+	return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;2spfa&#34;&gt;2.SPFA&lt;/h4&gt;
+&lt;p&gt;SPFA算法是单源最短路径的一种算法，通常被认为是 Bellmanford算法的队列优化，在代码形式上接近宽度优先搜索 BFS，是一个在实践中非常高效的单源最短路算法。它会在每次更新了最短路以后又重新入队从而去更新后续结点的最短路。同时有些题有卡SPFA的数据，所以也可以换成Dijkstra。但Dijkstra 不能处理有负权的图，而 SPFA 可以处理不含负环的图的最短路，并能 判断是否存在负环。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;//模板
+#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+
+const int maxn=1010;
+const int inf=0x3f3f3f3f;
+
+int n,m;
+
+struct node{
+	int v,w;
+	node(){ }
+	node(int _v,int _w){
+		v=_v;
+		w=_w;
+	}
+};
+
+vector &amp;lt;node&amp;gt; g[maxn];
+int dst[maxn];
+queue &amp;lt;int&amp;gt; qu;
+int inq[maxn];
+
+int add(int u,int v,int w){
+	g[u].push_back(node(v,w));
+	g[v].push_back(node(u,w));
+}
+
+void spfa(int s){
+	memset(dst,inf,sizeof dst);
+	int u=s;
+	dst[u]=0;
+	qu.push(u);
+	inq[u]=1;
+	while(!qu.empty()){
+		u=qu.front();
+		qu.pop();
+		inq[u]=0;
+		for(int i=0;i&amp;lt;g[u].size();i++){
+			int v=g[u][i].v;
+			int w=g[u][i].w;
+			if(dst[v]&amp;gt;dst[u]+w){
+				dst[v]=dst[u]+w;
+				if(!inq[v]){
+					qu.push(v);
+					inq[v]=1;
+				}
+			}
+		}
+	}
+}
+
+
+int main(){
+	cin &amp;gt;&amp;gt; n &amp;gt;&amp;gt; m;
+	int u , v , w; 
+	while (m--){
+		cin &amp;gt;&amp;gt; u &amp;gt;&amp;gt; v &amp;gt;&amp;gt; w;
+		add(u,v,w);
+	}
+	spfa(1);
+	cout &amp;lt;&amp;lt; dst[n]&amp;lt;&amp;lt;endl;
+	return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;floyd&#34;&gt;Floyd&lt;/h4&gt;
+&lt;p&gt;基于动态规划思想，个人认为Floyd较Dijkstra和SPFA更难理解，所以就不写太多，但代码很短。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+const int N = 1e2 + 9;
+const int inf = 0x3f3f3f3f;
+int mp[N][N];
+void floyd(int n) {
+	for (int k = 1; k &amp;lt;= n; ++k) {
+		for (int i = 1; i &amp;lt;= n; ++i) {
+			for (int j = 1; j &amp;lt;= n; ++j) {
+				mp[i][j] = min(mp[i][j], mp[i][k] + mp[k][j]);
+			}
+		}
+	}
+}
+int main() {
+	memset(mp, inf, sizeof mp);
+	for (int i = 0; i &amp;lt; N; ++i) {
+		mp[i][i] = 0;
+	}
+int n, m;
+int u, v, w;
+cin &amp;gt;&amp;gt; n &amp;gt;&amp;gt; m;
+	while (m--) {
+		cin &amp;gt;&amp;gt; u &amp;gt;&amp;gt; v &amp;gt;&amp;gt; w;
+		mp[u][v] = mp[v][u] = w;
+	}
+	floyd(n);
+	for (int i = 1; i &amp;lt;= n; ++i) {
+		for (int j = 1; j &amp;lt;= n; ++j) {
+			cout &amp;lt;&amp;lt; mp[i][j] &amp;lt;&amp;lt; &amp;quot; &amp;quot;;
+		}
+		cout &amp;lt;&amp;lt; endl;
+	}
+return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;一些最短路的题目&#34;&gt;一些最短路的题目&lt;/h4&gt;
+&lt;h5 id=&#34;1迷阵突围&#34;&gt;1.迷阵突围&lt;/h5&gt;
+&lt;pre&gt;&lt;code&gt;
+
+Description
+
+小信陷入了坐标系上的一个迷阵，迷阵上有 n个点，编号从 1 到 n。小信在编号为 1 的位置，他想到编号为 n 的位置上。小信当然想尽快到达目的地，但是他觉得最短的路径可能有风险，所以他会选择第二短的路径。现在小信知道了 n 个点的坐标，以及哪些点之间是相连的，他想知道第二短的路径长度是多少。
+
+注意，每条路径上不能重复经过同一个点。
+
+Input
+
+第一行输入两个整数 n (1≤n≤200) 和 m，表示一共有 n 个点和 m 条边。
+
+接下来输入 n 行，每行输入两个整数 xi,yi (−500≤xi,yi≤500)，代表第 i 个点的坐标。
+
+接下来输入 m 行，每行输入两个整数 pj,qj (1≤pj,qj≤n)，表示点 pj 和点 qj 之间相连。
+
+Output
+
+输出一行，输出包含一个数，表示第二短的路径长度（小数点后面保留两位），如果第一短路径有多条，则答案就是第一最短路径的长度；如果第二最短路径不存在，则输出 -1。
+
+Sample Input 1
+
+3 3
+1 1
+2 2
+3 2
+1 2
+2 3
+1 3
+
+Sample Output 1
+
+2.41
+
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+
+int n,m;
+
+struct node{
+	int v;
+	double w;
+	node(){ };
+	node(int _v,double _w){
+		v=_v;
+		w=_w;
+	}
+};
+
+vector &amp;lt;node&amp;gt; g[10100];
+
+bool vis[10100];
+double dst[10100];
+
+int x[10100],y[10100];
+int pre[10100];
+void add(int u,int v,double w){
+	g[u].push_back(node(v,w));
+	g[v].push_back(node(u,w));
+}
+
+
+void dij(int s){
+
+	memset(vis,0,sizeof vis);
+	for(int i=1;i&amp;lt;=n;i++){
+		dst[i]=1e20;
+	}
+	
+	int u = s;
+	dst[u]=0;
+	vis[u]=1;
+	
+	int nn=n;
+	while(nn--){
+		for(int j=0;j&amp;lt;g[u].size();j++){
+			
+			int v = g[u][j].v;
+			double w = g[u][j].w;
+	
+			if(dst[v]&amp;gt;dst[u]+w){
+				dst[v]=dst[u]+w;
+				pre[v]=u;
+			}
+		}
+		
+		double mi=1e20;
+		for(int j=1;j&amp;lt;=n;j++){
+			if(!vis[j]&amp;amp;&amp;amp;mi&amp;gt;dst[j]){
+				mi = dst[j];
+				u = j;	
+			}
+		}
+		vis[u] = 1;	
+	}
+
+}
+
+
+void dij2(int s,int uu,int vv){
+	
+	memset(vis,0,sizeof vis);
+	for(int i=1;i&amp;lt;=n;i++){
+		dst[i]=1e20;
+	}
+	
+	int u = s;
+	dst[u]=0;
+	vis[u]=1;
+	
+	int nn=n;
+	while(nn--){
+		for(int j=0;j&amp;lt;g[u].size();j++){
+			int v = g[u][j].v;
+			double w = g[u][j].w;
+	
+			if(uu ==u &amp;amp;&amp;amp; vv==v || uu==v &amp;amp;&amp;amp; vv == u){
+				continue;
+			}
+	
+			dst[v] = min(dst[v],dst[u]+w);
+
+	}
+		double mi=1e20;
+		for(int j=1;j&amp;lt;=n;j++){
+			if(!vis[j]&amp;amp;&amp;amp;mi&amp;gt;dst[j]){
+				mi = dst[j];
+				u = j;	
+			}
+		}
+		vis[u] = 1;	
+	 
+	}
+
+}
+
+
+int main(){
+	cin &amp;gt;&amp;gt; n &amp;gt;&amp;gt;m;
+	int u,v;
+	double w;
+	
+	for(int i=1;i&amp;lt;=n;i++){
+		cin &amp;gt;&amp;gt; x[i] &amp;gt;&amp;gt;y[i];
+	}
+	
+	while (m--){
+		cin &amp;gt;&amp;gt; u &amp;gt;&amp;gt; v;
+		w=sqrt((x[u]-x[v])*(x[u]-x[v])+(y[u]-y[v])*(y[u]-y[v]));
+		add(u,v,w);
+	}
+	
+	dij(1);
+
+	
+	double mi=1e20;
+	for(int i=n;pre[i]!=0;i=pre[i]){
+		dij2(1,i,pre[i]);
+		mi=min(mi,dst[n]);
+	}
+	     if(mi == 1e20){
+	      cout &amp;lt;&amp;lt; &amp;quot;-1&amp;quot;&amp;lt;&amp;lt;endl;
+		 }else{
+			 cout&amp;lt;&amp;lt;fixed&amp;lt;&amp;lt;setprecision(2)&amp;lt;&amp;lt;mi&amp;lt;&amp;lt;endl;
+		}
+	
+	return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h5 id=&#34;2p1359-租用游艇&#34;&gt;2.P1359 租用游艇&lt;/h5&gt;
+&lt;pre&gt;&lt;code&gt;
+题目描述
+
+长江游艇俱乐部在长江上设置了n 个游艇出租站1，2，…，n。游客可在这些游艇出租站租用游艇，并在下游的任何一个游艇出租站归还游艇。游艇出租站i 到游艇出租站j 之间的租金为r(i,j),1&amp;lt;=i&amp;lt;=j&amp;lt;=n。试设计一个算法，计算出从游艇出租站1 到游艇出租站n 所需的最少租金。
+
+对于给定的游艇出租站i 到游艇出租站j 之间的租金为r(i,j),1&amp;lt;=i&amp;lt;j&amp;lt;=n，编程计算从游艇出租站1 到游艇出租站n所需的最少租金。
+
+保证计算过程中任何时刻数值都不超过10^6
+输入输出格式
+输入格式：
+
+由文件提供输入数据。文件的第1 行中有1 个正整数n（n&amp;lt;=200），表示有n个游艇出租站。接下来的n-1 行是一个半矩阵r(i,j),1&amp;lt;=i&amp;lt;j&amp;lt;=n。
+
+输出格式：
+
+程序运行结束时，将计算出的从游艇出租站1 到游艇出租站n所需的最少租金输出到文件中。
+
+输入输出样例
+输入样例#1： 
+
+3
+5 15
+7
+
+输出样例#1： 
+
+12
+
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+
+using namespace std;
+int maxn=0x3f3f3f3f; 
+int vis[100001];
+int dist[10001];
+int a[1001][1001];
+int main(){
+   int n,j,k,l,i;
+     cin&amp;gt;&amp;gt;n;
+   for(j=0;j&amp;lt;=n;j++){
+     for(k=0;k&amp;lt;=n;k++){
+        a[j][k]=maxn;
+        if(j==k)
+            a[j][k]=0;
+     }
+     dist[j]=maxn;
+   }
+ 
+   for(j=1;j&amp;lt;=n;j++){
+      for(k=j+1;k&amp;lt;=n;k++){
+         cin&amp;gt;&amp;gt;a[j][k];
+      }
+   }
+ 
+   for(j=1;j&amp;lt;=n;j++){
+      dist[j]=a[1][j];
+   }
+   memset(vis,0,sizeof vis);
+   vis[1]=1;
+   for(j=1;j&amp;lt;=n;j++){
+      int mi=maxn;
+      for(i=1;i&amp;lt;=n;i++){
+          if(!vis[i]&amp;amp;&amp;amp;dist[i]&amp;lt;mi){
+              mi=dist[i];
+              k=i;
+          }
+      }
+      vis[k]=1;
+ 
+      for(i=1;i&amp;lt;=n;i++){
+          if(!vis[i]&amp;amp;&amp;amp;a[k][i]+dist[k]&amp;lt;dist[i]){
+              dist[i]=dist[k]+a[k][i];
+          }
+      }
+  
+   }
+   cout&amp;lt;&amp;lt;dist[n]&amp;lt;&amp;lt;endl;
+ 
+   return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h5 id=&#34;3p3371-模板单源最短路径弱化版&#34;&gt;3.P3371 【模板】单源最短路径（弱化版）&lt;/h5&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/weixin_43913349/article/details/89278981&#34;&gt;传送门&lt;/a&gt;&lt;/p&gt;
+&lt;h5 id=&#34;4p1339-usaco09oct热浪heat-wave&#34;&gt;4.P1339 [USACO09OCT]热浪Heat Wave&lt;/h5&gt;
+&lt;pre&gt;&lt;code&gt;
+题目描述
+
+The good folks in Texas are having a heatwave this summer. Their Texas Longhorn cows make for good eating but are not so adept at creating creamy delicious dairy products. Farmer John is leading the charge to deliver plenty of ice cold nutritious milk to Texas so the Texans will not suffer the heat too much.
+
+FJ has studied the routes that can be used to move milk from Wisconsin to Texas. These routes have a total of T (1 &amp;lt;= T &amp;lt;= 2,500) towns conveniently numbered 1..T along the way (including the starting and ending towns). Each town (except the source and destination towns) is connected to at least two other towns by bidirectional roads that have some cost of traversal (owing to gasoline consumption, tolls, etc.). Consider this map of seven towns; town 5 is the
+
+source of the milk and town 4 is its destination (bracketed integers represent costs to traverse the route):
+
+
+                              [1]----1---[3]-
+                             /               \
+                      [3]---6---[4]---3--[3]--4
+                     /               /       /|
+                    5         --[3]--  --[2]- |
+                     \       /        /       |
+                      [5]---7---[2]--2---[3]---
+                            |       /
+                           [1]------
+
+Traversing 5-6-3-4 requires spending 3 (5-&amp;gt;6) + 4 (6-&amp;gt;3) + 3 (3-&amp;gt;4) = 10 total expenses.
+
+Given a map of all the C (1 &amp;lt;= C &amp;lt;= 6,200) connections (described as two endpoints R1i and R2i (1 &amp;lt;= R1i &amp;lt;= T; 1 &amp;lt;= R2i &amp;lt;= T) and costs (1 &amp;lt;= Ci &amp;lt;= 1,000), find the smallest total expense to traverse from the starting town Ts (1 &amp;lt;= Ts &amp;lt;= T) to the destination town Te (1 &amp;lt;= Te &amp;lt;= T).
+
+德克萨斯纯朴的民眾们这个夏天正在遭受巨大的热浪！！！他们的德克萨斯长角牛吃起来不错，可是他们并不是很擅长生產富含奶油的乳製品。Farmer John此时以先天下之忧而忧，后天下之乐而乐的精神，身先士卒地承担起向德克萨斯运送大量的营养冰凉的牛奶的重任，以减轻德克萨斯人忍受酷暑的痛苦。
+
+FJ已经研究过可以把牛奶从威斯康星运送到德克萨斯州的路线。这些路线包括起始点和终点先一共经过T (1 &amp;lt;= T &amp;lt;= 2,500)个城镇，方便地标号為1到T。除了起点和终点外地每个城镇由两条双向道路连向至少两个其它地城镇。每条道路有一个通过费用（包括油费，过路费等等）。
+
+给定一个地图，包含C (1 &amp;lt;= C &amp;lt;= 6,200)条直接连接2个城镇的道路。每条道路由道路的起点Rs，终点Re (1 &amp;lt;= Rs &amp;lt;= T; 1 &amp;lt;= Re &amp;lt;= T)，和花费(1 &amp;lt;= Ci &amp;lt;= 1,000)组成。求从起始的城镇Ts (1 &amp;lt;= Ts &amp;lt;= T)到终点的城镇Te(1 &amp;lt;= Te &amp;lt;= T)最小的总费用。
+输入输出格式
+输入格式：
+
+第一行: 4个由空格隔开的整数: T, C, Ts, Te
+
+第2到第C+1行: 第i+1行描述第i条道路。有3个由空格隔开的整数: Rs, Re和Ci
+
+输出格式：
+
+一个单独的整数表示从Ts到Te的最小总费用。数据保证至少存在一条道路。
+
+输入输出样例
+输入样例#1： 复制
+
+7 11 5 4
+2 4 2
+1 4 3
+7 2 2
+3 4 3
+5 7 5
+7 3 3
+6 1 1
+6 3 4
+2 4 3
+5 6 3
+7 2 1
+
+输出样例#1： 复制
+
+7
+
+说明
+
+【样例说明】
+
+5-&amp;gt;6-&amp;gt;1-&amp;gt;4 (3 + 1 + 3)
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+
+const int inf=10100;
+queue&amp;lt;int&amp;gt; qu;
+int dst[inf];
+bool inq[inf];
+struct node{
+    int t,dist;
+};
+vector&amp;lt;node&amp;gt; g[inf];
+bool spfa(int s){
+    memset(dst,0x7f,sizeof(dst));
+    memset(inq,0,sizeof(inq));
+    dst[s]=0;
+    qu.push(s);
+    inq[s]=true;
+    while(!qu.empty()){
+        int u=qu.front();
+        qu.pop();
+        inq[u]=0;
+        for(int i=0;i&amp;lt;g[u].size();i++){
+            int v=g[u][i].t;
+            int w=g[u][i].dist;
+            if(dst[u]+w&amp;lt;dst[v]){
+                dst[v]=dst[u]+w;
+                if(!inq[v])
+                {
+                    qu.push(v);
+                    inq[v]=1;
+                }
+            }
+        }
+    }
+}
+int main()
+{
+    int n,m,st,en;
+    cin&amp;gt;&amp;gt;n&amp;gt;&amp;gt;m&amp;gt;&amp;gt;st&amp;gt;&amp;gt;en;
+    for(int i=0;i&amp;lt;m;i++){
+        int x,y,v;
+        cin&amp;gt;&amp;gt;x&amp;gt;&amp;gt;y&amp;gt;&amp;gt;v;
+        g[x].push_back((node){y,v});
+        g[y].push_back((node){x,v});
+    }
+    spfa(st);
+    cout&amp;lt;&amp;lt;dst[en];
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;s&gt;可能你已经发现没有一个用的Floyd，只是因为太蒟了。&lt;/s&gt;&lt;/p&gt;
+&lt;h2 id=&#34;欧拉回路&#34;&gt;欧拉回路&lt;/h2&gt;
+&lt;p&gt;若图中存在这样一条路径，使得它恰好通过图中每条边一次，则称该路径为 欧拉路径。若该路径&lt;br&gt;
+是一个环路，则称为 欧拉（Euler）回路。&lt;/p&gt;
+&lt;p&gt;1.无向图有欧拉回路的条件&lt;br&gt;
+一个无向图存在欧拉回路，当且仅当该图所有顶点度数都为偶数,且该图是连通图。&lt;br&gt;
+2.有向图有欧拉回路的条件&lt;br&gt;
+一个有向图存在欧拉回路，所有顶点的入度等于出度且该图是连通图。&lt;/p&gt;
+&lt;p&gt;然后，其实也挺简单的。&lt;/p&gt;
+&lt;p&gt;一道模板题：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;题目背景
+
+Farmer John每年有很多栅栏要修理。他总是骑着马穿过每一个栅栏并修复它破损的地方。
+题目描述
+
+John是一个与其他农民一样懒的人。他讨厌骑马，因此从来不两次经过一个栅栏。你必须编一个程序，读入栅栏网络的描述，并计算出一条修栅栏的路径，使每个栅栏都恰好被经过一次。John能从任何一个顶点(即两个栅栏的交点)开始骑马，在任意一个顶点结束。
+
+每一个栅栏连接两个顶点，顶点用1到500标号(虽然有的农场并没有500个顶点)。一个顶点上可连接任意多(&amp;gt;=1)个栅栏。两顶点间可能有多个栅栏。所有栅栏都是连通的(也就是你可以从任意一个栅栏到达另外的所有栅栏)。
+
+你的程序必须输出骑马的路径(用路上依次经过的顶点号码表示)。我们如果把输出的路径看成是一个500进制的数，那么当存在多组解的情况下，输出500进制表示法中最小的一个 (也就是输出第一位较小的，如果还有多组解，输出第二位较小的，等等)。
+
+输入数据保证至少有一个解。
+输入输出格式
+输入格式：
+
+第1行: 一个整数F(1 &amp;lt;= F &amp;lt;= 1024)，表示栅栏的数目
+
+第2到F+1行: 每行两个整数i, j(1 &amp;lt;= i,j &amp;lt;= 500)表示这条栅栏连接i与j号顶点。
+
+输出格式：
+
+输出应当有F+1行，每行一个整数，依次表示路径经过的顶点号。注意数据可能有多组解，但是只有上面题目要求的那一组解是认为正确的。
+
+输入输出样例
+输入样例#1： 复制
+
+9
+1 2
+2 3
+3 4
+4 2
+4 5
+2 5
+5 6
+5 7
+4 6
+
+输出样例#1： 复制
+
+1
+2
+3
+4
+2
+5
+4
+6
+5
+7
+
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+
+const int maxn = 1010;
+int n;
+int eul[maxn][maxn],lu[maxn];
+int sum=0;
+
+stack&amp;lt;int&amp;gt; sta;
+
+
+void dfs(int s){
+    for(int i=1;i&amp;lt;=500;i++){
+        if(eul[s][i]){
+        eul[i][s]--;
+        eul[s][i]--;
+        
+        dfs(i);	
+        }
+    }
+    sta.push(s);
+}
+
+
+int main(){
+    
+    cin &amp;gt;&amp;gt; n;
+    for(int i=1;i&amp;lt;=n;i++){
+    	int x;
+    	int y;
+    	cin&amp;gt;&amp;gt; x &amp;gt;&amp;gt; y;
+    	eul[x][y]++;
+    	eul[y][x]++;
+    	lu[x]++;
+    	lu[y]++;
+    }
+    int num=1;
+    for(int i=1;i&amp;lt;=500;i++){
+        if(lu[i]%2){
+            num=i;
+            break;
+        }
+    }
+    dfs(num);
+    while(!sta.empty()){
+    	cout &amp;lt;&amp;lt; sta.top()&amp;lt;&amp;lt;endl;
+    	sta.pop();
+    }
+    	
+    return 0;
+} 
+&lt;/code&gt;&lt;/pre&gt;
+">最短路算法</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://ACLYH.github.io/post/dfspai-dui-jian-ge-pai-lie/"" data-c="
+          &lt;h2 id=&#34;description&#34;&gt;Description&lt;/h2&gt;
+&lt;p&gt;小Q是班长。在校运动会上，小Q班要进行队列表演。小Q要选出2*N名同学编队，每人都被编上一个号，每一个从1到N的自然数都被某2名同学佩戴，现在要求将他们排成一列，使两个编号为1的同学中间恰好夹1名同学，两个编号为2的同学中间恰好夹2名同学，……，两个编号为N的同学中间恰好夹N名同学，小Q希望知道这样的排法能否实现。&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;h2 id=&#34;input&#34;&gt;Input&lt;/h2&gt;
+&lt;p&gt;输入文件仅包括一行，即要处理的N。N&amp;lt;=13&lt;/p&gt;
+&lt;h2 id=&#34;output&#34;&gt;Output&lt;/h2&gt;
+&lt;p&gt;输出有多少种排列顺序.&lt;/p&gt;
+&lt;h2 id=&#34;sample-input&#34;&gt;Sample Input&lt;/h2&gt;
+&lt;p&gt;3&lt;/p&gt;
+&lt;h2 id=&#34;sample-output&#34;&gt;Sample Output&lt;/h2&gt;
+&lt;p&gt;2&lt;/p&gt;
+&lt;p&gt;先理解一下题目，题目中所述，每一个从1到N的自然数都被某2名同学佩戴，说明共有2N名同学，两个编号为N的同学中间恰好夹N名同学，就可以得到一个排列（以n==3为例）：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://img-blog.csdnimg.cn/20190714092334172.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxMzM0OQ==,size_16,color_FFFFFF,t_70&#34; alt=&#34;在这里插入图片描述&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+然后，就可以用DFS搜索了。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+
+int n,ans=0;
+int flag[100]={0};
+
+void dfs(int dep){
+	
+	if(dep&amp;gt;n){
+		ans++;
+		return ;
+	}
+	for(int i=1;i&amp;lt;=2*n-dep-1;i++){
+		if(!flag[i]&amp;amp;&amp;amp;!flag[i+dep+1]){//考虑当前位置有无其他数，和它的间隔有没有其他数
+			flag[i]=flag[i+dep+1]=1;
+			dfs(dep+1);
+			flag[i]=flag[i+dep+1]=0;
+		}
+	}
+}
+int main(){
+	cin &amp;gt;&amp;gt; n;
+	dfs(1);
+	cout &amp;lt;&amp;lt; ans;
+	
+	return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;但是，可以发现，当程序运行12或13时，耗时很长，那么就可以想到剪枝优化。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;	if(n%4==1||n%4==2){
+		return ; 
+	}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;现在，就可以证明一下这个剪枝的得到。&lt;br&gt;
+设问题的一个解为a1+a2···+an,a1表示1。&lt;br&gt;
+那么可以得到  a1+a2+…+an+(a1+1+1)+(a2+2+1)+…+(an+n+1) ，最后解得 4(a1+a2+…+an)=n(3n-1) ，所以n%4&lt;mark&gt;1或n%4&lt;/mark&gt;2无解。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+
+int n,ans=0;
+int flag[100]={0};
+
+void dfs(int dep){
+	
+	if(n%4==1||n%4==2){
+		return ; 
+	}
+	if(dep&amp;gt;n){
+		ans++;
+		return ;
+	}
+	for(int i=1;i&amp;lt;=2*n-dep-1;i++){
+		if(!flag[i]&amp;amp;&amp;amp;!flag[i+dep+1]){
+			flag[i]=flag[i+dep+1]=1;
+			dfs(dep+1);
+			flag[i]=flag[i+dep+1]=0;
+		}
+	}
+}
+int main(){
+	cin &amp;gt;&amp;gt; n;
+	dfs(1);
+	cout &amp;lt;&amp;lt; ans;
+	
+	return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+">[DFS]排队（间隔排列）</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://ACLYH.github.io/post/2020-10-27-mo-ni-kao/"" data-c="
