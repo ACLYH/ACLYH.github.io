@@ -1,428 +1,1468 @@
+<!DOCTYPE html>
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
-    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
-    <link rel="stylesheet" href="https://ACLYH.github.io/media/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/css/live2d.css">
-    <link rel="stylesheet" href="https://ACLYH.github.io/styles/main.css">
-    <meta name="description" content="心之所向，素履以往，生如逆旅，一苇以航。" />
-    <link rel="stylesheet" href="https://ACLYH.github.io/media/css/font-awesome.css">
-    <title>Lanthanum</title>
+  <meta charset="UTF-8" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="keywords" content="Gridea静态个人博客">
+<meta name="description" content="心之所向，素履以往，生如逆旅，一苇以航。">
+<meta name="theme-color" content="#000">
+<title>Lanthanum</title>
+<link rel="shortcut icon" href="/favicon.ico?v=1603881214193">
+<link rel="stylesheet" href="/media/css/gemini.css">
+<link rel="stylesheet" href="/media/fonts/font-awesome.css">
+<link
+  href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Rosario:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext"
+  rel="stylesheet" type="text/css">
+
+<link href="/media/hljs/styles/androidstudio.css"
+  rel="stylesheet">
+
+<link rel="stylesheet" href="/styles/main.css">
+
+<script src="/media/hljs/highlight.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.0/velocity.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.0/velocity.ui.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+  integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+  integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+  integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"></script>
+
+
+
+
+
 </head>
-<body>
-    <!-- 响应式布局，针对PC端内容显示 -->
-    <div id="content">
-        <div class="fricontent">
-            <div id="bar">
-                <head>
-  <!-- 引入Bootstrap核心样式文件 -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/css/bootstrap.min.css">
-</head>
-<style>
-  @media screen and (max-width:1200px) and (min-width: 768px) {
-    @media (min-width: 768px) {
-      .navbar-nav {
-        float: right;
-        margin: 0;
-      }
-    }
-  }
-  @media screen and (max-width:768px){
-    .mbapspan{
-      padding: 0;
-    }
-  }
-</style>
 
 <body>
-  <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#barmenu"
-          aria-expanded="false" id="barbutton">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="https://ACLYH.github.io">Lanthanum&nbsp;&nbsp;|</a>
-        <span class="navbar-brand mbapspan"><i id="mbaplayer" class="fa fa-play-circle-o" aria-hidden="true"
-            style="font-size: 28px;top: 12px;position: absolute;" onclick="aplayerPlay();"></i></span>
+  <div class="head-top-line"></div>
+  <div class="header-box">
+    
+<div class="gemini">
+  <header class="header  ">
+    <div class="blog-header box-shadow-wrapper bg-color " id="header">
+      <div class="nav-toggle" id="nav_toggle">
+        <div class="toggle-box">
+          <div class="line line-top"></div>
+          <div class="line line-center"></div>
+          <div class="line line-bottom"></div>
+        </div>
       </div>
-
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="barmenu">
-        <ul class="nav navbar-nav">
+      <div class="site-meta">       
+        <div class="site-title">
+          
+            <a href="/" class="brand">
+              <span>Lanthanum</span>
+            </a>  
+          
+        </div>
+        
+          <p class="subtitle">心之所向，素履以往，生如逆旅，一苇以航。</p>
+        
+      </div>
+      <nav class="site-nav" id="site_nav">
+        <ul id="nav_ul">
+          
+            
+            
+              
+            
+            <li class="nav-item ">
+              
+              
+                <a href="/" target="_self">
+                  <i class="fa fa-home"></i> 首页
+                </a>
+              
+            </li>
+          
+            
+            
+              
+            
+            <li class="nav-item ">
+              
+              
+                <a href="/archives/" target="_self">
+                  <i class="fa fa-archive"></i> 归档
+                </a>
+              
+            </li>
+          
+            
+            
+              
+            
+            <li class="nav-item ">
+              
+              
+                <a href="/tags/" target="_self">
+                  <i class="fa fa-tags"></i> 标签
+                </a>
+              
+            </li>
+          
+            
+            
+              
+            
+            <li class="nav-item ">
+              
+              
+                <a href="/post/about/" target="_self">
+                  <i class="fa fa-user"></i> 关于
+                </a>
+              
+            </li>
           
           
-          <li>
-            <a href="/">
-              首页
-            </a>
-          </li>
+            
+              <li class="nav-item ">
+                <a href="/friends/" target="_self">
+                  
+                    <i class="fa fa-address-book"></i> 友情链接
+                  
+                </a>
+              </li>
+            
           
           
-          
-          <li>
-            <a href="/archives">
-              归档
-            </a>
-          </li>
-          
-          
-          
-          <li>
-            <a href="/tags">
-              标签
-            </a>
-          </li>
-          
-          
-          
-          <li>
-            <a href="/post/about">
-              关于
-            </a>
-          </li>
-          
-          
-          
-          <li><a href="https://ACLYH.github.io/talk">说说</a></li>
-          
-          
-          <li><a href="https://ACLYH.github.io/friends">友链</a></li>
-
+            <li id="fa_search" class="nav-item">
+              <a href="javascript:void(0);">
+                <i class="fa fa-search"></i> <span class="language" data-lan="search">搜索</span>
+              </a>
+            </li>
           
         </ul>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-  </nav>
+      </nav>
+    </div>
+  </header>
+</div>
 
+<script type="text/javascript"> 
+ 
+  let showNav = true;
 
-  <!-- 引入jQuery核心js文件 -->
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
-  <script>
-  var btstate = false;
-  var bt = $("#barbutton");
-  var bm = $("#barmenu");
-  bt.click(function(){
-    dropdown();
-  })
-  function dropdown(){
-    console.log(btstate);
-    //下拉
-    if(btstate==false){
-      bt.removeClass("collapsed");
-      bt.attr("aria-expanded","true");
-      bm.attr("aria-expanded","true")
-      bm.fadeIn(700);
-      btstate = true;
-    }
-    else{
-      bt.addClass("collapsed");
-      bt.attr("aria-expanded","false");
-      bm.removeClass("in");
-      bm.hide();
-      bm.attr("aria-expanded","false");
-      btstate = false;
+  let navToggle = document.querySelector('#nav_toggle'),
+  siteNav = document.querySelector('#site_nav');
+  
+  function navClick() {
+    let sideBar = document.querySelector('.sidebar');
+    let navUl = document.querySelector('#nav_ul');
+    navToggle.classList.toggle('nav-toggle-active');
+    siteNav.classList.toggle('nav-menu-active');
+    if (siteNav.classList.contains('nav-menu-active')) {
+      siteNav.style = "height: " + (navUl.children.length * 42) +"px !important";
+    } else {
+      siteNav.style = "";
     }
   }
-  </script> 
-</body>
-            </div>
-            <div class="row">
-                <div class="side"><body>
-    
-    <div id=side>
-        <div class="avatar-border">
-            <img src="https://ACLYH.github.io/images/avatar.png?v=1603878193793" class="avatar">
-        </div>
-        <div class="sitename">Lanthanum</div>
-        <span class="describtion" data-text='["心之所向，素履以往，生如逆旅，一苇以航。"]'>&nbsp;</span>
-        
-        <div class="search">
-            <!-- <input type="text" class="search-input" placeholder="标题搜索(●'◡'●)" /> -->
-            <input type="text" class="search-input" placeholder="标题搜索 ⚆_⚆ つ♡">
-            <div class="search-results"></div>
-        </div>
-        
-    <div class="share-button">
-        <span>社交按钮</span>
-        
-        
-        
-        
-        
-        
-    </div>
-    <div id="qq" style="display:none"></div>
-    
-    
-    <div class="mchocie describtion">
-        <a href="/" class="menubutton">
-            首页
-        </a>
-    </div>
-    
-    
-    
-    <div class="mchocie describtion">
-        <a href="/archives" class="menubutton">
-            归档
-        </a>
-    </div>
-    
-    
-    
-    <div class="mchocie describtion">
-        <a href="/tags" class="menubutton">
-            标签
-        </a>
-    </div>
-    
-    
-    
-    <div class="mchocie describtion">
-        <a href="/post/about" class="menubutton">
-            关于
-        </a>
-    </div>
-    
-    
-    
-    <div class="mchocie describtion">
-        <a href="https://ACLYH.github.io/talk" class="menubutton">说说</a>
-    </div>
-    
-    
-    <div class="mchocie describtion">
-        <a href="https://ACLYH.github.io/friends" class="menubutton">友人帐</a>
-    </div>
-    
-    <hr>
-    <div id="footinfo">Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | Theme: <a
-        href="https://github.com/850552586/gridea-theme-fog">Fog</a></div>
-    
-    
-    </div>
 
-
-<script src="https://ACLYH.github.io/media/js/wordshow.js"></script>
-    
-
-
-
-
-    
-</body>
-<script>
-    //-------------------------------------------------搜索
-    // 获取搜索框、搜索按钮、清空搜索、结果输出对应的元素
-    var searchInput = document.querySelector('.search-input');
-    var searchResults = document.querySelector('.search-results');
-
-    // 申明保存文章的标题、链接、内容的数组变量
-    var searchValue = '',
-        arrItems = [],
-        arrLinks = [],
-        arrTitles = [],
-        arrResults = [],
-        indexItem = [],
-        itemLength = 0;
-    var tmpDiv = document.createElement('div');
-    tmpDiv.className = 'result-item';
-
-    // ajax 的兼容写法
-    var xhr = new XMLHttpRequest() || new ActiveXObject('Microsoft.XMLHTTP');
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            xml = xhr.responseXML;
-            arrItems = xml.getElementsByTagName('entry');
-            itemLength = arrItems.length;
-            // 遍历并保存所有文章对应的标题、链接、内容到对应的数组中
-            // 同时过滤掉 HTML 标签
-            for (i = 0; i < itemLength; i++) {
-                var link = arrItems[i].getElementsByTagName('link')[0];
-                arrLinks[i] = link.getAttribute("href");
-                arrTitles[i] = arrItems[i].getElementsByTagName('title')[0].
-                childNodes[0].nodeValue.replace(/<.*?>/g, '');
-            }
-        }
-    }
-
-    // 开始获取根目录下 feed.xml 文件内的数据
-    xhr.open('get', '/atom.xml', true);
-    xhr.send();
-
-
-
-    // 输入框内容变化后就开始匹配，可以不用点按钮
-    // 经测试，onkeydown, onchange 等方法效果不太理想，
-    // 存在输入延迟等问题，最后发现触发 input 事件最理想，
-    // 并且可以处理中文输入法拼写的变化
-    searchInput.oninput = function () {
-        setTimeout(searchConfirm, 0);
-    }
-    searchInput.onfocus = function () {
-        searchResults.style.display = 'block';
-    }
-
-    function searchConfirm() {
-        if (searchInput.value == '') {
-            searchResults.style.display = 'none';
-        } else if (searchInput.value.search(/^\s+$/) >= 0) {
-            // 检测输入值全是空白的情况
-            searchInit();
-            var itemDiv = tmpDiv.cloneNode(true);
-            itemDiv.innerText = '请输入有效内容...';
-            searchResults.appendChild(itemDiv);
-        } else {
-            // 合法输入值的情况
-            searchInit();
-            searchValue = searchInput.value;
-            // 在标题、内容中查找
-            searchMatching(arrTitles, searchValue);
-        }
-    }
-
-    // 每次搜索完成后的初始化
-    function searchInit() {
-        arrResults = [];
-        indexItem = [];
-        searchResults.innerHTML = '';
-        searchResults.style.display = 'block';
-    }
-
-    function searchMatching(arr1, input) {
-        // 忽略输入大小写
-        input = new RegExp(input, 'i');
-        // 在所有文章标题、内容中匹配查询值
-        for (i = 0; i < itemLength; i++) {
-            if (arr1[i].search(input) !== -1) {
-                var arr = arr1;
-                indexItem.push(i); // 保存匹配值的索引
-                var indexContent = arr[i].search(input);
-                // 此时 input 为 RegExp 格式 /input/i，转换为原 input 字符串长度
-                var l = input.toString().length - 3;
-                var step = 10;
-
-                // 将匹配到内容的地方进行黄色标记，并包括周围一定数量的文本
-                arrResults.push(arr[i].slice(indexContent - step, indexContent));
-            }
-        }
-
-        // 输出总共匹配到的数目
-        var totalDiv = tmpDiv.cloneNode(true);
-        totalDiv.innerHTML = '<b>总匹配：' + indexItem.length + ' 项<hr></b>';
-        searchResults.appendChild(totalDiv);
-
-        // 未匹配到内容的情况
-        if (indexItem.length == 0) {
-            var itemDiv = tmpDiv.cloneNode(true);
-            itemDiv.innerText = '未匹配到内容...';
-            searchResults.appendChild(itemDiv);
-        }
-
-        // 将所有匹配内容进行组合
-        for (i = 0; i < arrResults.length; i++) {
-            var itemDiv = tmpDiv.cloneNode(true);
-            itemDiv.innerHTML = '<b>[' + arrTitles[indexItem[i]] +
-                ']</b><p>' + arrResults[i] + "</p><hr />";
-            itemDiv.setAttribute('onclick', 'changeHref(arrLinks[indexItem[' + i + ']])');
-            searchResults.appendChild(itemDiv);
-        }
-    }
-
-    function changeHref(href) {
-        location.href = href;
-    }
-
-    function showqq() {
-        var qq = document.getElementById("qq").innerHTML;
-        if (qq != '')
-            window.location.href = "tencent://message/?uin=" + qq + "&Site=&Menu=yes";
-        else
-            alert("博主暂未设置QQ联系方式");
-    }
+  navToggle.addEventListener('click',navClick);  
 </script>
-</div>
-                
-                <div id="tab1" class="tab">
-                    <div class="bars">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                    <div class="close"></div>
-                </div>
-                <div class="col-md-1 col-lg-3"></div>
-                <div id="main" class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
-                    <body>
-    <div id="friendscontainermobile">
+  </div>
+  <div class="main-continer">
+    
+    <div
+      class="section-layout gemini ">
+      <div class="section-layout-wrapper">
+        <div id="sidebarMeta" class="sidebar">
+    
+<div class="sidebar-wrapper box-shadow-wrapper bg-color">
+  <div class="sidebar-item">
+    <img class="site-author-image right-motion" src="/images/avatar.png"/>
+    <p class="site-author-name">Lanthanum</p>
+    
+  </div>
+  <div class="sidebar-item side-item-stat right-motion">
+    <div class="sidebar-item-box">
+      <a href="/archives/">
         
-        
-        
+        <span class="site-item-stat-count">5</span>
+        <span class="site-item-stat-name language" data-lan="article">文章</span>
+      </a>
     </div>
+    <div class="sidebar-item-box">
+      <a href="">
+        <span class="site-item-stat-count">5</span>
+        <span class="site-item-stat-name language" data-lan="category">分类</span>
+      </a>
+    </div>
+    <div class="sidebar-item-box">
+      <a href="/tags/">
+        <span class="site-item-stat-count">5</span>
+        <span class="site-item-stat-name language" data-lan="tag">标签</span>
+      </a>
+    </div>
+  </div>
+  
+    
+  
+  
 
-    <div id="friendscontainer">
-        
-        
-        
-    </div>
-</body>
-                <div id="comment" class="fcl" style="background: white;">
-                    <div class="commentcontainer">
-                        
-                        <p>请到客户端“主题--自定义配置--valine”中填入ID和KEY</p>
-                        
+
+
+</div>
+</div>
+<script>
+  let sidebarMeta = document.querySelector('#sidebarMeta');
+  let scheme = 'gemini';
+  let sidebarWrapper = document.querySelector('.sidebar-wrapper');
+  if (sidebarMeta && (scheme === 'pisces' || scheme === 'gemini')) {
+    document.addEventListener('scroll', function(e) {
+      if (document.scrollingElement.scrollTop > parseInt(sidebarMeta.style.marginTop) + 10) {
+        sidebarWrapper.classList.add('home-sidebar-fixed')
+      } else {
+        sidebarWrapper.classList.remove('home-sidebar-fixed')
+      }
+    });
+  }
+  </script>
+        <div class="section-box gemini box-shadow-wrapper">
+          <section class="friends-section bg-color slide-down-in">
+            <div class="firends-box">
+              <h1 class="firends-title" itemprop="name headline">友情链接</h1>
+              
+              
+              <a href="https://www.moyujiang.com/" target="_blank">
+                <div class="firends-item">
+                  <img src="" />
+                  <div class="right">
+                    <div class="top">
+                      摸鱼酱
                     </div>
+                    <div class="bottom">
+                      
+                    </div>
+                  </div>
                 </div>
-                </div>
-                <div class="col-md-1 col-lg-1"></div>
-                <div id="bg">
-                </div>
+              </a>
+              
+              
+            </div>
+            <hr>
+            <div style="text-align:center">
+              <span class="with-love">
+                <i class="fa fa-heart"></i>
+              </span>
+              <span class="language" data-lan="leave-message">留言添加友链</span>
+              <span class="with-love">
+                <i class="fa fa-heart"></i>
+              </span>
+            </div>
+            <hr>
+            <div class="friends-note">
+              <p><strong class="language" data-lan="format">友链格式：</strong></p>
+              <ul>
+                <li><span class="language" data-lan="site-name">网站名称：</span>Lanthanum</li>
+                <li><span class="language" data-lan="site-link">网站地址：</span><a href="https://ACLYH.github.io" data-pjax-state="">https://ACLYH.github.io</a></li>
+                <li><span class="language" data-lan="site-desc">网站描述：</span>心之所向，素履以往，生如逆旅，一苇以航。</li>
+                <li><span class="language" data-lan="site-img">网站头像：</span>
+                  <a href="https://ACLYH.github.io/images/avatar.png">https://ACLYH.github.io/images/avatar.png</a>
+                </li>
+              </ul>
             </div>
             
-        
+  
 
-    </div>
-    <div class="tog">
-        <div class="toggleContainer">
-            <div class="toggle">
-                <i class="fas fa-angle-double-up"></i>
-            </div>
+          </section>
         </div>
+      </div>
     </div>
-    <div id="bgchoice" style="display: none">default</div>
+    <div class="footer-box">
+  <footer class="footer">
+    <div class="copyright">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | © 2019-2020 Theme By <a
+        href="https://github.com/hsxyhao/gridea-theme-next" target="_blank">HsxyHao</a>
+    </div>
+    <div class="poweredby">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+  </footer>
+  
+  
+  <div class="gemini back-to-top" id="back_to_top">
+    <i class="fa fa-arrow-up"></i>
     
-    <div id="bgurl" style="display:none">\media\images\custom-bgimage.jpg</div>
+    <span class="scrollpercent">
+      <span id="back_to_top_text">0</span>%
+    </span>
     
-    </div>
-    <div id="landlord">
-        <div class="message" style="opacity:0"></div>
-        <canvas id="live2d" width="240" height="250" class="live2d"></canvas>
-    </div>
-    <div id="domainname" style="display:none">https://ACLYH.github.io</div>
+  </div>
+  
+  
+  
+</div>
+<script>
+
+  let sideBarOpen = 'sidebar-open';
+  let body = document.body;
+  let back2Top = document.querySelector('#back_to_top'),
+    back2TopText = document.querySelector('#back_to_top_text'),
+    drawerBox = document.querySelector('#drawer_box'),
+    rightSideBar = document.querySelector('.sidebar'),
+    viewport = document.querySelector('body');
+
+  function scrollAnimation(currentY, targetY) {
+
+    let needScrollTop = targetY - currentY
+    let _currentY = currentY
+    setTimeout(() => {
+      const dist = Math.ceil(needScrollTop / 10)
+      _currentY += dist
+      window.scrollTo(_currentY, currentY)
+      if (needScrollTop > 10 || needScrollTop < -10) {
+        scrollAnimation(_currentY, targetY)
+      } else {
+        window.scrollTo(_currentY, targetY)
+      }
+    }, 1)
+  }
+
+  back2Top.addEventListener("click", function (e) {
+    scrollAnimation(document.scrollingElement.scrollTop, 0);
+    e.stopPropagation();
+    return false;
+  });
+
+  window.addEventListener('scroll', function (e) {
+    let percent = document.scrollingElement.scrollTop / (document.scrollingElement.scrollHeight - document.scrollingElement.clientHeight) * 100;
+    if (percent > 1 && !back2Top.classList.contains('back-top-active')) {
+      back2Top.classList.add('back-top-active');
+    }
+    if (percent == 0) {
+      back2Top.classList.remove('back-top-active');
+    }
+    if (back2TopText) {
+      back2TopText.textContent = Math.floor(percent);
+    }
+  });
+
+
+  let hasCacu = false;
+  window.onresize = function () {
+    calcuHeight();
+  }
+
+  function calcuHeight() {
+    // 动态调整站点概览高度
+    if (!hasCacu && back2Top.classList.contains('pisces') || back2Top.classList.contains('gemini')) {
+      let sideBar = document.querySelector('.sidebar');
+      let navUl = document.querySelector('#site_nav');
+      sideBar.style = 'margin-top:' + (navUl.offsetHeight + navUl.offsetTop + 15) + 'px;';
+      hasCacu = true;
+    }
+  }
+  calcuHeight();
+
+  let open = false, MOTION_TIME = 300, RIGHT_MOVE_DIS = '320px';
+
+  if (drawerBox) {
+    let rightMotions = document.querySelectorAll('.right-motion');
+    let right = drawerBox.classList.contains('right');
+
+    let transitionDir = right ? "transition.slideRightIn" : "transition.slideLeftIn";
+
+    let openProp, closeProp;
+    if (right) {
+      openProp = {
+        paddingRight: RIGHT_MOVE_DIS
+      };
+      closeProp = {
+        paddingRight: '0px'
+      };
+    } else {
+      openProp = {
+        paddingLeft: RIGHT_MOVE_DIS
+      };
+      closeProp = {
+        paddingLeft: '0px'
+      };
+    }
+
+    drawerBox.onclick = function () {
+      open = !open;
+      window.Velocity(rightSideBar, 'stop');
+      window.Velocity(viewport, 'stop');
+      window.Velocity(rightMotions, 'stop');
+      if (open) {
+        window.Velocity(rightSideBar, {
+          width: RIGHT_MOVE_DIS
+        }, {
+          duration: MOTION_TIME,
+          begin: function () {
+            window.Velocity(rightMotions, transitionDir, {});
+          }
+        })
+        window.Velocity(viewport, openProp, {
+          duration: MOTION_TIME
+        });
+      } else {
+        window.Velocity(rightSideBar, {
+          width: '0px'
+        }, {
+          duration: MOTION_TIME,
+          begin: function () {
+            window.Velocity(rightMotions, {
+              opacity: 0
+            });
+          }
+        })
+        window.Velocity(viewport, closeProp, {
+          duration: MOTION_TIME
+        });
+      }
+      for (let i = 0; i < drawerBox.children.length; i++) {
+        drawerBox.children[i].classList.toggle('muse-line');
+      }
+      drawerBox.classList.toggle(sideBarOpen);
+    }
+  }
+
+  // 链接跳转
+  let newWindow = 'false'
+  if (newWindow === 'true') {
+    let links = document.querySelectorAll('.post-body a')
+    links.forEach(item => {
+      if (!item.classList.contains('btn')) {
+        item.setAttribute("target", "_blank");
+      }
+    })
+  }
+
+  let faSearch = document.querySelector('#fa_search');
+  faSearch.addEventListener('click', function () {
+    document.querySelector('#search_mask').style = ''
+  })
+
+  // 代码高亮
+  hljs.initHighlightingOnLoad();
+  
+  // 离开当前页title变化
+  var leaveTitle = '';
+  if (leaveTitle) {
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState == 'hidden') {
+        normal_title = document.title;
+        document.title = leaveTitle;
+      } else {
+        document.title = normal_title;
+      }
+    });
+  }
+
+</script>
+  </div>
 </body>
 
-</html>
+  <div class="search-mask" id="search_mask" style="display: none;">
+  <div class="search-box">
+    <div class="search-title">
+      <i class="fa fa-search"></i>
+      <div class="input-box">
+        <input id="search" type="text" class="language" data-lan="search" placeholder="搜索">
+      </div>
+      <i id="close" class="fa fa-times-circle"></i>
+    </div>
+    <div class="stat-box">
+      <span id="stat_count">0</span><span class="language" data-lan="stat">条相关条目，使用了</span><span id="stat_times">0</span><span class="language" data-lan="stat-time">毫秒</span>
+      <hr>
+    </div>
+    <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://ACLYH.github.io/post/zhan/"" data-c="
+          &lt;hr&gt;
+&lt;p&gt;一个，跟队列同样基础的数据结构。。。&lt;br&gt;
+栈就是一种有限制的线性表，限制在于它只能先进后出。栈顶的第一个元素是栈顶元素，相反的是栈底。相当于吃薯片时，将薯片装入桶中为进栈，拿出来为出栈。&lt;/p&gt;
+&lt;!--more--&gt;
+&lt;p&gt;###STL库&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;stack&amp;lt;T&amp;gt;//T为一种变量类型
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;###stack操作&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;push()-入栈
+pop()-出栈
+clear()-清空栈
+top()-取栈顶元素
+size()-栈的大小
+empty()-清空栈
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;图论中的欧拉回路就有一定栈的使用。&lt;br&gt;
+&lt;a href=&#34;https://www.luogu.org/problem/P2731&#34;&gt;P2731 骑马修栅栏 Riding the Fences&lt;br&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+const int maxn = 1010;
+int n;
+int eul[maxn][maxn],lu[maxn];
+int sum=0;
 
+stack&amp;lt;int&amp;gt; sta;//开一个栈
 
-<script>
-        var bgchoice=$('#bgchoice').html();
-        var bg = $('#bg');
-        var bgurl = document.getElementById("bgurl").innerHTML;
-        if(bgchoice=='default')
-            for (var i = 0; i < 3; i++)
-                bgurl = bgurl.replace("\\", "/");
-        bg.css("background", "url('" + bgurl + "')");
-
-        window.onload = function(){
-            aplayerbtnInit();
+void dfs(int s){
+    for(int i=1;i&amp;lt;=500;i++){
+        if(eul[s][i]){
+        eul[i][s]--;
+        eul[s][i]--;
+        
+        dfs(i);	
         }
+    }
+    sta.push(s);//将元素s入栈
+}
+
+
+int main(){
+    cin &amp;gt;&amp;gt; n;
+    for(int i=1;i&amp;lt;=n;i++){
+    	int x;
+    	int y;
+    	cin&amp;gt;&amp;gt; x &amp;gt;&amp;gt; y;
+    	eul[x][y]++;
+    	eul[y][x]++;
+    	lu[x]++;
+    	lu[y]++;
+    }
+    int num=1;
+    for(int i=1;i&amp;lt;=500;i++){
+        if(lu[i]%2){
+            num=i;
+            break;
+        }
+    }
+    dfs(num);
+    while(!sta.empty()){//栈是否为空
+    	cout &amp;lt;&amp;lt; sta.top()&amp;lt;&amp;lt;endl;//输出栈顶元素
+    	sta.pop();//出栈
+    }
+    	
+    return 0;
+} 
+&lt;/code&gt;&lt;/pre&gt;
+">栈</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://ACLYH.github.io/post/bing-cha-ji-disjoint-set-union/"" data-c="
+          &lt;hr&gt;
+&lt;h3 id=&#34;1并查集&#34;&gt;1.并查集&lt;/h3&gt;
+&lt;p&gt;在一些有N个元素的集合问题中，我们通常是在开始让每个元素构成一个单元素的集合，然后按一定顺序将属于同一组的元素所在的集合合并，其间要反复查找一个元素在哪个集合中。然而可以知道，这样空间时间复杂度极高，无法通过题目的时限，这个时候，就可以用到并查集来解答。&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;p&gt;并查集是一种树型的数据结构，用于处理一些不相交集合的合并及查询问题。&lt;br&gt;
+&lt;img src=&#34;https://img-blog.csdnimg.cn/20190518155257812.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxMzM0OQ==,size_16,color_FFFFFF,t_70&#34; alt=&#34;在这里插入图片描述&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2初始化&#34;&gt;2.初始化&lt;/h3&gt;
+&lt;p&gt;初始化很简单，将每个点所在集合初始化为它自己。如有n个点，就将数组fa[i]=i&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;void init(){
+	for(int i=1;i&amp;lt;=n;i++){
+		fa[i]=i;
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;3查找&#34;&gt;3.查找&lt;/h3&gt;
+&lt;p&gt;这一步，我们只需要找到根节点，即元素所在的集合。就是当fa[x]等于x时，就找到了根节点，return x。反之，继续查找。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;int get(int x){
+	if(fa[x]==x) return x;
+	return get(fa[x]);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;4合并&#34;&gt;4.合并&lt;/h3&gt;
+&lt;p&gt;将两个不同元素所在的集合合并为一个集合。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;void merge(int x,int y){
+	fa[get(x)] = get(y);
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;现在，让我们来看看模板的实现&lt;/p&gt;
+&lt;h3 id=&#34;5思路例题&#34;&gt;5.思路&amp;amp;例题&lt;/h3&gt;
+&lt;h4 id=&#34;p1551-亲戚&#34;&gt;P1551 亲戚&lt;/h4&gt;
+&lt;p&gt;题目背景&lt;/p&gt;
+&lt;p&gt;若某个家族人员过于庞大，要判断两个是否是亲戚，确实还很不容易，现在给出某个亲戚关系图，求任意给出的两个人是否具有亲戚关系。&lt;br&gt;
+题目描述&lt;/p&gt;
+&lt;p&gt;规定：x和y是亲戚，y和z是亲戚，那么x和z也是亲戚。如果x,y是亲戚，那么x的亲戚都是y的亲戚，y的亲戚也都是x的亲戚。&lt;br&gt;
+输入输出格式&lt;br&gt;
+输入格式：&lt;/p&gt;
+&lt;p&gt;第一行：三个整数n,m,p，（n&amp;lt;=5000,m&amp;lt;=5000,p&amp;lt;=5000），分别表示有n个人，m个亲戚关系，询问p对亲戚关系。&lt;/p&gt;
+&lt;p&gt;以下m行：每行两个数Mi，Mj，1&amp;lt;=Mi，Mj&amp;lt;=N，表示Mi和Mj具有亲戚关系。&lt;/p&gt;
+&lt;p&gt;接下来p行：每行两个数Pi，Pj，询问Pi和Pj是否具有亲戚关系。&lt;/p&gt;
+&lt;p&gt;输出格式：&lt;/p&gt;
+&lt;p&gt;P行，每行一个’Yes’或’No’。表示第i个询问的答案为“具有”或“不具有”亲戚关系。&lt;/p&gt;
+&lt;p&gt;输入输出样例&lt;br&gt;
+输入样例#1： 复制&lt;/p&gt;
+&lt;p&gt;6 5 3&lt;br&gt;
+1 2&lt;br&gt;
+1 5&lt;br&gt;
+3 4&lt;br&gt;
+5 2&lt;br&gt;
+1 3&lt;br&gt;
+1 4&lt;br&gt;
+2 3&lt;br&gt;
+5 6&lt;/p&gt;
+&lt;p&gt;输出样例#1： 复制&lt;/p&gt;
+&lt;p&gt;Yes&lt;br&gt;
+Yes&lt;br&gt;
+No&lt;/p&gt;
+&lt;p&gt;这道题就可以用并查集来实现。&lt;br&gt;
+相当于&lt;br&gt;
+&lt;img src=&#34;https://img-blog.csdnimg.cn/20190518162322855.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxMzM0OQ==,size_16,color_FFFFFF,t_70&#34; alt=&#34;在这里插入图片描述&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+如图，x为y的亲戚，而y又为z的亲戚，所以z为x的亲戚。&lt;br&gt;
+然后，就可以搞一波了：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+
+const int maxn=10010;
+
+
+int n,m,p;
+int fa[maxn];
+
+void init(){
+	for(int i=1;i&amp;lt;=n;i++){
+		fa[i]=i;
+	}
+}
+int get(int x){
+	if(fa[x]==x) return x;
+	return get(fa[x]);
+}
+
+void merge(int x,int y){
+	fa[get(x)] = get(y);
+}
+int main(){
+	cin &amp;gt;&amp;gt; n &amp;gt;&amp;gt; m&amp;gt;&amp;gt;p;
+	init();
+	int x,y;
+	for(int i=1;i&amp;lt;=m;i++){
+		cin &amp;gt;&amp;gt; x &amp;gt;&amp;gt; y;
+		merge(x,y);
+	}
+	for(int i=1;i&amp;lt;=p;i++){
+		cin &amp;gt;&amp;gt; x &amp;gt;&amp;gt; y;
+	    if(get(x)==get(y))cout &amp;lt;&amp;lt; &amp;quot;Yes&amp;quot;&amp;lt;&amp;lt;endl;
+		else cout &amp;lt;&amp;lt; &amp;quot;No&amp;quot; &amp;lt;&amp;lt;endl;
+	}
+
+	return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;但是，不妨想想，这样做会不会太麻烦？&lt;br&gt;
+如果z想要知道自己还有没有亲戚，那他就必须问y，才能找到x，这样，会不会耗时间。&lt;br&gt;
+再想想，如果有很多亲戚，找起来会不会太慢？&lt;br&gt;
+所以，现在看看另一道题&lt;/p&gt;
+&lt;h4 id=&#34;p3367-模板并查集&#34;&gt;P3367 【模板】并查集&lt;/h4&gt;
+&lt;p&gt;题目描述&lt;/p&gt;
+&lt;p&gt;如题，现在有一个并查集，你需要完成合并和查询操作。&lt;br&gt;
+输入输出格式&lt;br&gt;
+输入格式：&lt;/p&gt;
+&lt;p&gt;第一行包含两个整数N、M，表示共有N个元素和M个操作。&lt;/p&gt;
+&lt;p&gt;接下来M行，每行包含三个整数Zi、Xi、Yi&lt;/p&gt;
+&lt;p&gt;当Zi=1时，将Xi与Yi所在的集合合并&lt;/p&gt;
+&lt;p&gt;当Zi=2时，输出Xi与Yi是否在同一集合内，是的话输出Y；否则话输出N&lt;/p&gt;
+&lt;p&gt;输出格式：&lt;/p&gt;
+&lt;p&gt;如上，对于每一个Zi=2的操作，都有一行输出，每行包含一个大写字母，为Y或者N&lt;/p&gt;
+&lt;p&gt;输入输出样例&lt;br&gt;
+输入样例#1：&lt;/p&gt;
+&lt;p&gt;4 7&lt;br&gt;
+2 1 2&lt;br&gt;
+1 1 2&lt;br&gt;
+2 1 2&lt;br&gt;
+1 3 4&lt;br&gt;
+2 1 4&lt;br&gt;
+1 2 3&lt;br&gt;
+2 1 4&lt;/p&gt;
+&lt;p&gt;输出样例#1：&lt;/p&gt;
+&lt;p&gt;N&lt;br&gt;
+Y&lt;br&gt;
+N&lt;br&gt;
+Y&lt;/p&gt;
+&lt;p&gt;说明&lt;/p&gt;
+&lt;p&gt;时空限制：1000ms,128M&lt;/p&gt;
+&lt;p&gt;数据规模：&lt;/p&gt;
+&lt;p&gt;对于30%的数据，N&amp;lt;=10，M&amp;lt;=20；&lt;/p&gt;
+&lt;p&gt;对于70%的数据，N&amp;lt;=100，M&amp;lt;=1000；&lt;/p&gt;
+&lt;p&gt;对于100%的数据，N&amp;lt;=10000，M&amp;lt;=200000。&lt;/p&gt;
+&lt;p&gt;这倒就要用到路径压缩。&lt;br&gt;
+如何压缩？&lt;br&gt;
+简单来说就是将原本的子孙节点全部直接连到根节点上。&lt;br&gt;
+&lt;img src=&#34;https://img-blog.csdnimg.cn/20190531200520930.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxMzM0OQ==,size_16,color_FFFFFF,t_70&#34; alt=&#34;在这里插入图片描述&#34; loading=&#34;lazy&#34;&gt;&lt;br&gt;
+让它们直接找到x，就行了。&lt;br&gt;
+所以，只需要改一改&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+
+const int maxn=10010;
+
+
+int n,m;
+int fa[maxn];
+
+void init(){
+	for(int i=1;i&amp;lt;=n;i++){
+		fa[i]=i;
+	}
+}
+int get(int x){
+	if(fa[x]==x) return x;
+	return fa[x]=get(fa[x]);
+}
+
+void merge(int x,int y){
+	fa[get(x)] = get(y);
+}
+int main(){
+	cin &amp;gt;&amp;gt; n &amp;gt;&amp;gt; m;
+	init();
+	int x,y,z;
+	for(int i=1;i&amp;lt;=m;i++){
+		cin &amp;gt;&amp;gt; x &amp;gt;&amp;gt; y &amp;gt;&amp;gt; z;
+		if(x==1){
+		merge(y,z);
+	    }else if(get(y)==get(z))cout &amp;lt;&amp;lt; &amp;quot;Y&amp;quot;&amp;lt;&amp;lt;endl;
+		else cout &amp;lt;&amp;lt; &amp;quot;N&amp;quot; &amp;lt;&amp;lt;endl;
+	}
+
+	return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;各种各样的并查集&#34;&gt;各种各样的并查集&lt;/h4&gt;
+&lt;h5 id=&#34;网络交友&#34;&gt;网络交友&lt;/h5&gt;
+&lt;p&gt;Description&lt;/p&gt;
+&lt;p&gt;在网络社交的过程中，通过朋友，也能认识新的朋友。在某个朋友关系图中，假定 A 和 B 是朋友，B 和 C 是朋友，那么 A 和 C 也会成为朋友。即，我们规定朋友的朋友也是朋友。&lt;/p&gt;
+&lt;p&gt;现在要求你每当有一对新的朋友认识的时候，你需要计算两人的朋友圈合并以后的大小。&lt;/p&gt;
+&lt;p&gt;Input&lt;/p&gt;
+&lt;p&gt;第一行：一个整数 n(n≤5000)n(n\leq 5000)n(n≤5000)，表示有 nnn 对朋友认识。&lt;/p&gt;
+&lt;p&gt;接下来 nnn 行：每行输入两个名字。表示新认识的两人的名字，用空格隔开。（名字是一个首字母大写后面全是小写字母且长度不超过 20 的串）。&lt;/p&gt;
+&lt;p&gt;Output&lt;/p&gt;
+&lt;p&gt;对于每一对新认识的朋友，输出合并以后的朋友圈的大小。&lt;/p&gt;
+&lt;p&gt;Sample Input 1&lt;/p&gt;
+&lt;p&gt;3&lt;br&gt;
+Fred Barney&lt;br&gt;
+Barney Betty&lt;br&gt;
+Betty Wilma&lt;/p&gt;
+&lt;p&gt;Sample Output 1&lt;/p&gt;
+&lt;p&gt;2&lt;br&gt;
+3&lt;br&gt;
+4&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+
+const int maxn=10010;
+int n,k;
+int sz[maxn],fa[maxn];
+
+map&amp;lt;string, int&amp;gt;mp;
+
+void init(){
+	for(int i=1;i&amp;lt;=n+1;i++){
+		fa[i]=i;
+		sz[i]=1;
+	}
+}
+
+int get(int x){
+	if(fa[x]==x) return x;
+	else return fa[x]=get(fa[x]);
+}
+
+void merge(int x,int y){
+	int tx=get(x);
+	int ty=get(y);
+	if(tx!=ty){
+		fa[tx]=ty;
+        sz[ty]+=sz[tx];
+	}
+}
+
+int main(){
+	cin &amp;gt;&amp;gt; n;
+	int ans=0;
+	init();
+	string s1,s2;
+	while(n--){
+		cin &amp;gt;&amp;gt; s1 &amp;gt;&amp;gt; s2;
+		int x,y;
+		if((x=mp[s1]) == 0) x = mp[s1] = ++k;
+		if((y=mp[s2]) == 0) y = mp[s2] = ++k;
+		merge(x,y);
+		cout &amp;lt;&amp;lt; sz[get(y)] &amp;lt;&amp;lt; endl;
+			}
+	
+	return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h5 id=&#34;昆虫的生活&#34;&gt;昆虫的生活&lt;/h5&gt;
+&lt;p&gt;Description&lt;/p&gt;
+&lt;p&gt;一天蒜头君正在研究一种稀有昆虫的行为。他们具有两种不同的性别，他假设他们只与异性昆虫互动。因为他们背上都印有数字，所以他们之间的一起互动，在实验室是很容易识别的。&lt;/p&gt;
+&lt;p&gt;现在给出一些昆虫之间的互动，看看实验是否支持蒜头君的假设--只有异性互动。&lt;/p&gt;
+&lt;p&gt;Input&lt;/p&gt;
+&lt;p&gt;第一行输入两个整数 nnn (1≤n≤2000)(1 \le n \le 2000)(1≤n≤2000) ， mmm (1≤m≤106)(1 \le m \le 10^6)(1≤m≤106)。其中 nnn 表示昆虫的数目，mmm 表示昆虫互动的关系数量。&lt;/p&gt;
+&lt;p&gt;接下来会有 mmm 行，每行有两个整数 xxx ， yyy (1≤x,y≤n)(1 \le x,y \le n)(1≤x,y≤n)。表示昆虫 xxx 和昆虫 yyy 之间有过互动。&lt;/p&gt;
+&lt;p&gt;Output&lt;/p&gt;
+&lt;p&gt;判断蒜头君的假设是否正确，如果正确请输入yes，否则输出no。&lt;/p&gt;
+&lt;p&gt;Sample Input 1&lt;/p&gt;
+&lt;p&gt;3 3&lt;br&gt;
+1 2&lt;br&gt;
+2 3&lt;br&gt;
+1 3&lt;/p&gt;
+&lt;p&gt;Sample Output 1&lt;/p&gt;
+&lt;p&gt;no&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+
+const int maxn=5010;
+
+struct node{
+	int x,y;
+}g[10000010];
+
+int fa[maxn*2];
+int n,m;
+int init(){
+	for(int i=1;i&amp;lt;=n*2;i++){
+		fa[i]=i;
+	}
+}
+
+int get(int x){
+	if(fa[x]==x)return x;
+	int r=get(fa[x]);
+	fa[x]=r;
+	return r;
+}
+
+void merge(int x,int y){
+	fa[get(x)]=get(y);
+}
+int main(){
+	cin &amp;gt;&amp;gt; n &amp;gt;&amp;gt;m;
+	init();
+	for(int i=1;i&amp;lt;=m;i++){
+		cin &amp;gt;&amp;gt; g[i].x  &amp;gt;&amp;gt; g[i].y;
+	}
+	for(int i=1;i&amp;lt;=m;i++){
+		if(get(g[i].x)==get(g[i].y)) {
+		cout &amp;lt;&amp;lt;&amp;quot;no&amp;quot;&amp;lt;&amp;lt;endl;
+		return 0;
+	}
+		merge(g[i].x,g[i].y+n);
+		merge(g[i].y,g[i].x+n);
+	}
+	cout &amp;lt;&amp;lt;&amp;quot;yes&amp;quot;;
+	return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h5 id=&#34;关押罪犯&#34;&gt;关押罪犯&lt;/h5&gt;
+&lt;p&gt;Description&lt;/p&gt;
+&lt;p&gt;S 城现有两座监狱，一共关押着 NNN 名罪犯，编号分别为 111 ~ NNN。他们之间的关系自然也极不和谐。很多罪犯之间甚至积怨已久，如果客观条件具备则随时可能爆发冲突。我们用 “怨气值”（一个正整数值）来表示某两名罪犯之间的仇恨程度，怨气值越大，则这两名罪犯之间的积怨越多。如果两名怨气值为 ccc 的罪犯被关押在同一监狱，他们俩之间会发生摩擦，并造成影响力为 ccc 的冲突事件。&lt;/p&gt;
+&lt;p&gt;每年年末，警察局会将本年内监狱中的所有冲突事件按影响力从大到小排成一个列表，然后上报到 S 城 Z 市长那里。公务繁忙的 Z 市长只会去看列表中的第一个事件的影响力，如果影响很坏，他就会考虑撤换警察局长。&lt;/p&gt;
+&lt;p&gt;在详细考察了 NNN 名罪犯间的矛盾关系后，警察局长觉得压力巨大。他准备将罪犯们在两座监狱内重新分配，以求产生的冲突事件影响力都较小，从而保住自己的乌纱帽。假设只要处于同一监狱内的某两个罪犯间有仇恨，那么他们一定会在每年的某个时候发生摩擦。&lt;/p&gt;
+&lt;p&gt;那么，应如何分配罪犯，才能使 Z 市长看到的那个冲突事件的影响力最小？这个最小值是多少？&lt;/p&gt;
+&lt;p&gt;Input&lt;/p&gt;
+&lt;p&gt;输入第一行为两个正整数 N(1≤N≤20000)和 M(1≤M≤100000)，分别表示罪犯的数目以及存在仇恨的罪犯对数。&lt;/p&gt;
+&lt;p&gt;接下来的 M 行每行为三个正整数 aj,bj,a_j,b_j，表示 a_j​ 号和 b_j​ 号罪犯之间存在仇恨，其怨气值为 c_j​。数据保证 1&amp;lt;aj,bj≤N1&amp;lt;a_j, b_j \le N1&amp;lt;aj​,bj​≤N，0&amp;lt;cj≤1090 &amp;lt; c_j \le 10^90&amp;lt;cj​≤109，且每对罪犯组合只出现一次。&lt;/p&gt;
+&lt;p&gt;Output&lt;/p&gt;
+&lt;p&gt;输出共一行，为 Z 市长看到的那个冲突事件的影响力。如果本年内监狱中未发生任何冲突事件，请输出 000。&lt;/p&gt;
+&lt;p&gt;Sample Input 1&lt;/p&gt;
+&lt;p&gt;4 6&lt;br&gt;
+1 4 2534&lt;br&gt;
+2 3 3512&lt;br&gt;
+1 2 28351&lt;br&gt;
+1 3 6618&lt;br&gt;
+2 4 1805&lt;br&gt;
+3 4 12884&lt;/p&gt;
+&lt;p&gt;Sample Output 1&lt;/p&gt;
+&lt;p&gt;3512&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+
+const int maxn = 200100;
+const int maxm = 100100;
+struct node{
+	int u,v;
+	int s;
+}e[maxm];
+
+bool cmp(node a,node b){
+	return a.s&amp;gt;b.s;
+}
+
+int fa[maxn*2];
+int n,m;
+void init(){
+	for(int i=1;i&amp;lt;=2*n;i++){
+		fa[i] = i;
+	}
+}
+
+int get(int x){
+	if(fa[x]!=x) fa[x]=get(fa[x]);
+	return fa[x];
+}
+
+void merge(int x,int y)
+{
+    fa[get(x)] = get(y);
+}
+int main(){
+	cin &amp;gt;&amp;gt; n &amp;gt;&amp;gt; m;
+		init();
+    	for(int i=1;i&amp;lt;=m;i++){
+    		cin &amp;gt;&amp;gt; e[i].u &amp;gt;&amp;gt; e[i].v &amp;gt;&amp;gt; e[i].s;
+		}
+	sort(e+1,e+m+1,cmp);
+
+for(int i=1;i&amp;lt;=m;i++){
+	if(get(e[i].u)==get(e[i].v)){
+	   
+		cout &amp;lt;&amp;lt; e[i].s;
+		return 0;
+	}else{
+		merge(e[i].u,e[i].v+n);
+		merge(e[i].u+n,e[i].v);
+		
+    } 
+}
+	cout &amp;lt;&amp;lt; &amp;quot;0&amp;quot;;
+	return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h5 id=&#34;接龙&#34;&gt;接龙&lt;/h5&gt;
+&lt;p&gt;&lt;a href=&#34;http://120.77.248.79/problem/3033102&#34;&gt;传送门&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;前缀差分思想，维护每个纸牌前面到底有多少纸牌的特性。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+
+const int N=50100;
+int n,m;
+int fa[N];
+int size[N],dist[N];
+
+void init(){
+    for(int i=0;i&amp;lt;N;i++){
+        fa[i]=i;
+        size[i]=1;
+        dist[i]=0;
+    }
+}
+
+int get(int x){
+    if(fa[x]==x){
+        return x;
+    }
+    int y=fa[x];
+    fa[x]=get(y);
+    dist[x]+=dist[y];
+    return fa[x];
+}
+
+void merge(int x,int y){
+    x=get(x);
+    y=get(y);
+    if(x!=y){
+        fa[x]=y;
+        dist[x]=size[y];
+        size[y]+=size[x];
+    }
+}
+int main(){
+	
+    init();
+    int n;
+    cin&amp;gt;&amp;gt;n;
+    
+    while(n--){
+        char op;
+        int x,y;
+        cin&amp;gt;&amp;gt;op&amp;gt;&amp;gt;x&amp;gt;&amp;gt;y;
+        if(op==&#39;M&#39;){
+            merge(x,y);
+        }else{
+            if(get(x)==get(y)){
+                cout&amp;lt;&amp;lt;fabs(dist[x]-dist[y])-1&amp;lt;&amp;lt;endl;
+            }else{
+                cout&amp;lt;&amp;lt;&amp;quot;-1&amp;quot;&amp;lt;&amp;lt;endl;
+            }
+        }
+    }
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+">并查集（Disjoint Set Union）</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://ACLYH.github.io/post/dan-diao-dui-lie/"" data-c="
+          &lt;h4 id=&#34;单调队列的性质&#34;&gt;&lt;strong&gt;单调队列的性质&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;单调就是指一直增或一直减，例如1，2，3，4就是单调增，4，3，2，1就是单调减。而单调队列就有这种性质。&lt;br&gt;
+所以，单调队列具有单调性以及队列的性质。&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;h4 id=&#34;操作方式&#34;&gt;&lt;strong&gt;操作方式&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;数据结构队列是先进先出，相当于数列3,7,5,9,现在有一个数2要进队，那么，按队列的操作应该将数列变为7,5,9,2。&lt;/p&gt;
+&lt;p&gt;然而单调队列就不一样。假设有一条队列7,6,3,4，现在又有一个数5要进队，却看见3，4都比5要弱~~（类似MYJ在某STARLbast中将LYH打爆的行为）~~，所以就有了一种类似插队的方法，5将3和4挤掉，来到了6的后面，构成了这种队列：&lt;br&gt;
+&lt;img src=&#34;https://i.loli.net/2019/08/12/QXpNaTmjAouB4sD.png&#34; alt=&#34;此处输入图片的描述&#34; loading=&#34;lazy&#34;&gt;&lt;/p&gt;
+&lt;p&gt;所以单调队列维护单调性就是通过插队把队尾破坏了单调的数全部从队尾退队，使队列元素维持单调（单调队列与队列不同就是单调队列既可以从队首出队，也可以从队尾出队）。&lt;br&gt;
+看看一道模板&lt;s&gt;水&lt;/s&gt;题&lt;br&gt;
+&lt;a href=&#34;https://www.luogu.org/problem/P1886&#34;&gt;P1886 滑动窗口&lt;/a&gt;&lt;br&gt;
+&lt;s&gt;据说可以用线段树，树状数组什么的，但单调队列是拯救蒟蒻的做法(逃&lt;/s&gt;&lt;/p&gt;
+&lt;p&gt;所以说，这道题到底怎么做？&lt;br&gt;
+其实只需要枚举所有的连续子序列，使用单调队列找出最大值。&lt;br&gt;
+开始&lt;s&gt;乱搞&lt;/s&gt;写代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int n,k;
+int a[1000001]={0},q[10000001]={0};q数组表示单调队列，a表示其所对应的在原列表里的下标
+int head=1;//头指针
+int tail=1;//队尾指针
+int main(){
+	cin &amp;gt;&amp;gt; n&amp;gt;&amp;gt;k;
+	for(int i=1;i&amp;lt;=n;i++){
+		cin&amp;gt;&amp;gt;a[i];
+	}
+	for(int i=1;i&amp;lt;=n;i++){
+		while(head&amp;lt;tail&amp;amp;&amp;amp;a[q[tail-1]]&amp;gt;a[i]){
+			tail--;//插队，将后面的数踢掉，以维护单调性
+		}
+		q[tail++]=i;//存编号
+        while(head&amp;lt;tail&amp;amp;&amp;amp;q[head]&amp;lt;=i-k){
+        	head++;//队首元素太old了，就出队。
+		}
+        if(i&amp;gt;=k){
+        	cout &amp;lt;&amp;lt;a[q[head]]&amp;lt;&amp;lt; &amp;quot; &amp;quot;;//按题目要求的输出
+		}
+	}
+	cout &amp;lt;&amp;lt; endl;
+	--------------------------------------------------------------------------------------------
+	head=1,tail=1;
+
+	for(int i=1;i&amp;lt;=n;i++){
+		while(head&amp;lt;tail&amp;amp;&amp;amp;a[q[tail-1]]&amp;lt;a[i]){//队列中存在元素，又队尾元素比下一个处理的值大，即表示队尾元素太old，就让队尾元素出队。当队尾元素小于下一个处理值，单调性成立。
+			tail--;
+		}
+		q[tail++]=i;//存编号
+        while(head&amp;lt;tail&amp;amp;&amp;amp;q[head]&amp;lt;=i-k){
+        	head++;//队首元素太old了，就出队。
+		}
+        if(i&amp;gt;=k){
+        	cout &amp;lt;&amp;lt; a[q[head]] &amp;lt;&amp;lt; &amp;quot; &amp;quot;;//cout队首元素，即最大值
+		}
+	}
+	cout &amp;lt;&amp;lt; endl;
+	return 0;
+	//实际上分割线上下代码都差不多，只是维护单调性的while循环不一样
+}
+&lt;/code&gt;&lt;/pre&gt;
+">单调队列</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://ACLYH.github.io/post/youxian/"" data-c="
+          &lt;hr&gt;
+&lt;p&gt;优先队列，是，一个跟单调队列一样神奇的数据结构。&lt;br&gt;
+手写优先队列不会，只能用STL库自带的priority_queue。&lt;/p&gt;
+&lt;h2 id=&#34;声明priority_queue的头文件&#34;&gt;声明priority_queue的头文件&lt;/h2&gt;
+&lt;!-- more --&gt;
+&lt;pre&gt;&lt;code&gt;#include&amp;lt;queue&amp;gt;或#include&amp;lt;bits/stdc++.h&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;定义&#34;&gt;定义&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;priority_queue&amp;lt;int,vector&amp;lt;int&amp;gt;,less&amp;lt;int&amp;gt;&amp;gt; a; //less&amp;lt;int&amp;gt;递增函数
+priority_queue&amp;lt;int,vector&amp;lt;int&amp;gt;,greater&amp;lt;int&amp;gt; &amp;gt;q;//depue双端队列，greater&amp;lt;int&amp;gt;递减函数
+priority_queue&amp;lt;int&amp;gt;a;
+priority_queue&amp;lt;double&amp;gt;a;
+---------------------------------------------------
+struct node{
+~~~~~
+}
+priority_queue&amp;lt;node&amp;gt;a;
+--------------------------------------------------
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;priority_queue的操作&#34;&gt;priority_queue的操作&lt;/h2&gt;
+&lt;p&gt;实际上就是那些：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;priority_queue&amp;lt;int&amp;gt;q;
+q.empty()——队列是否为空，空为true，否则为false
+q.pop()——删除队顶元素
+q.push()——压入一个元素
+q.size()——返回优先队列中的元素个数
+q.top()——返回q的第一个元素
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;priority_queue的排序方式&#34;&gt;priority_queue的排序方式&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;priority_queue&amp;lt;int&amp;gt; q;//优先队列自带排序，元素从大到小的顺序排序出队
+priority_queue&amp;lt;int,vector&amp;lt;int&amp;gt;, greater&amp;lt;int&amp;gt; &amp;gt; q;//greater&amp;lt;int&amp;gt;，按照元素从小到大的顺序排序出队
+struct cmp{
+	int x,y;
+	bool operator&amp;lt; (const node &amp;amp; a)const{
+		return x&amp;lt;a.x;
+	}
+};//自定义结构体，重载&amp;lt;；
+
+priority_queue&amp;lt;int,vector&amp;lt;int&amp;gt;,less&amp;lt;int&amp;gt; &amp;gt; a;//less排序从大到小
+priority_queue&amp;lt;int,vector&amp;lt;int&amp;gt;,greater&amp;lt;int&amp;gt; &amp;gt;a; //greater排序从小到大
+//less和greater后的两个&amp;gt;之间要打&amp;quot; &amp;quot;，不然错哪里都不知道~~（绝对没有体验过）~~
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;所以，优先队列实际上就是一个自带从大到小排序的队列，最大元素会排在队首，然后，跟队列一样先进先出~~（感觉比单调队列半路插队要好写一些？）~~&lt;br&gt;
+那就做一道例题吧~~（绝对没有滑动窗口的普及+/提高）~~&lt;br&gt;
+&lt;a href=&#34;https://www.luogu.org/problem/P3887&#34;&gt;P3887 [GDOI2014]世界杯&lt;/a&gt;&lt;br&gt;
+读题可知，这道题有四个综合水平值，说明了什么？&lt;br&gt;
+当然是开四个优先队列啦~~（逃~~&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+
+priority_queue&amp;lt;int,vector&amp;lt;int&amp;gt;, less&amp;lt;int&amp;gt; &amp;gt; k,d,m,f;//根据题目开的四个优先队列，也可以打四次priority_queue&amp;lt;int,vector&amp;lt;int&amp;gt;, less&amp;lt;int&amp;gt; &amp;gt;，不然考试背不到priority_queue就完了
+int q;
+int a,b,c,e;//守门员、后卫、中场和前锋供挑选的球员人数
+int main(){
+	int cnt;//存储
+	cin &amp;gt;&amp;gt; a&amp;gt;&amp;gt;b&amp;gt;&amp;gt;c&amp;gt;&amp;gt;e;
+	for(int i=1;i&amp;lt;=a;i++){
+		cin &amp;gt;&amp;gt; cnt;
+		f.push(cnt);
+	}
+	for(int i=1;i&amp;lt;=b;i++){
+		cin &amp;gt;&amp;gt; cnt;
+		m.push(cnt);
+	}
+	for(int i=1;i&amp;lt;=c;i++){
+		cin &amp;gt;&amp;gt; cnt;
+		d.push(cnt);
+	}
+	for(int i=1;i&amp;lt;=e;i++){
+		cin &amp;gt;&amp;gt; cnt;
+		k.push(cnt); 
+	}//守门员、后卫、中场和前锋的能力值，分push进自己优先队列
+	cin &amp;gt;&amp;gt;q;
+	int x,y,z;
+	
+	for(int i=1;i&amp;lt;=q;i++){//对综合水平值的计算
+		int ans=0;//ans放外面的值就不会清零了，所以放在for内
+		cin &amp;gt;&amp;gt; x &amp;gt;&amp;gt; y &amp;gt;&amp;gt;z;
+		while(z--){
+			int cnt=k.top();
+			k.pop();
+			ans+=cnt;
+		}//出队，当前总能力值+上cnt 
+		while(y--){
+			int cnt=d.top();
+			d.pop();
+			ans+=cnt;
+		}同上
+		while(x--){
+			int cnt=m.top();
+			m.pop();
+			ans+=cnt;
+		}同上
+		ans+=f.top();
+		f.pop();题目所说不把守门员计算在内，单独处理
+		printf(&amp;quot;%.2lf\n&amp;quot;,ans*1.0/11);//关于输出两位数的处理
+	}
+	
+
+	return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+">初涉优先队列</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://ACLYH.github.io/post/about/"" data-c="
+          &lt;blockquote&gt;
+&lt;p&gt;欢迎来到我的小站呀，很高兴遇见你！🤝&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;关于本站&#34;&gt;🏠 关于本站&lt;/h2&gt;
+&lt;p&gt;一个蒟蒻oier的小站&lt;/p&gt;
+&lt;h2 id=&#34;博主是谁&#34;&gt;👨‍💻 博主是谁&lt;/h2&gt;
+&lt;p&gt;坐标CQ&lt;/p&gt;
+">关于</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://ACLYH.github.io/post/hello-world/"" data-c="
+          &lt;pre&gt;&lt;code&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int main(){
+    cout &amp;lt;&amp;lt; &amp;quot;Hello world&amp;quot;&amp;lt;&amp;lt;endl;
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;about-me&#34;&gt;About me&lt;/h2&gt;
+&lt;p&gt;一个&lt;strong&gt;CQ&lt;/strong&gt;的蒟蒻OIer&lt;/p&gt;
+">Hello world</a>
+      </div>
+      
+    </div>
+    <div class="page">
+      <div id="page_ul"></div>
+    </div>
+  </div>
+</div>
+<script>
+  !function () {
+    let searchMask = document.querySelector('#search_mask');
+    let result = document.querySelector('#result');
+    let items = document.querySelectorAll('.item');
+    let searchBox = document.querySelector('#search');
+    let statCount = document.querySelector('#stat_count');
+    let statTimes = document.querySelector('#stat_times');
+    let pageUl = document.querySelector('#page_ul');
+    let close = document.querySelector('#close');
+    
+    close.addEventListener('click', function() {
+      searchMask.style = 'display: none;'
+    })
+
+    let finds = [];
+    let contents = [];
+    let pageSize = 10;
+    items.forEach(item => {
+      let a = item.querySelector('a');
+      contents.push({
+        title: a.innerText,
+        details: a.dataset.c,
+        link: a.href
+      })
+      item.remove();
+    })
+
+    function insertStr(soure, start, count) {
+      let newStr = soure.substr(start, count);
+      return soure.slice(0, start) + '<em>' + newStr + '</em>' + soure.slice(start + count);
+    }
+
+    pageUl.addEventListener('click', function(event) {
+      let target = event.target;
+      if (target.__proto__ === HTMLSpanElement.prototype) {
+        appendResults(parseInt(target.dataset.i));
+      }
+    })
+
+    function appendResults(index) {
+      let htmlResult = '';
+      let start = index || 0;
+      let end = Math.min(start + pageSize, finds.length);
+      for (let i = start; i < end; i++) {
+        const current = finds[i];
+        let html = current.title;
+        let sum = 0;
+        let positions = current.positions;
+        positions.forEach(position => {
+          html = insertStr(html, position.start + sum, position.count);
+          sum += 9;
+        })
+        htmlResult += `<div class="item"><a class="result-title" href="${current.link}">${html}</a></div>`;
+      }
+      result.innerHTML = htmlResult;
+      pageUl.innerHTML = '';
+      let count = finds.length / pageSize;
+      let lis = '';
+      if (start !== 0) {
+        lis += `<span class="fa fa-angle-left" data-i='${start - 1}'></span>`;
+      }
+      for (let i = 0; i < count; i++) {
+        lis += `<span class='${i === start?'current':''}' data-i='${i}'>${i+1}</span>`;     
+      }
+      if (start+1 < count) {
+        lis += `<span class="fa fa-angle-right" data-i='${start+1}'></span>`;  
+      }
+      pageUl.innerHTML = lis;
+    }
+
+    function search(delay) {
+      let timer = null
+      return function () {
+        clearTimeout(timer)
+        timer = setTimeout(() => {
+          let start = Date.now();
+          let segments = searchBox.value.split(' ').filter(c => c != '');
+          if (segments.length <= 0) {
+            return;
+          }
+          finds = [];
+          let htmlResult = '';
+          contents.forEach(content => {
+            let title = content.title;
+            let positions = [];
+            let find = false;
+            segments.forEach((segment) => {
+              if (content.title.includes(segment)) {
+                find = true;
+                positions.push({
+                  start: content.title.indexOf(segment),
+                  count: segment.length
+                })
+              } else if (content.details.includes(segment)) {
+                find = true;
+              }
+            });
+            if (find) {
+              finds.push({
+                title: content.title,
+                link: content.link,
+                positions
+              });
+            }
+          })
+          appendResults(0);
+          statCount.textContent = finds.length;
+          statTimes.textContent = Date.now() - start;
+        }, delay)
+      }
+    }
+    searchBox.addEventListener('input', search(200));
+  }()
 </script>
 
-    <script src="https://ACLYH.github.io/media/js/index.js"></script>
+<input hidden id="copy" />
+<script>
+  let language = '';
+  if (language !== '') {
+    let map = new Map();
+    if (language === 'en') {
+      map.set('search', 'Search');
+      map.set('category', 'Categories');
+      map.set('article', 'Articles');
+      map.set('tag', 'Tags');
+      map.set('top', 'Top');
+      map.set('publish', 'published');
+      map.set('minute', ' minutes');
+      map.set('read-more', 'Read More');
+      map.set('view', 'View');
+      map.set('words', ' words');
+      map.set('category-in', 'category in');
+      map.set('preview', 'Meta');
+      map.set('index', 'Toc');
+      map.set('no-archives', "You haven't created yet");
+      map.set('archives', " articles in total");
+      map.set('cloud-tags', " tags in total");
+      map.set('copyright', "Copyright: ");
+      map.set('author', "Author: ");
+      map.set('link', "Link: ");
+      map.set('leave-message', "Leave a message");
+      map.set('format', "Links Format");
+      map.set('site-name', "Name: ");
+      map.set('site-link', "Link: ");
+      map.set('site-desc', "Desc: ");
+      map.set('stat', " related results, taking ");
+      map.set('stat-time', " ms");
+      map.set('site-img', "Image: ");
+    }
+
+    if (map.size > 0) {
+      let lanElems = document.querySelectorAll('.language');
+      lanElems.forEach(elem => {
+        let lan = elem.dataset.lan, text = map.get(lan);
+        if (elem.__proto__ === HTMLInputElement.prototype) {
+          elem.placeholder = text
+        } else {
+          if (elem.dataset.count) {
+            text = elem.dataset.count + text;
+          }
+          elem.textContent = text;
+        }
+      })
+    }
+  }
+  //拿来主义(真香)^_^，Clipboard 实现摘自掘金 https://juejin.im/post/5aefeb6e6fb9a07aa43c20af
+  window.Clipboard = (function (window, document, navigator) {
+    var textArea,
+      copy;
+
+    // 判断是不是ios端
+    function isOS() {
+      return navigator.userAgent.match(/ipad|iphone/i);
+    }
+    //创建文本元素
+    function createTextArea(text) {
+      textArea = document.createElement('textArea');
+      textArea.value = text;
+      textArea.style.width = 0;
+      textArea.style.height = 0;
+      textArea.clientHeight = 0;
+      textArea.clientWidth = 0;
+      document.body.appendChild(textArea);
+    }
+    //选择内容
+    function selectText() {
+      var range,
+        selection;
+
+      if (isOS()) {
+        range = document.createRange();
+        range.selectNodeContents(textArea);
+        selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        textArea.setSelectionRange(0, 999999);
+      } else {
+        textArea.select();
+      }
+    }
+
+    //复制到剪贴板
+    function copyToClipboard() {
+      try {
+        document.execCommand("Copy")
+      } catch (err) {
+        alert("复制错误！请手动复制！")
+      }
+      document.body.removeChild(textArea);
+    }
+
+    copy = function (text) {
+      createTextArea(text);
+      selectText();
+      copyToClipboard();
+    };
+
+    return {
+      copy: copy
+    };
+  })(window, document, navigator);
+
+  function copyCode(e) {
+    if (e.srcElement.tagName === 'SPAN' && e.srcElement.classList.contains('copy-code')) {
+      let code = e.currentTarget.querySelector('code');
+      var text = code.innerText;
+      if (e.srcElement.textContent === '复制成功') {
+        console.log('复制操作频率过高');
+        return;
+      }
+      e.srcElement.textContent = '复制成功';
+      (function (elem) {
+        setTimeout(() => {
+          if (elem.textContent === '复制成功') {
+            elem.textContent = '复制代码'
+          }
+        }, 1000);
+      })(e.srcElement)
+      Clipboard.copy(text);
+    }
+  }
+
+  let pres = document.querySelectorAll('pre');
+  pres.forEach(pre => {
+    let code = pre.querySelector('code');
+    let copyElem = document.createElement('span');
+    copyElem.classList.add('copy-code');
+    copyElem.textContent = '复制代码';
+    pre.appendChild(copyElem);
+    pre.onclick = copyCode
+  })
+
+</script>
+<script src="/media/js/motion.js"></script>
+
+<script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+<script>
+  var scroll = new SmoothScroll('a[href*="#"]', {
+    speed: 200
+  });
+</script>
+
+
+
+
+</html>
