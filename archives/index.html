@@ -9,7 +9,7 @@
 <meta name="description" content="心之所向，素履以往，生如逆旅，一苇以航。">
 <meta name="theme-color" content="#000">
 <title>Lanthanum</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1603881214193">
+<link rel="shortcut icon" href="/favicon.ico?v=1603890796200">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -185,19 +185,19 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">5</span>
+        <span class="site-item-stat-count">8</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="">
-        <span class="site-item-stat-count">5</span>
+        <span class="site-item-stat-count">7</span>
         <span class="site-item-stat-name language" data-lan="category">分类</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="/tags/">
-        <span class="site-item-stat-count">5</span>
+        <span class="site-item-stat-count">7</span>
         <span class="site-item-stat-name language" data-lan="tag">标签</span>
       </a>
     </div>
@@ -233,7 +233,7 @@
   <div class="archive-timeline-box">
     <div class="archive-timeline-title">
       
-        <h2 class="language" data-lan="archives" data-count="5">非常好！目前共计5篇日志，继续努力！</h2>
+        <h2 class="language" data-lan="archives" data-count="8">非常好！目前共计8篇日志，继续努力！</h2>
       
     </div>
     
@@ -243,6 +243,45 @@
           <h2 class="tag-year">2020</h2>
         </div>    
         
+      
+      <a href="https://ACLYH.github.io/post/2020-10-27-mo-ni-kao/">
+        <div class="motion-warpper tag-archive-node">
+          <div class="tag-node">
+            <h1>
+              10-28
+              <small>2020-10-27 模拟考</small>
+            </h1>
+          </div>  
+      </div>
+      </a>
+    
+      
+      
+      <a href="https://ACLYH.github.io/post/chai-fen-yue-shu/">
+        <div class="motion-warpper tag-archive-node">
+          <div class="tag-node">
+            <h1>
+              10-28
+              <small>差分约束</small>
+            </h1>
+          </div>  
+      </div>
+      </a>
+    
+      
+      
+      <a href="https://ACLYH.github.io/post/noip2010ji-qi-fan-yi-c/">
+        <div class="motion-warpper tag-archive-node">
+          <div class="tag-node">
+            <h1>
+              10-28
+              <small>[Noip2010]机器翻译-C++</small>
+            </h1>
+          </div>  
+      </div>
+      </a>
+    
+      
       
       <a href="https://ACLYH.github.io/post/zhan/">
         <div class="motion-warpper tag-archive-node">
@@ -535,6 +574,643 @@
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://ACLYH.github.io/post/2020-10-27-mo-ni-kao/"" data-c="
+          &lt;p&gt;三道题目，有两道还是普及组T3和T4原题。。。&lt;br&gt;
+&lt;s&gt;然鹅我似乎还是炸了呢&lt;/s&gt;&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;p&gt;T1&lt;br&gt;
+&lt;a href=&#34;https://www.luogu.com.cn/problem/P5661&#34;&gt;公交换乘&lt;/a&gt;&lt;br&gt;
+著名旅游城市 B 市为了鼓励大家采用公共交通方式出行，推出了一种地铁换乘公交车的优惠方案：&lt;/p&gt;
+&lt;p&gt;在搭乘一次地铁后可以获得一张优惠票，有效期为 45 分钟，在有效期内可以消耗这张优惠票，免费搭乘一次票价不超过地铁票价的公交车。在有效期内指开始乘公交车的时间与开始乘地铁的时间之差小于等于 45 分钟，即：tbus−tsubway≤45&lt;br&gt;
+搭乘地铁获得的优惠票可以累积，即可以连续搭乘若干次地铁后再连续使用优惠票搭乘公交车。&lt;br&gt;
+搭乘公交车时，如果可以使用优惠票一定会使用优惠票；如果有多张优惠票满足条件，则优先消耗获得最早的优惠票。&lt;br&gt;
+现在你得到了小轩最近的公共交通出行记录，你能帮他算算他的花费吗?&lt;/p&gt;
+&lt;p&gt;输入格式&lt;br&gt;
+输入文件的第一行包含一个正整数 n，代表乘车记录的数量。&lt;/p&gt;
+&lt;p&gt;接下来的 n 行，每行包含 3 个整数，相邻两数之间以一个空格分隔。第 i 行的第 1 个整数代表第 i条记录乘坐的交通工具，0 代表地铁，1 代表公交车；第 2 个整数代表第 i 条记录乘车的票价 price&lt;br&gt;
+i&lt;br&gt;
+​	&lt;br&gt;
+；第三个整数代表第 i 条记录开始乘车的时间 t&lt;br&gt;
+i&lt;br&gt;
+​	&lt;br&gt;
+（距 0 时刻的分钟数）。&lt;/p&gt;
+&lt;p&gt;我们保证出行记录是按照开始乘车的时间顺序给出的，且不会有两次乘车记录出现在同一分钟。&lt;/p&gt;
+&lt;p&gt;输出格式&lt;br&gt;
+输出文件有一行，包含一个正整数，代表小轩出行的总花费。&lt;/p&gt;
+&lt;p&gt;输入输出样例&lt;br&gt;
+输入 #1&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;6
+0 10 3
+1 5 46
+0 12 50
+1 3 96
+0 5 110
+1 6 135
+输出 #1
+36
+输入 #2
+6
+0 5 1
+0 20 16
+0 7 23
+1 18 31
+1 4 38
+1 7 68 
+输出 #2
+32
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;乘坐地铁的价格可以直接加入ans，主要处理在公交车是否免费的判断上。&lt;br&gt;
+因为队列的性质是先进先出，而题目恰好要求如果有多张优惠票满足条件，则优先消耗获得最早的优惠票。所以可以模拟队列，其中用一个结构体来表示优惠票的改变。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+struct node{
+	int pr,time,use;
+}q[110001];//免费票的价格上限，能用的时间，是否可用；
+int n;
+int op,pri,ti,ans;
+int tail,head;//模拟队列
+int main(){
+	cin &amp;gt;&amp;gt; n;
+	for(int i=0;i&amp;lt;n;i++){
+		cin &amp;gt;&amp;gt; op &amp;gt;&amp;gt; pri &amp;gt;&amp;gt; ti;
+		if(op==0){//如果是地铁的情况
+			ans+=pri;//直接将价格加入ans
+			q[tail].time = ti + 45;//时间范围
+			q[tail++].pr = pri; //存入票价
+		}else if(op == 1){//公交车
+			while (head &amp;lt; tail &amp;amp;&amp;amp; q[head].time &amp;lt; ti) {
+                head++;
+            }//放弃超过时间限制的票
+            bool flag = 0;//标记
+            for(int j=head;j&amp;lt;tail;j++){
+            	if(q[j].pr &amp;gt;= pri &amp;amp;&amp;amp; q[j].use == 0){//如果存在免费票大于公交车价格的票，且没有没用过
+            		flag = 1;
+            		q[j].use = 1;//标记为用过
+            		break;
+				}
+			}	
+		if(!flag){
+			ans+=pri;//如果不行，就将价格直接加入ans
+		}
+		}
+	}
+	cout &amp;lt;&amp;lt; ans;
+	return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;T2&lt;br&gt;
+&lt;a href=&#34;https://www.luogu.com.cn/problem/P5018&#34;&gt;对称二叉树&lt;/a&gt;&lt;br&gt;
+&lt;s&gt;有一道做过好几遍的题&lt;/s&gt;&lt;br&gt;
+当时在NOI考场上我一脸懵逼，现在想来······&lt;/p&gt;
+&lt;p&gt;一棵有点权的有根树如果满足以下条件，则被轩轩称为对称二叉树：&lt;br&gt;
+二叉树；&lt;br&gt;
+将这棵树所有节点的左右子树交换，新树和原树对应位置的结构相同且点权相等。&lt;br&gt;
+下图中节点内的数字为权值，节点外的 id 表示节点编号。&lt;/p&gt;
+&lt;p&gt;现在给出一棵二叉树，希望你找出它的一棵子树，该子树为对称二叉树，且节点数 最多。请输出这棵子树的节点数。&lt;/p&gt;
+&lt;p&gt;注意：只有树根的树也是对称二叉树。本题中约定，以节点 TT 为子树根的一棵“子 树”指的是：节点TT 和它的全部后代节点构成的二叉树。&lt;/p&gt;
+&lt;p&gt;输入格式&lt;br&gt;
+第一行一个正整数 n，表示给定的树的节点的数目，规定节点编号 &lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;∼&lt;/mo&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;1∼n&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.64444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2777777777777778em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mrel&#34;&gt;∼&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2777777777777778em;&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.43056em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;n&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;，其中节点 11 是树根。&lt;/p&gt;
+&lt;p&gt;第二行 n 个正整数，用一个空格分隔，第 i 个正整数 v_i 代表节点 i 的权值。&lt;/p&gt;
+&lt;p&gt;接下来 n 行，每行两个正整数 l_i, r_i ，分别表示节点 ii 的左右孩子的编号。如果不存在左 / 右孩子，则以 -1−1 表示。两个数之间用一个空格隔开。&lt;br&gt;
+输出格式&lt;br&gt;
+输出文件共一行，包含一个整数，表示给定的树的最大对称二叉子树的节点数。&lt;br&gt;
+输入输出样例&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;输入 #1
+2 
+1 3 
+2 -1 
+-1 -1 
+输出 #1
+1
+输入 #2
+10 
+2 2 5 5 5 5 4 4 2 3 
+9 10 
+-1 -1 
+-1 -1 
+-1 -1 
+-1 -1 
+-1 2 
+3 4 
+5 6 
+-1 -1 
+7 8
+输出 #2
+3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;DFS可以水过去。&lt;br&gt;
+搜索思路比较好想，以每个节点为根节点，判断左子树的值是否等于右子树值，就能找到它们是否是对称二叉树。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+
+int n;
+int l[1010000],r[1010010];//左子树，右子树
+bool vis;int a[10100100];
+int ans=1 ;
+int dfs(int x,int y,int s)//正在访问的节点，s为当前节点。
+{
+	if(x==-1&amp;amp;&amp;amp;y==-1)return 0;//返回条件
+	if(x==-1||y==-1&amp;amp;&amp;amp;x!=y){
+		vis=1;
+		return 0;	
+	}//对称二叉树
+	if(a[x]!=a[y]){
+		vis=1;
+		return 0;
+	}//对称
+	return  dfs(l[x],r[y],2) + dfs(r[x],l[y],2) + s;
+}
+
+int main(){
+	scanf(&amp;quot;%d&amp;quot;,&amp;amp;n);
+	for(int i=1;i&amp;lt;=n;i++){
+		scanf(&amp;quot;%d&amp;quot;,&amp;amp;a[i]);
+	}
+	for(int i=1;i&amp;lt;=n;i++){
+		scanf(&amp;quot;%d%d&amp;quot;,&amp;amp;l[i],&amp;amp;r[i]);
+	}
+	for(int i=1;i&amp;lt;=n;i++){
+		if(dfs(l[i],r[i],3)&amp;gt;ans&amp;amp;&amp;amp;vis==0){
+			ans = dfs(l[i],r[i],3);
+		}
+		vis = 0;
+	}
+	cout &amp;lt;&amp;lt; ans;
+	return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;T3&lt;br&gt;
+&lt;a href=&#34;http://forioi.com/p/6217&#34;&gt;photo&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;啊这。。状压DP？&lt;s&gt;（然鹅考场上并不会）&lt;/s&gt;&lt;/p&gt;
+&lt;p&gt;有N个人，来自K个家族.他们排成一行准备照相，但是由于天生的排外性，每个人都希望和本家族的人站在一起,中间不要加入别的家族的人.问最少从队列中去掉多少个就可以达到这个目的.&lt;br&gt;
+输入&lt;br&gt;
+第一行给出N,K。N在[1,100]，K在[1,5] 第二行给出N个数，每个数为1到K中的某个数。&lt;br&gt;
+输出&lt;br&gt;
+最少从队列中去掉多少个就可以达到这个目的&lt;/p&gt;
+&lt;p&gt;样例&lt;br&gt;
+输入&lt;br&gt;
+10 3&lt;br&gt;
+2 1 2 2 1 1 3 1 3 3&lt;/p&gt;
+&lt;p&gt;输出&lt;br&gt;
+2&lt;/p&gt;
+&lt;p&gt;DP求解可以保留最多的人数，&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo&gt;−&lt;/mo&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;n-ans&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.66666em;vertical-align:-0.08333em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mbin&#34;&gt;−&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.43056em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;s&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;即为所求。&lt;br&gt;
+所以就看那种方法最优，要么当前状态是一个新的家族，要么保持连通，当前这个人与上一个同属于一个家族。&lt;/p&gt;
+&lt;p&gt;用&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;d&lt;/mi&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mo&gt;[&lt;/mo&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mo&gt;]&lt;/mo&gt;&lt;mo&gt;[&lt;/mo&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;mo&gt;]&lt;/mo&gt;&lt;mo&gt;[&lt;/mo&gt;&lt;mi&gt;k&lt;/mi&gt;&lt;mo&gt;]&lt;/mo&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;dp[i][j][k]&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:1em;vertical-align:-0.25em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.05724em;&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.03148em;&#34;&gt;k&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;]&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;三个量来表示第i个人，第j状态，前一个人是第K家族的保留人数。&lt;/p&gt;
+&lt;p&gt;一为&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;d&lt;/mi&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mo&gt;[&lt;/mo&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mo&gt;]&lt;/mo&gt;&lt;mo&gt;[&lt;/mo&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;mo&gt;]&lt;/mo&gt;&lt;mo&gt;[&lt;/mo&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mo&gt;[&lt;/mo&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mo&gt;]&lt;/mo&gt;&lt;mo&gt;]&lt;/mo&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo&gt;(&lt;/mo&gt;&lt;mi&gt;d&lt;/mi&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mo&gt;[&lt;/mo&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mo&gt;]&lt;/mo&gt;&lt;mo&gt;[&lt;/mo&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;mo&gt;]&lt;/mo&gt;&lt;mo&gt;[&lt;/mo&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mo&gt;[&lt;/mo&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mo&gt;]&lt;/mo&gt;&lt;mo&gt;]&lt;/mo&gt;&lt;mo separator=&#34;true&#34;&gt;,&lt;/mo&gt;&lt;mi&gt;d&lt;/mi&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mo&gt;[&lt;/mo&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mo&gt;−&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;]&lt;/mo&gt;&lt;mo&gt;[&lt;/mo&gt;&lt;msup&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;mo&gt;(&lt;/mo&gt;&lt;/msup&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;&amp;lt;&lt;/mo&gt;&lt;mo&gt;&amp;lt;&lt;/mo&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mo&gt;[&lt;/mo&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mo&gt;]&lt;/mo&gt;&lt;mo&gt;−&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;)&lt;/mo&gt;&lt;mo&gt;]&lt;/mo&gt;&lt;mo&gt;[&lt;/mo&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;)&lt;/mo&gt;&lt;mo separator=&#34;true&#34;&gt;;&lt;/mo&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;dp[i][j][a[i]] = max(dp[i][j][a[i]], dp[i - 1][j ^ (1 &amp;lt;&amp;lt; a[i] - 1)][+ 1);&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:1em;vertical-align:-0.25em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.05724em;&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2777777777777778em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mrel&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2777777777777778em;&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:1em;vertical-align:-0.25em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;m&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.05724em;&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;mpunct&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.16666666666666666em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mbin&#34;&gt;−&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:1.138em;vertical-align:-0.25em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.05724em;&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;msupsub&#34;&gt;&lt;span class=&#34;vlist-t&#34;&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.8879999999999999em;&#34;&gt;&lt;span style=&#34;top:-3.063em;margin-right:0.05em;&#34;&gt;&lt;span class=&#34;pstrut&#34; style=&#34;height:2.7em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;sizing reset-size6 size3 mtight&#34;&gt;&lt;span class=&#34;mopen mtight&#34;&gt;(&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2777777777777778em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mrel&#34;&gt;&amp;lt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.5782em;vertical-align:-0.0391em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mrel&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2777777777777778em;&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:1em;vertical-align:-0.25em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mbin&#34;&gt;−&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:1em;vertical-align:-0.25em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;mpunct&#34;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; 当前出现的家族。&lt;br&gt;
+二为与上一个家族的人相同，即&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;d&lt;/mi&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mo&gt;[&lt;/mo&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mo&gt;]&lt;/mo&gt;&lt;mo&gt;[&lt;/mo&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;mo&gt;]&lt;/mo&gt;&lt;mo&gt;[&lt;/mo&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mo&gt;[&lt;/mo&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mo&gt;]&lt;/mo&gt;&lt;mo&gt;]&lt;/mo&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo&gt;(&lt;/mo&gt;&lt;mi&gt;d&lt;/mi&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mo&gt;[&lt;/mo&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mo&gt;]&lt;/mo&gt;&lt;mo&gt;[&lt;/mo&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;mo&gt;]&lt;/mo&gt;&lt;mo&gt;[&lt;/mo&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mo&gt;[&lt;/mo&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mo&gt;]&lt;/mo&gt;&lt;mo&gt;]&lt;/mo&gt;&lt;mo separator=&#34;true&#34;&gt;,&lt;/mo&gt;&lt;mi&gt;d&lt;/mi&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mo&gt;[&lt;/mo&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mo&gt;−&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;]&lt;/mo&gt;&lt;mo&gt;[&lt;/mo&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;mo&gt;]&lt;/mo&gt;&lt;mo&gt;[&lt;/mo&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mo&gt;[&lt;/mo&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mo&gt;]&lt;/mo&gt;&lt;mo&gt;]&lt;/mo&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;)&lt;/mo&gt;&lt;mo separator=&#34;true&#34;&gt;;&lt;/mo&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;dp[i][j][a[i]] = max(dp[i][j][a[i]], dp[i - 1][j][a[i]] + 1);&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:1em;vertical-align:-0.25em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.05724em;&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2777777777777778em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mrel&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2777777777777778em;&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:1em;vertical-align:-0.25em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;m&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.05724em;&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;mpunct&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.16666666666666666em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mbin&#34;&gt;−&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:1em;vertical-align:-0.25em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.05724em;&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;mopen&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mbin&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2222222222222222em;&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:1em;vertical-align:-0.25em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;mclose&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;mpunct&#34;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+ int ans = 0;
+int n, k, a[101001];
+int dp[200][1000][10];
+int main() {
+    cin &amp;gt;&amp;gt; n &amp;gt;&amp;gt;k;
+    for(int i = 1; i &amp;lt;= n; i++){
+    cin &amp;gt;&amp;gt; a[i];	
+    }
+     
+    for(int i = 1; i &amp;lt;= n; i++) {
+        memcpy(dp[i], dp[i - 1], sizeof dp[i - 1]);
+                 
+        for(int j = 0; j &amp;lt; (1 &amp;lt;&amp;lt; k); j++) {
+            if(j &amp;amp; (1 &amp;lt;&amp;lt; a[i] - 1)) {
+                dp[i][j][a[i]] = max(dp[i][j][a[i]], dp[i - 1][j][a[i]] + 1);
+                for(int l = 0; l &amp;lt;= k; l++){
+                	dp[i][j][a[i]] = max(dp[i][j][a[i]], dp[i - 1][j ^ (1 &amp;lt;&amp;lt; a[i] - 1)][l] + 1);
+            		}
+				}     
+        }
+    }
+    for(int j = 0; j &amp;lt; (1 &amp;lt;&amp;lt; k); j++)
+        for(int l = 0; l &amp;lt;= k; l++) 
+            ans = max(ans, dp[n][j][l]);
+             
+    cout &amp;lt;&amp;lt;  n - ans;
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+">2020-10-27 模拟考</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://ACLYH.github.io/post/chai-fen-yue-shu/"" data-c="
+          &lt;h4 id=&#34;1差分约束系统system-of-difference-constraints&#34;&gt;1.差分约束系统（system of difference constraints）&lt;/h4&gt;
+&lt;p&gt;如果一个系统由n个变量和m个约束条件组成，形成m个形如ai-aj≤k的不等式(i,j∈[1,n],k为常数),则称其为差分约束系统(system of difference constraints)。亦即，差分约束系统是求解关于一组变量的特殊不等式组的方法。&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;p&gt;求解差分约束系统，可以转化成图论的单源最短路径（或最长路径）问题。&lt;br&gt;
+——百度百科&lt;br&gt;
+如下列的不等式组&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;x1-x5≤-1
+x2-x5≤1
+x3-x1≤5
+x4-x1≤4
+x4-x3≤-1
+x5-x3≤-3
+x5-x4≤-3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;比如1式 x1-x5≤-1，其中一个未知数x1与x5的差小于等于-1，就相当于设两个未知数x，y差为某一常数，由这些不等式构成的不等式方程组为差分约束系统。&lt;/p&gt;
+&lt;h4 id=&#34;2例题&#34;&gt;2.例题&lt;/h4&gt;
+&lt;h6 id=&#34;小k的农场&#34;&gt;小K的农场&lt;/h6&gt;
+&lt;p&gt;关于洛谷一道蓝题。&lt;br&gt;
+&lt;a href=&#34;https://www.luogu.org/problemnew/show/P1993&#34;&gt;P1993 小K的农场&lt;/a&gt;&lt;br&gt;
+但因为在另一篇题解中写过了，所以不多做阐述，解题看好差分约束条件就行了。&lt;br&gt;
+&lt;a href=&#34;https://blog.csdn.net/weixin_43913349/article/details/89280139&#34;&gt;小K的农场（差分约束）题解&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;然后是另外两道题&lt;/p&gt;
+&lt;h6 id=&#34;蒜头君的银行卡&#34;&gt;蒜头君的银行卡&lt;/h6&gt;
+&lt;p&gt;Description&lt;/p&gt;
+&lt;p&gt;虽然蒜头君并没有多少钱，但是蒜头君办了很多张银行卡，共有 n 张，以至于他自己都忘记了每张银行卡里有多少钱了。他只记得一些含糊的信息，这些信息主要以下列三种形式描述：&lt;/p&gt;
+&lt;p&gt;银行卡 a 比银行卡 b 至少多 c 元。&lt;br&gt;
+银行卡 a 比银行卡 b 至多多 c 元。&lt;br&gt;
+银行卡 a 和银行卡 c 里的存款一样多。&lt;br&gt;
+但是由于蒜头君的记忆有些差，他想知道是否存在一种情况，使得银行卡的存款情况和他记忆中的所有信息吻合。&lt;/p&gt;
+&lt;p&gt;Input&lt;br&gt;
+第一行输入两个整数 n 和 m，分别表示银行卡数目和蒜头君记忆中的信息的数目。(1≤n,m≤10000)&lt;/p&gt;
+&lt;p&gt;接下来 m 行：&lt;/p&gt;
+&lt;p&gt;如果每行第一个数是 1，接下来有三个整数 a,b,c，表示银行卡 a 比银行卡 b 至少多 c元。&lt;/p&gt;
+&lt;p&gt;如果每行第一个数是 2，接下来有三个整数 a,b,c，表示银行卡 a 比银行卡 b 至多多 c元。&lt;/p&gt;
+&lt;p&gt;如果每行第一个数是 3，接下来有两个整数 a,b，表示银行卡 a 和 b 里的存款一样多。(1≤n,m,a,b,c≤10000)&lt;/p&gt;
+&lt;p&gt;Output&lt;br&gt;
+如果存在某种情况与蒜头君的记忆吻合，输出Yes，否则输出No。&lt;/p&gt;
+&lt;p&gt;Sample Input 1&lt;/p&gt;
+&lt;p&gt;3 3&lt;br&gt;
+3 1 2&lt;br&gt;
+1 1 3 1&lt;br&gt;
+2 2 3 2&lt;br&gt;
+Sample Output 1&lt;/p&gt;
+&lt;p&gt;Yes&lt;/p&gt;
+&lt;p&gt;很明显，题目中出现了几个约束条件：&lt;br&gt;
+银行卡 a 比银行卡 b 至少多 c 元。&lt;br&gt;
+银行卡 a 比银行卡 b 至多多 c 元。&lt;br&gt;
+银行卡 a 和银行卡 c 里的存款一样多。&lt;/p&gt;
+&lt;p&gt;转化为不等式方程组：&lt;/p&gt;
+&lt;p&gt;a-b&amp;gt;=c&lt;br&gt;
+a-b&amp;lt;=c&lt;br&gt;
+a=c&lt;/p&gt;
+&lt;p&gt;找到了解题的关键，然后将差分约束转化为最短路求解 。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+
+const int maxn=10100;
+const int inf=0x3f3f3f3f;
+
+int n,m;
+
+struct node{
+	int v,w;
+	node(){ }
+	node(int _v,int _w){
+		v=_v;
+		w=_w;
+	}
+};
+
+vector &amp;lt;node&amp;gt; g[maxn];
+int dst[maxn];
+queue &amp;lt;int&amp;gt; qu;
+bool inq[maxn];
+int cnt[maxn];
+
+
+int add(int u,int v,int w){
+	g[u].push_back(node(v,w));
+//	g[v].push_back(node());
+}
+
+int spfa(int u){
+	memset(inq,0,sizeof inq);
+	memset(dst,inf,sizeof dst);
+	memset(cnt,0,sizeof cnt);
+	dst[u]=0;
+	qu.push(u);
+	inq[u]=1;
+	cnt[u]=1;
+	while(!qu.empty()){
+		u=qu.front();
+		qu.pop();
+		inq[u]=0;
+		for(int i=0;i&amp;lt;g[u].size();i++){
+			int v=g[u][i].v;
+			int w=g[u][i].w;
+			if(dst[v]&amp;gt;dst[u]+w){
+				dst[v]=dst[u]+w;
+				if(!inq[v]){
+					qu.push(v);
+					inq[v]=1;
+					cnt[v]++;
+					if(cnt[v]&amp;gt;n+1){
+					return 0;	
+					}
+				}
+			}
+		}
+	}
+	return 1;
+}
+
+
+int main(){
+	cin &amp;gt;&amp;gt; n &amp;gt;&amp;gt; m;
+	
+	for(int i=0;i&amp;lt;m;i++){
+		int d,a,b,c;
+		cin &amp;gt;&amp;gt; d;
+		if(d==1){
+			cin &amp;gt;&amp;gt;a&amp;gt;&amp;gt;b&amp;gt;&amp;gt;c;
+			g[a].push_back(node(b,-c));
+		}else if(d==2){
+			cin &amp;gt;&amp;gt;a&amp;gt;&amp;gt;b&amp;gt;&amp;gt;c;
+			g[b].push_back(node(a,-c));
+		}else{
+			cin &amp;gt;&amp;gt;a&amp;gt;&amp;gt;b;
+			g[a].push_back(node(b,0));
+			g[b].push_back(node(a,0));
+		}
+	}
+	
+	for(int i=1;i&amp;lt;=n;i++){
+		add(0,i,0);
+	}
+	if(spfa(0)){
+	cout &amp;lt;&amp;lt; &amp;quot;Yes&amp;quot;&amp;lt;&amp;lt;endl;
+}else{
+	cout &amp;lt;&amp;lt; &amp;quot;No&amp;quot;;
+}
+	return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h6 id=&#34;蒜头君当大厨&#34;&gt;蒜头君当大厨&lt;/h6&gt;
+&lt;pre&gt;&lt;code&gt;Description
+
+蒜头君苦练厨艺，终于成为了某高档酒店的大厨。
+
+每天上班，蒜头君会被要求做 n 份菜。既然是高档酒店，那么客人们当然是很讲究的，尤其对于上菜的时间有很多要求。客人们的要求被分成下列四种：
+
+菜品 a 的上菜时间必须比菜品 b 的上菜时间早 d 分钟或者更早。
+
+菜品 a 的上菜时间必须比菜品 b 的上菜时间迟 d 分钟或者更迟。
+
+菜品 a 的上菜时间在 d 分钟以后(包含 d 分钟)。
+
+菜品 a 的上菜时间在 d 分钟之前(包含 d 分钟)。
+
+蒜头君的上班时间记为 0 分钟。为了节约时间，在满足客人们要求的情况下，蒜头君希望最后上的一道菜的时间尽可能的早。（每道菜的上菜时间必须不早于蒜头君的上班时间）
+
+
+Input
+第一行输入一个整数 n，表示一共需要上 n 道菜。
+
+第二行输入一个整数 m，表示客人们的要求数量。
+
+接下里 m 行，每行先输入一个整数 op。
+
+如果 op=1，表示描述里的第 1 种要求，后面跟着三个整数 a,b,d。
+如果 op=2，表示描述里的第 2 种要求，后面跟着三个整数 a,b,d。
+如果 op=3，表示描述里的第 3 种要求，后面跟着两个整数 a,d。
+如果 op=4，表示描述里的第 4 种要求，后面跟着两个整数 a,d。
+
+Output
+如果蒜头君能满足客人们的要求，输出最后一道菜的上菜时间；否则输出一行 &#39;I can&#39;t&#39;。
+
+数据范围和约定
+
+对于所有的数据：1≤n,m≤20000，1≤∣d∣≤10000 ,1≤a,b≤n，a≠b。
+
+样例解释 1
+
+1,2,3 的上菜时间分别为 0,2,12，这样能满足输入客人们的所有要求，并且时间最短。
+
+
+
+Sample Input 1 
+
+3
+5
+2 3 2 10
+2 2 1 2
+2 3 2 5
+1 2 3 7
+3 3 9
+Sample Output 1
+
+12
+Sample Input 2 
+
+3
+4
+3 1 3
+2 3 1 9
+2 1 3 -1
+1 1 2 5
+Sample Output 2
+
+I can&#39;t
+Sample Input 3 
+
+17
+20
+2 6 3 -21
+1 8 2 54
+3 7 -95
+4 11 44
+1 5 15 40
+3 9 1
+3 3 30
+3 8 23
+2 9 12 -15
+4 13 61
+2 3 7 31
+1 5 10 -15
+2 16 1 43
+2 12 3 -79
+2 14 16 -51
+3 6 48
+4 7 0
+2 10 11 -59
+2 12 17 -29
+3 4 10
+Sample Output 3
+
+77
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;与蒜头君的银行卡差不多，都是找到差分约束条件：&lt;br&gt;
+菜品 a 的上菜时间必须比菜品 b 的上菜时间早 d 分钟或者更早。&lt;/p&gt;
+&lt;p&gt;菜品 a 的上菜时间必须比菜品 b 的上菜时间迟 d 分钟或者更迟。&lt;/p&gt;
+&lt;p&gt;菜品 a 的上菜时间在 d 分钟以后(包含 d 分钟)。&lt;/p&gt;
+&lt;p&gt;菜品 a 的上菜时间在 d 分钟之前(包含 d 分钟)。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+
+const int maxn=20010;
+
+int n,m;
+
+struct node{
+	int v,w;
+	node(){ }
+	node(int _v,int _w){
+		v=_v;
+		w=_w;
+	}
+};
+
+vector &amp;lt;node&amp;gt; g[maxn];
+int dst[maxn];
+queue &amp;lt;int&amp;gt; qu;
+bool inq[maxn];
+int cnt[maxn];
+int flag;
+
+int add(int u,int v,int w){
+	g[u].push_back(node(v,w));
+//	g[v].push_back(node());
+}
+
+void spfa(int u){
+	memset(inq,0,sizeof inq);
+	memset(dst,0x80,sizeof dst);
+	memset(cnt,0,sizeof cnt);
+	dst[u]=0;
+	qu.push(u);
+	inq[u]=1;
+	cnt[u]=1;
+	while(!qu.empty()){
+		u=qu.front();
+		qu.pop();
+		inq[u]=0;
+		for(int i=0;i&amp;lt;g[u].size();i++){
+			int v=g[u][i].v;
+			int w=g[u][i].w;
+			if(dst[v]&amp;lt;dst[u]+w){
+				dst[v]=dst[u]+w;
+				if(!inq[v]){
+					qu.push(v);
+					inq[v]=1;
+					cnt[v]++;
+					if(cnt[v]&amp;gt;n+1){
+						return;
+					}
+					if(cnt[v]==n+1){
+						flag=1;
+					}
+				}
+			}
+		}
+	}
+	return;
+}
+
+
+int main(){
+	cin &amp;gt;&amp;gt; n &amp;gt;&amp;gt; m;
+	
+	for(int i=0;i&amp;lt;m;i++){
+		int d,a,b,c;
+		cin &amp;gt;&amp;gt; d;
+		if(d==1){
+			cin &amp;gt;&amp;gt;a&amp;gt;&amp;gt;b&amp;gt;&amp;gt;c;
+			g[a].push_back(node(b,c));
+		}else if(d==2){
+			cin &amp;gt;&amp;gt;a&amp;gt;&amp;gt;b&amp;gt;&amp;gt;c;
+			g[b].push_back(node(a,c));
+		}else if(d==3){
+			cin &amp;gt;&amp;gt;a&amp;gt;&amp;gt;b;
+			g[0].push_back(node(a,b));
+		}else{
+			cin &amp;gt;&amp;gt;a&amp;gt;&amp;gt;b;
+			g[0].push_back(node(0,-b));
+		}
+	}
+	
+	for(int i=1;i&amp;lt;=n;i++){
+		add(0,i,0);
+	}
+int ans=0;
+spfa(0);
+
+if(flag){
+	cout&amp;lt;&amp;lt;&amp;quot;I can&#39;t&amp;quot;;
+	return 0;
+}
+ 
+ for(int i=1;i&amp;lt;=n;i++){
+ ans=max(ans,dst[i]);
+}
+cout &amp;lt;&amp;lt; ans;
+	return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+">差分约束</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://ACLYH.github.io/post/noip2010ji-qi-fan-yi-c/"" data-c="
+          &lt;h2 id=&#34;description&#34;&gt;Description&lt;/h2&gt;
+&lt;p&gt;小晨的电脑上安装了一个机器翻译软件，他经常用这个软件来翻译英语文章。这个翻译软件的原理很简单，它只是&lt;br&gt;
+从头到尾，依次将每个英文单词用对应的中文含义来替换。对于每个英文单词，软件会先在内存中查找这个单词的&lt;br&gt;
+中文含义&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;p&gt;，如果内存中有，软件就会用它进行翻译；如果内存中没有，软件就会在外存中的词典内查找，查出单词&lt;br&gt;
+的中文含义然后翻译，并将这个单词和译义放入内存，以备后续的查找和翻译。假设内存中有 M 个单元，每单元&lt;br&gt;
+能存放一个单词和译义。每当软件将一个新单词存入内存前，如果当前内存中已存入的单词数不超过 M?1，软件会&lt;br&gt;
+将新单词存入一个未使用的内存单元；若内存中已存入 M 个单词，软件会清空最早进入内存的那个单词，腾出单&lt;br&gt;
+元来，存放新单词。假设一篇英语文章的长度为 N个单词。给定这篇待译文章，翻译软件需要去外存查找多少次词&lt;br&gt;
+典？假设在翻译开始前，内存中没有任何单词。&lt;/p&gt;
+&lt;h2 id=&#34;input&#34;&gt;Input&lt;/h2&gt;
+&lt;p&gt;输入文件共 2 行。每行中两个数之间用一个空格隔开。&lt;br&gt;
+第一行为两个正整数 M和 N，代表内存容量和文章的长度。&lt;br&gt;
+第二行为 N 个非负整数，按照文章的顺序，每个数（大小不超过 1000）代表一个英文 单词。文章中两个单词是&lt;br&gt;
+同一个单词，当且仅当它们对应的非负整数相同。&lt;br&gt;
+0&amp;lt;M≤100，0&amp;lt;N≤1000&lt;/p&gt;
+&lt;h2 id=&#34;output&#34;&gt;Output&lt;/h2&gt;
+&lt;p&gt;包含一个整数，为软件需要查词典的次数。&lt;/p&gt;
+&lt;h2 id=&#34;sample-input&#34;&gt;Sample Input&lt;/h2&gt;
+&lt;p&gt;3 7&lt;br&gt;
+1 2 1 5 4 4 1&lt;/p&gt;
+&lt;h2 id=&#34;sample-output&#34;&gt;Sample Output&lt;/h2&gt;
+&lt;p&gt;5&lt;br&gt;
+//整个查字典过程如下：每行表示一个单词的翻译，冒号前为本次翻译后的内存状况：&lt;br&gt;
+空：内存初始状态为空。&lt;br&gt;
+1． 1：查找单词1 并调入内存。&lt;br&gt;
+2． 1 2：查找单词 2 并调入内存。&lt;br&gt;
+3． 1 2：在内存中找到单词 1。&lt;br&gt;
+4． 1 2 5：查找单词 5 并调入内存。&lt;br&gt;
+5． 2 5 4：查找单词 4 并调入内存替代单词 1。&lt;br&gt;
+6． 2 5 4：在内存中找到单词 4。&lt;br&gt;
+7． 5 4 1：查找单词 1 并调入内存替代单词 2。&lt;br&gt;
+共计查了 5次词典。&lt;/p&gt;
+&lt;p&gt;其实就是队列的操作，找到一个新单词，就将它存入队列不断更新。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#include&amp;lt;bits/stdc++.h&amp;gt;
+using namespace std;
+int a[10000];
+int main(){
+    queue&amp;lt;int&amp;gt; q;
+    int m,n,ans=0;
+    int b;
+    cin  &amp;gt;&amp;gt; m &amp;gt;&amp;gt; n;
+    for(int i=1;i&amp;lt;=n;i++){
+        cin &amp;gt;&amp;gt; b;
+        if(!a[b]){
+            ans++;
+            if(q.size()&amp;lt;m){
+                a[b]=1;
+                q.push(b);
+            }else if(m!=0){
+                a[q.front()]=0;
+                a[b]=1;
+                q.pop();
+                q.push(b);
+            }
+        }
+         
+    }
+    cout &amp;lt;&amp;lt; ans &amp;lt;&amp;lt; endl;
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+">[Noip2010]机器翻译-C++</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://ACLYH.github.io/post/zhan/"" data-c="

@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="心之所向，素履以往，生如逆旅，一苇以航。">
 <meta name="theme-color" content="#000">
-<title>Lanthanum</title>
+<title>差分约束 | Lanthanum</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1603890796200">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -38,6 +38,8 @@
 
 
 
+  <meta name="description" content="差分约束" />
+  <meta name="keywords" content="" />
 </head>
 
 <body>
@@ -99,7 +101,7 @@
             
               
             
-            <li class="nav-item nav-item-active">
+            <li class="nav-item ">
               
               
                 <a href="/tags/" target="_self">
@@ -170,10 +172,26 @@
   <div class="main-continer">
     
     <div
-      class="section-layout  gemini">
+      class="section-layout gemini ">
       <div class="section-layout-wrapper">
-        <div id="sidebarMeta" class="sidebar">
-    
+        
+
+<div class="sidebar">
+  
+    <div class="sidebar-box box-shadow-wrapper bg-color right-motion" id="sidebar">
+      
+        <div class="post-list-sidebar">
+          <div class="sidebar-title">
+            <span id="tocSideBar" class="sidebar-title-item sidebar-title-active language" data-lan="index">文章目录</span>
+            <span id="metaSideBar" class="sidebar-title-item language" data-lan="preview">站点概览</span>
+          </div>
+        </div>
+      
+      <div class="sidebar-body gemini" id="sidebar_body">
+        
+          
+            <div class="post-side-meta" id="post_side_meta">
+              
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="/images/avatar.png"/>
@@ -209,368 +227,713 @@
 
 
 </div>
+            </div>
+            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
+              <div class="toc-box right-motion">
+  <div class="toc-wrapper auto-number auto"
+    id="toc_wrapper">
+    <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#1%E5%B7%AE%E5%88%86%E7%BA%A6%E6%9D%9F%E7%B3%BB%E7%BB%9Fsystem-of-difference-constraints">1.差分约束系统（system of difference constraints）</a></li>
+<li><a href="#2%E4%BE%8B%E9%A2%98">2.例题</a><br>
+*
+<ul>
+<li><a href="#%E5%B0%8Fk%E7%9A%84%E5%86%9C%E5%9C%BA">小K的农场</a></li>
+<li><a href="#%E8%92%9C%E5%A4%B4%E5%90%9B%E7%9A%84%E9%93%B6%E8%A1%8C%E5%8D%A1">蒜头君的银行卡</a></li>
+<li><a href="#%E8%92%9C%E5%A4%B4%E5%90%9B%E5%BD%93%E5%A4%A7%E5%8E%A8">蒜头君当大厨</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
 </div>
+
 <script>
-  let sidebarMeta = document.querySelector('#sidebarMeta');
-  let scheme = 'gemini';
-  let sidebarWrapper = document.querySelector('.sidebar-wrapper');
-  if (sidebarMeta && (scheme === 'pisces' || scheme === 'gemini')) {
-    document.addEventListener('scroll', function(e) {
-      if (document.scrollingElement.scrollTop > parseInt(sidebarMeta.style.marginTop) + 10) {
-        sidebarWrapper.classList.add('home-sidebar-fixed')
-      } else {
-        sidebarWrapper.classList.remove('home-sidebar-fixed')
+
+  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
+  let active = 'active-show', activeClass = 'active-current';
+  let tocWrapper = document.querySelector('#toc_wrapper');
+  let tocContent = tocWrapper.children[0];
+  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
+
+  function addTocNumber(elem, deep) {
+    if (!elem) {
+      return;
+    }
+    let prop = elem.__proto__;
+
+    if (prop === HTMLUListElement.prototype) {
+      for (let i = 0; i < elem.children.length; i++) {
+        addTocNumber(elem.children[i], deep + (i + 1) + '.');
       }
+    } else if (prop === HTMLLIElement.prototype) {
+      // 保存li元素
+      if (elem.children[0] && elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
+        lList.push(elem);
+      }
+      for (let i = 0; i < elem.children.length; i++) {
+        let cur = elem.children[i];
+        if (cur.__proto__ === HTMLAnchorElement.prototype) {
+          if (autoNumber) {
+            cur.text = deep + ' ' + cur.text;
+          }
+        } else if (cur.__proto__ === HTMLUListElement.prototype) {
+          addTocNumber(cur, deep);
+        }
+      }
+    }
+  }
+
+  function removeParentActiveClass() {
+    let parents = tocContent.querySelectorAll('.' + active)
+    parents.forEach(function (elem) {
+      elem.classList.remove(active);
     });
   }
-  </script>
-        <div class="section-box box-shadow-wrapper">
-          <section class="section tags-section bg-color posts-expand">
-            <div class="tags-box">
-  <div class="tag-cloud-title language" data-lan="cloud-tags" data-count="7">
-    目前共计 7 个标签
-  </div>
-  <div class="tag-cloud-list" id="tags">
-    
-      
-      
-        
-          
-            
-      
-        
-      
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-          
-        
-      
-        
-          
-        
-          
-        
-      
-        
-      
-        
-          
-        
-      
-      <a class="cloud-tag" href="https://ACLYH.github.io/tag/hdahyiJMN/" rel="1">树</a>
-    
-      
-      
-        
-          
-        
-          
-            
-      
-        
-      
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-          
-        
-      
-        
-          
-        
-          
-        
-      
-        
-      
-        
-          
-        
-      
-      <a class="cloud-tag" href="https://ACLYH.github.io/tag/K1oqUyn24q/" rel="1">状压DP</a>
-    
-      
-      
-        
-          
-        
-          
-        
-          
-            
-      
-        
-      
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-            
-      
-        
-          
-            
-      
-        
-      
-        
-          
-        
-      
-      <a class="cloud-tag" href="https://ACLYH.github.io/tag/9uX8VkzGC/" rel="3">C++</a>
-    
-      
-      
-        
-          
-        
-          
-        
-          
-        
-      
-        
-      
-        
-      
-        
-          
-            
-      
-        
-          
-        
-      
-        
-          
-        
-          
-        
-      
-        
-          
-        
-          
-        
-      
-        
-      
-        
-          
-        
-      
-      <a class="cloud-tag" href="https://ACLYH.github.io/tag/BYGVSE3tv/" rel="1">栈</a>
-    
-      
-      
-        
-          
-        
-          
-        
-          
-        
-      
-        
-      
-        
-      
-        
-          
-        
-      
-        
-          
-            
-      
-        
-          
-        
-          
-        
-      
-        
-          
-        
-          
-        
-      
-        
-      
-        
-          
-        
-      
-      <a class="cloud-tag" href="https://ACLYH.github.io/tag/a7JG5d-UM/" rel="1">并查集</a>
-    
-      
-      
-        
-          
-        
-          
-        
-          
-        
-      
-        
-      
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-          
-            
-      
-        
-          
-        
-          
-            
-      
-        
-      
-        
-          
-        
-      
-      <a class="cloud-tag" href="https://ACLYH.github.io/tag/TSrwZ4k9Eg/" rel="2">数据结构</a>
-    
-      
-      
-        
-          
-        
-          
-        
-          
-        
-      
-        
-      
-        
-      
-        
-          
-        
-      
-        
-          
-        
-      
-        
-          
-        
-          
-        
-      
-        
-          
-        
-          
-        
-      
-        
-      
-        
-          
-            
-      
-      <a class="cloud-tag" href="https://ACLYH.github.io/tag/wjfSWvYdA/" rel="1">Gridea</a>
-    
-  </div>
-</div>
-<script>
 
-  let fontStart = 12, fontEnd = 30, colorStart = '#666', colorEnd = '#000';
-  let tags = document.querySelector('#tags').children;
-  let counts = [];
-  for(let i = 0; i < tags.length; i++) {
-    counts.push(tags[i].rel);
-  }
-  let lowest = Math.min.apply(null,counts), highest = Math.max.apply(null,counts);;
-  let range = highest - lowest;
-  if (range === 0) {
-    range = 1;
-  }
-  let fontIncr, colorIncr;
-  fontIncr = (fontEnd - fontStart) / range;
-  
-  let sColorArr = toRGB(colorStart), eColorArr = toRGB(colorEnd);
-
-  for(let i = 0; i < tags.length; i++) {
-    let disCount = tags[i].rel - lowest;
-    let fontSize = fontStart + disCount * fontIncr;
-    let style = 'font-size: ' + fontSize + 'px;';
-    let arr = [];
-    for(let c = 0; c < sColorArr.length; c++) {
-      if (disCount === 0) {
-        disCount = 1;
-      }
-      let val = (sColorArr[c] - eColorArr[c]) / range * disCount;
-      if (val >= 100) {
-        val = eColorArr[c];
-      } else if (val <= 0) {
-        val = sColorArr[c];
-      }
-      arr[c] = Math.floor(val);
+  function addActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.add(activeClass);
     }
-    style += 'color: ' + toHex(arr);
-    tags[i].style = style;
   }
 
-  function toRGB(code) {
-    if (code.length === 4) {
-      code = code.replace(/(\w)(\w)(\w)/gi, "\$1\$1\$2\$2\$3\$3");
+  function removeActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.remove(activeClass);
     }
-    var hex = /(\w{2})(\w{2})(\w{2})/.exec(code);
-    return [parseInt(hex[1], 16), parseInt(hex[2], 16), parseInt(hex[3], 16)];
   }
 
-  function toHex(ary) {
-    return "#" + ((1 << 24) + (ary[0] << 16) + (ary[1] << 8) + ary[2]).toString(16).slice(1);
+  function addActiveLiElemment(elem, parent) {
+    if (!elem || elem === parent) {
+      return;
+    } else {
+      if (elem.__proto__ === HTMLLIElement.prototype) {
+        elem.classList.add(active);
+      }
+      addActiveLiElemment(elem.parentElement, parent);
+    }
   }
+
+  function showToc() {
+    if (tocWrapper) {
+      postBody = document.querySelector('#post_body');
+      for (let i = 0; i < postBody.children.length; i++) {
+        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
+          hList.push(postBody.children[i]);
+        }
+      }
+      if (tocWrapper.classList.contains('compress')) {
+        tocContent.classList.add('closed');
+      } else if (tocWrapper.classList.contains('no_compress')) {
+        tocContent.classList.add('expanded');
+      } else {
+        if (hList.length > 10) {
+          active = 'active-hidden'
+          tocContent.classList.add('closed');
+        } else {
+          tocContent.classList.add('expanded');
+        }
+      }
+    }
+  }
+
+  (function () {
+    // 处理不是从#一级标题开始目录
+    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
+      let con = tocContent.children[0].children[0];
+      tocContent.innerHTML = con.innerHTML;
+    }
+    let markdownItTOC = document.querySelector('.markdownIt-TOC');
+    let innerHeight = window.innerHeight;
+    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
+    addTocNumber(tocContent, '');
+  })();
+
+  document.addEventListener('scroll', function (e) {
+    if (lList.length <= 0) {
+      return;
+    }
+    let scrollTop = document.scrollingElement.scrollTop + 10;
+    let dir;
+
+    if (lastTop - scrollTop > 0) {
+      dir = 'up';
+    } else {
+      dir = 'down';
+    }
+
+    lastTop = scrollTop;
+    if (scrollTop <= 0) {
+      if (lastIndex >= 0 && lastIndex < hList.length) {
+        lList[lastIndex].classList.remove(activeClass);
+      }
+      return;
+    }
+
+    let current = 0, hasFind = false;
+    for (let i = 0; i < hList.length; i++) {
+      if (hList[i].offsetTop > scrollTop) {
+        current = i;
+        hasFind = true;
+        break;
+      }
+    }
+    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
+      current = hList.length - 1;
+    } else {
+      current--;
+    }
+    if (dir === 'down') {
+      if (current > lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex)
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    } else {
+      if (current < lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex);
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    }
+  });
+
+
+  window.addEventListener('load', function () {
+    showToc();
+    document.querySelector('#sidebar').style = 'display: block;';
+    tocWrapper.classList.add('toc-active');
+    setTimeout(function () {
+      if ("createEvent" in document) {
+        let evt = document.createEvent("HTMLEvents");
+        evt.initEvent("scroll", false, true);
+        document.dispatchEvent(evt);
+      }
+      else {
+        document.fireEvent("scroll");
+      }
+    }, 500)
+  })
 
 </script>
-          </section>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+</div>
+<script>
+  const SIDEBAR_TITLE_ACTIVE = 'sidebar-title-active';
+  const SIDEBAR_BODY_ACTIVE = 'sidebar-body-active';
+  const SLIDE_UP_IN = 'slide-up-in';
+
+  let sidebar = document.querySelector('#sidebar'),
+  tocSideBar = document.querySelector('#tocSideBar'),
+  metaSideBar = document.querySelector('#metaSideBar'),
+  postToc = document.querySelector('#post_toc'),
+  postSiteMeta = document.querySelector('#post_side_meta'),
+  sidebarTitle = document.querySelector('.sidebar-title'),
+  sidebarBody = document.querySelector('#sidebar_body');
+
+  tocSideBar && tocSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  metaSideBar && metaSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  function toggleSidebar(e) {
+    let currentTitle = document.querySelector("."+SIDEBAR_TITLE_ACTIVE);
+    if (currentTitle == e.srcElement) {
+      return ;
+    }
+    let current, showElement, hideElement;
+    if (e.srcElement == metaSideBar) {
+      showElement = postSiteMeta;
+      hideElement = postToc;
+    } else if (e.srcElement == tocSideBar){
+      showElement = postToc;
+      hideElement = postSiteMeta;
+    }
+    currentTitle.classList.remove(SIDEBAR_TITLE_ACTIVE);
+    e.srcElement.classList.add(SIDEBAR_TITLE_ACTIVE);
+
+    window.Velocity(hideElement, 'stop');
+    window.Velocity(hideElement, 'transition.slideUpOut', {
+      display: 'none',
+      duration: 200,
+      complete: function () {
+        window.Velocity(showElement, 'transition.slideDownIn', {
+          duration: 200
+        });
+      }
+    })
+    hideElement.classList.remove(SIDEBAR_BODY_ACTIVE);
+    showElement.classList.add(SIDEBAR_BODY_ACTIVE);
+  }
+
+  postToc && postToc.addEventListener('transitionend', function() {
+    this.classList.remove(SLIDE_UP_IN);
+  });
+
+  if (sidebarBody) {
+    if (sidebarBody.classList.contains('pisces') || sidebarBody.classList.contains('gemini')) {
+      let hasFix = false;
+      let scrollEl = document.querySelector('.main-continer');
+      let limitTop = document.querySelector('#nav_ul').children.length * 42 + 162;
+      window.addEventListener('scroll', function(e) {
+        if (document.scrollingElement.scrollTop >= limitTop) {
+          if (!hasFix) {
+            sidebar.classList.add('sidebar-fixed');
+            hasFix = true;
+          }
+        } else {
+          if (hasFix) {
+            sidebar.classList.remove('sidebar-fixed');
+            hasFix = false;
+          }
+        }
+      });
+    }
+  }
+  
+</script>
+        <div class="section-box box-shadow-wrapper">
+          <div class="section bg-color post post-page">
+            <header class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://ACLYH.github.io/post/chai-fen-yue-shu/">
+      差分约束
+    </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span class="language" data-lan="publish">发布于</span>
+      <span>2020-10-28</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>10<span class="language" data-lan="minute">分钟</span></span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>2136<span class="pc-show language" data-lan="words">字数</span></span>
+    </span>
+    
+  </div>
+</header>
+            <div class="post-body next-md-body" id="post_body">
+              <h4 id="1差分约束系统system-of-difference-constraints">1.差分约束系统（system of difference constraints）</h4>
+<p>如果一个系统由n个变量和m个约束条件组成，形成m个形如ai-aj≤k的不等式(i,j∈[1,n],k为常数),则称其为差分约束系统(system of difference constraints)。亦即，差分约束系统是求解关于一组变量的特殊不等式组的方法。</p>
+<!-- more -->
+<p>求解差分约束系统，可以转化成图论的单源最短路径（或最长路径）问题。<br>
+——百度百科<br>
+如下列的不等式组</p>
+<pre><code>x1-x5≤-1
+x2-x5≤1
+x3-x1≤5
+x4-x1≤4
+x4-x3≤-1
+x5-x3≤-3
+x5-x4≤-3
+</code></pre>
+<p>比如1式 x1-x5≤-1，其中一个未知数x1与x5的差小于等于-1，就相当于设两个未知数x，y差为某一常数，由这些不等式构成的不等式方程组为差分约束系统。</p>
+<h4 id="2例题">2.例题</h4>
+<h6 id="小k的农场">小K的农场</h6>
+<p>关于洛谷一道蓝题。<br>
+<a href="https://www.luogu.org/problemnew/show/P1993">P1993 小K的农场</a><br>
+但因为在另一篇题解中写过了，所以不多做阐述，解题看好差分约束条件就行了。<br>
+<a href="https://blog.csdn.net/weixin_43913349/article/details/89280139">小K的农场（差分约束）题解</a></p>
+<p>然后是另外两道题</p>
+<h6 id="蒜头君的银行卡">蒜头君的银行卡</h6>
+<p>Description</p>
+<p>虽然蒜头君并没有多少钱，但是蒜头君办了很多张银行卡，共有 n 张，以至于他自己都忘记了每张银行卡里有多少钱了。他只记得一些含糊的信息，这些信息主要以下列三种形式描述：</p>
+<p>银行卡 a 比银行卡 b 至少多 c 元。<br>
+银行卡 a 比银行卡 b 至多多 c 元。<br>
+银行卡 a 和银行卡 c 里的存款一样多。<br>
+但是由于蒜头君的记忆有些差，他想知道是否存在一种情况，使得银行卡的存款情况和他记忆中的所有信息吻合。</p>
+<p>Input<br>
+第一行输入两个整数 n 和 m，分别表示银行卡数目和蒜头君记忆中的信息的数目。(1≤n,m≤10000)</p>
+<p>接下来 m 行：</p>
+<p>如果每行第一个数是 1，接下来有三个整数 a,b,c，表示银行卡 a 比银行卡 b 至少多 c元。</p>
+<p>如果每行第一个数是 2，接下来有三个整数 a,b,c，表示银行卡 a 比银行卡 b 至多多 c元。</p>
+<p>如果每行第一个数是 3，接下来有两个整数 a,b，表示银行卡 a 和 b 里的存款一样多。(1≤n,m,a,b,c≤10000)</p>
+<p>Output<br>
+如果存在某种情况与蒜头君的记忆吻合，输出Yes，否则输出No。</p>
+<p>Sample Input 1</p>
+<p>3 3<br>
+3 1 2<br>
+1 1 3 1<br>
+2 2 3 2<br>
+Sample Output 1</p>
+<p>Yes</p>
+<p>很明显，题目中出现了几个约束条件：<br>
+银行卡 a 比银行卡 b 至少多 c 元。<br>
+银行卡 a 比银行卡 b 至多多 c 元。<br>
+银行卡 a 和银行卡 c 里的存款一样多。</p>
+<p>转化为不等式方程组：</p>
+<p>a-b&gt;=c<br>
+a-b&lt;=c<br>
+a=c</p>
+<p>找到了解题的关键，然后将差分约束转化为最短路求解 。</p>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+
+const int maxn=10100;
+const int inf=0x3f3f3f3f;
+
+int n,m;
+
+struct node{
+	int v,w;
+	node(){ }
+	node(int _v,int _w){
+		v=_v;
+		w=_w;
+	}
+};
+
+vector &lt;node&gt; g[maxn];
+int dst[maxn];
+queue &lt;int&gt; qu;
+bool inq[maxn];
+int cnt[maxn];
+
+
+int add(int u,int v,int w){
+	g[u].push_back(node(v,w));
+//	g[v].push_back(node());
+}
+
+int spfa(int u){
+	memset(inq,0,sizeof inq);
+	memset(dst,inf,sizeof dst);
+	memset(cnt,0,sizeof cnt);
+	dst[u]=0;
+	qu.push(u);
+	inq[u]=1;
+	cnt[u]=1;
+	while(!qu.empty()){
+		u=qu.front();
+		qu.pop();
+		inq[u]=0;
+		for(int i=0;i&lt;g[u].size();i++){
+			int v=g[u][i].v;
+			int w=g[u][i].w;
+			if(dst[v]&gt;dst[u]+w){
+				dst[v]=dst[u]+w;
+				if(!inq[v]){
+					qu.push(v);
+					inq[v]=1;
+					cnt[v]++;
+					if(cnt[v]&gt;n+1){
+					return 0;	
+					}
+				}
+			}
+		}
+	}
+	return 1;
+}
+
+
+int main(){
+	cin &gt;&gt; n &gt;&gt; m;
+	
+	for(int i=0;i&lt;m;i++){
+		int d,a,b,c;
+		cin &gt;&gt; d;
+		if(d==1){
+			cin &gt;&gt;a&gt;&gt;b&gt;&gt;c;
+			g[a].push_back(node(b,-c));
+		}else if(d==2){
+			cin &gt;&gt;a&gt;&gt;b&gt;&gt;c;
+			g[b].push_back(node(a,-c));
+		}else{
+			cin &gt;&gt;a&gt;&gt;b;
+			g[a].push_back(node(b,0));
+			g[b].push_back(node(a,0));
+		}
+	}
+	
+	for(int i=1;i&lt;=n;i++){
+		add(0,i,0);
+	}
+	if(spfa(0)){
+	cout &lt;&lt; &quot;Yes&quot;&lt;&lt;endl;
+}else{
+	cout &lt;&lt; &quot;No&quot;;
+}
+	return 0;
+}
+</code></pre>
+<h6 id="蒜头君当大厨">蒜头君当大厨</h6>
+<pre><code>Description
+
+蒜头君苦练厨艺，终于成为了某高档酒店的大厨。
+
+每天上班，蒜头君会被要求做 n 份菜。既然是高档酒店，那么客人们当然是很讲究的，尤其对于上菜的时间有很多要求。客人们的要求被分成下列四种：
+
+菜品 a 的上菜时间必须比菜品 b 的上菜时间早 d 分钟或者更早。
+
+菜品 a 的上菜时间必须比菜品 b 的上菜时间迟 d 分钟或者更迟。
+
+菜品 a 的上菜时间在 d 分钟以后(包含 d 分钟)。
+
+菜品 a 的上菜时间在 d 分钟之前(包含 d 分钟)。
+
+蒜头君的上班时间记为 0 分钟。为了节约时间，在满足客人们要求的情况下，蒜头君希望最后上的一道菜的时间尽可能的早。（每道菜的上菜时间必须不早于蒜头君的上班时间）
+
+
+Input
+第一行输入一个整数 n，表示一共需要上 n 道菜。
+
+第二行输入一个整数 m，表示客人们的要求数量。
+
+接下里 m 行，每行先输入一个整数 op。
+
+如果 op=1，表示描述里的第 1 种要求，后面跟着三个整数 a,b,d。
+如果 op=2，表示描述里的第 2 种要求，后面跟着三个整数 a,b,d。
+如果 op=3，表示描述里的第 3 种要求，后面跟着两个整数 a,d。
+如果 op=4，表示描述里的第 4 种要求，后面跟着两个整数 a,d。
+
+Output
+如果蒜头君能满足客人们的要求，输出最后一道菜的上菜时间；否则输出一行 'I can't'。
+
+数据范围和约定
+
+对于所有的数据：1≤n,m≤20000，1≤∣d∣≤10000 ,1≤a,b≤n，a≠b。
+
+样例解释 1
+
+1,2,3 的上菜时间分别为 0,2,12，这样能满足输入客人们的所有要求，并且时间最短。
+
+
+
+Sample Input 1 
+
+3
+5
+2 3 2 10
+2 2 1 2
+2 3 2 5
+1 2 3 7
+3 3 9
+Sample Output 1
+
+12
+Sample Input 2 
+
+3
+4
+3 1 3
+2 3 1 9
+2 1 3 -1
+1 1 2 5
+Sample Output 2
+
+I can't
+Sample Input 3 
+
+17
+20
+2 6 3 -21
+1 8 2 54
+3 7 -95
+4 11 44
+1 5 15 40
+3 9 1
+3 3 30
+3 8 23
+2 9 12 -15
+4 13 61
+2 3 7 31
+1 5 10 -15
+2 16 1 43
+2 12 3 -79
+2 14 16 -51
+3 6 48
+4 7 0
+2 10 11 -59
+2 12 17 -29
+3 4 10
+Sample Output 3
+
+77
+</code></pre>
+<p>与蒜头君的银行卡差不多，都是找到差分约束条件：<br>
+菜品 a 的上菜时间必须比菜品 b 的上菜时间早 d 分钟或者更早。</p>
+<p>菜品 a 的上菜时间必须比菜品 b 的上菜时间迟 d 分钟或者更迟。</p>
+<p>菜品 a 的上菜时间在 d 分钟以后(包含 d 分钟)。</p>
+<p>菜品 a 的上菜时间在 d 分钟之前(包含 d 分钟)。</p>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+
+const int maxn=20010;
+
+int n,m;
+
+struct node{
+	int v,w;
+	node(){ }
+	node(int _v,int _w){
+		v=_v;
+		w=_w;
+	}
+};
+
+vector &lt;node&gt; g[maxn];
+int dst[maxn];
+queue &lt;int&gt; qu;
+bool inq[maxn];
+int cnt[maxn];
+int flag;
+
+int add(int u,int v,int w){
+	g[u].push_back(node(v,w));
+//	g[v].push_back(node());
+}
+
+void spfa(int u){
+	memset(inq,0,sizeof inq);
+	memset(dst,0x80,sizeof dst);
+	memset(cnt,0,sizeof cnt);
+	dst[u]=0;
+	qu.push(u);
+	inq[u]=1;
+	cnt[u]=1;
+	while(!qu.empty()){
+		u=qu.front();
+		qu.pop();
+		inq[u]=0;
+		for(int i=0;i&lt;g[u].size();i++){
+			int v=g[u][i].v;
+			int w=g[u][i].w;
+			if(dst[v]&lt;dst[u]+w){
+				dst[v]=dst[u]+w;
+				if(!inq[v]){
+					qu.push(v);
+					inq[v]=1;
+					cnt[v]++;
+					if(cnt[v]&gt;n+1){
+						return;
+					}
+					if(cnt[v]==n+1){
+						flag=1;
+					}
+				}
+			}
+		}
+	}
+	return;
+}
+
+
+int main(){
+	cin &gt;&gt; n &gt;&gt; m;
+	
+	for(int i=0;i&lt;m;i++){
+		int d,a,b,c;
+		cin &gt;&gt; d;
+		if(d==1){
+			cin &gt;&gt;a&gt;&gt;b&gt;&gt;c;
+			g[a].push_back(node(b,c));
+		}else if(d==2){
+			cin &gt;&gt;a&gt;&gt;b&gt;&gt;c;
+			g[b].push_back(node(a,c));
+		}else if(d==3){
+			cin &gt;&gt;a&gt;&gt;b;
+			g[0].push_back(node(a,b));
+		}else{
+			cin &gt;&gt;a&gt;&gt;b;
+			g[0].push_back(node(0,-b));
+		}
+	}
+	
+	for(int i=1;i&lt;=n;i++){
+		add(0,i,0);
+	}
+int ans=0;
+spfa(0);
+
+if(flag){
+	cout&lt;&lt;&quot;I can't&quot;;
+	return 0;
+}
+ 
+ for(int i=1;i&lt;=n;i++){
+ ans=max(ans,dst[i]);
+}
+cout &lt;&lt; ans;
+	return 0;
+}
+</code></pre>
+
+            </div>
+            
+            
+              <div class="post-footer">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong class="language" data-lan="author">本文作者：</strong>
+      Lanthanum
+    </li>
+    <li class="post-copyright-link">
+      <strong class="language" data-lan="link">本文链接：</strong>
+      <a href="https://ACLYH.github.io/post/chai-fen-yue-shu/" title="差分约束">https://ACLYH.github.io/post/chai-fen-yue-shu/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong class="language" data-lan="copyright">版权声明： </strong>
+      本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+  <div class="tags">
+    
+  </div>
+  <div class="nav">
+    <div class="nav-prev">
+      
+        <i class="fa fa-chevron-left"></i>
+        <a class="nav-pc-next" title="2020-10-27 模拟考" href="https://ACLYH.github.io/post/2020-10-27-mo-ni-kao/">2020-10-27 模拟考</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="2020-10-27 模拟考" href="https://ACLYH.github.io/post/2020-10-27-mo-ni-kao/">上一篇</a>
+      
+    </div>
+    <div class="nav-next">
+      
+        <a class="nav-pc-next" title="[Noip2010]机器翻译-C++" href="https://ACLYH.github.io/post/noip2010ji-qi-fan-yi-c/">[Noip2010]机器翻译-C++</a>
+        <a class="nav-mobile-next" title="[Noip2010]机器翻译-C++" href="https://ACLYH.github.io/post/noip2010ji-qi-fan-yi-c/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
+      
+    </div>
+  </div>
+</div>
+            
+            
+  
+
+          </div>
         </div>
       </div>
     </div>
@@ -757,6 +1120,253 @@
   }
 
 </script>
+    <div class="light-box" id="light_box"></div>
+<script>
+  let imgs = document.querySelectorAll('.post-body img');
+  let lightBox = document.querySelector('#light_box');
+  lightBox.addEventListener('mousedown', (e) => {
+    e.preventDefault()
+  })
+  lightBox.addEventListener('mousewheel', (e) => {
+    e.preventDefault()
+  })
+  let width = window.innerWidth * 0.8;
+  lightBox.onclick = () => {
+    let img = lightBox.querySelector('img');
+    lightBox.style = '';
+    img && img.remove();
+  }
+  imgs.forEach(item => {
+    item.onclick = function (e) {
+      let lightImg = document.createElement('img');
+      lightImg.src = this.src;
+      lightBox.style = `height: 100%; opacity: 1; background-color: rgba(0, 0, 0, 0.5);cursor: zoom-out;`;
+      lightImg.style = `width: ${width}px; border: 1px solid #fff; border-radius: 2px;`;
+      lightImg.onclick = function () {
+        lightBox.style = '';
+        this.remove();
+      }
+      lightBox.append(lightImg);
+    }
+  })
+</script>
+    <div class="reward-mask" style="display: none;">
+  <div class="reward-relative">
+    <span class="close" aria-hidden="true">x</span>
+    <div class="reward-body">
+      <h2>感谢您的支持，我会继续努力的!</h2>
+      <div class="reward-img-box">
+        <div style="position: relative; width: 140px; height: 140px;">
+          
+          
+          
+        </div>
+      </div>
+      <p class="reward-word">扫码打赏，你说多少就多少</p>
+      <p class="reward-tip">打开微信扫一扫，即可进行扫码打赏哦</p>
+    </div>
+    <div class="bottom">
+      
+      
+    </div>
+  </div>
+</div>
+<style>
+  .reward-mask {
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #00000054;
+  }
+
+  .reward-relative {
+    position: relative;
+    width: 480px;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: #fff;
+    top: 50%;
+    margin-top: -205px;
+  }
+
+  .reward-relative .close {
+    position: absolute;
+    right: 10px;
+    font-weight: normal;
+    font-size: 16px;
+    color: #929292;
+  }
+
+  .reward-body {
+    padding: 40px 20px 20px;
+  }
+
+  .bottom {
+    display: flex;
+  }
+
+  .reward-btn {
+    text-align: center;
+  }
+
+  .reward-btn-text {
+    display: inline-block;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    background-color: #ff9734;
+    color: #FFF;
+    margin-top: 20px;
+  }
+
+  .pay-text {
+    margin-top: 10px;
+    padding: 10px;
+    flex: 1;
+    transition: all .2s linear;
+  }
+
+  .pay-text:hover {
+    background-color: #a5a5a536;
+  }
+
+  .reward-body h2 {
+    padding-top: 10px;
+    text-align: center;
+    color: #a3a3a3;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0 0 20px;
+  }
+
+  .reward-body h2:after,
+  .reward-body h2:before {
+    font-family: Arial, Helvetica, sans-serif;
+    background: 0 0;
+    width: 0;
+    height: 0;
+    font-style: normal;
+    color: #eee;
+    font-size: 80px;
+    position: absolute;
+    top: 20px;
+  }
+
+  .reward-body h2:before {
+    content: '\201c';
+    left: 50px;
+  }
+
+  .reward-body h2:after {
+    content: '\201d';
+    right: 80px;
+  }
+
+  .reward-img-box {
+    display: inline-block;
+    padding: 10px;
+    border: 6px solid #ea5f00;
+    margin: 0 auto;
+    border-radius: 3px;
+    position: relative;
+  }
+
+  .reward-img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: 767px) {
+    .reward-relative {
+      height: 100%;
+      top: 0px;
+      margin-top: 0;
+      width: auto;
+    }
+
+    .reward-relative .bottom {
+      flex-direction: column;
+    }
+
+    .reward-relative .pay-text {
+      width: 80%;
+      margin: 5px auto;
+      border: 1px solid silver;
+      padding: 6px;
+      border-radius: 4px;
+    }
+
+    .reward-body h2:after {
+      right: 40px;
+    }
+
+    .reward-body h2:after,
+    .reward-body h2:before {
+      font-size: 60px;
+    }
+
+    .reward-body h2:before {
+      left: 20px;
+    }
+  }
+</style>
+<script>
+  !function () {
+    var mask = document.querySelector('.reward-mask');
+    let close = document.querySelector('.reward-relative .close');
+    let rewardBtn = document.querySelector('.reward-btn');
+
+    let zfb = document.querySelector('#zfb'),
+      wx = document.querySelector('#wx'),
+      zfbBtn = document.querySelector('#zfbBtn'),
+      wxBtn = document.querySelector('#wxBtn');
+
+    if (zfbBtn && wxBtn) {
+      zfbBtn.addEventListener('click', () => {
+        window.Velocity(zfb, 'transition.slideLeftIn', {
+          duration: 400
+        });
+        window.Velocity(wx, 'transition.slideRightOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+
+      wxBtn.addEventListener('click', () => {
+        window.Velocity(wx, 'transition.slideRightIn', {
+          duration: 400
+        });
+        window.Velocity(zfb, 'transition.slideLeftOut', {
+          display: 'none',
+          duration: 400
+        });
+      });
+    }
+
+    rewardBtn.addEventListener('click', (e) => {
+      window.Velocity(mask, 'transition.slideDownIn', {
+        duration: 400
+      })
+    });
+
+    close.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.Velocity(mask, 'transition.slideUpOut', {
+        duration: 400
+      })
+    })
+  }()
+</script>
+
   </div>
 </body>
 
@@ -2397,7 +3007,6 @@ int main(){
     speed: 200
   });
 </script>
-
 
 
 

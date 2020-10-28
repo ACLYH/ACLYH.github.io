@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://ACLYH.github.io</id>
     <title>Lanthanum</title>
-    <updated>2020-10-28T10:33:37.813Z</updated>
+    <updated>2020-10-28T13:13:37.483Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://ACLYH.github.io"/>
     <link rel="self" href="https://ACLYH.github.io/atom.xml"/>
@@ -10,6 +10,663 @@
     <logo>https://ACLYH.github.io/images/avatar.png</logo>
     <icon>https://ACLYH.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Lanthanum</rights>
+    <entry>
+        <title type="html"><![CDATA[2020-10-27 模拟考]]></title>
+        <id>https://ACLYH.github.io/post/2020-10-27-mo-ni-kao/</id>
+        <link href="https://ACLYH.github.io/post/2020-10-27-mo-ni-kao/">
+        </link>
+        <updated>2020-10-28T11:06:16.000Z</updated>
+        <summary type="html"><![CDATA[<p>三道题目，有两道还是普及组T3和T4原题。。。<br>
+<s>然鹅我似乎还是炸了呢</s></p>
+]]></summary>
+        <content type="html"><![CDATA[<p>三道题目，有两道还是普及组T3和T4原题。。。<br>
+<s>然鹅我似乎还是炸了呢</s></p>
+<!-- more -->
+<p>T1<br>
+<a href="https://www.luogu.com.cn/problem/P5661">公交换乘</a><br>
+著名旅游城市 B 市为了鼓励大家采用公共交通方式出行，推出了一种地铁换乘公交车的优惠方案：</p>
+<p>在搭乘一次地铁后可以获得一张优惠票，有效期为 45 分钟，在有效期内可以消耗这张优惠票，免费搭乘一次票价不超过地铁票价的公交车。在有效期内指开始乘公交车的时间与开始乘地铁的时间之差小于等于 45 分钟，即：tbus−tsubway≤45<br>
+搭乘地铁获得的优惠票可以累积，即可以连续搭乘若干次地铁后再连续使用优惠票搭乘公交车。<br>
+搭乘公交车时，如果可以使用优惠票一定会使用优惠票；如果有多张优惠票满足条件，则优先消耗获得最早的优惠票。<br>
+现在你得到了小轩最近的公共交通出行记录，你能帮他算算他的花费吗?</p>
+<p>输入格式<br>
+输入文件的第一行包含一个正整数 n，代表乘车记录的数量。</p>
+<p>接下来的 n 行，每行包含 3 个整数，相邻两数之间以一个空格分隔。第 i 行的第 1 个整数代表第 i条记录乘坐的交通工具，0 代表地铁，1 代表公交车；第 2 个整数代表第 i 条记录乘车的票价 price<br>
+i<br>
+​	<br>
+；第三个整数代表第 i 条记录开始乘车的时间 t<br>
+i<br>
+​	<br>
+（距 0 时刻的分钟数）。</p>
+<p>我们保证出行记录是按照开始乘车的时间顺序给出的，且不会有两次乘车记录出现在同一分钟。</p>
+<p>输出格式<br>
+输出文件有一行，包含一个正整数，代表小轩出行的总花费。</p>
+<p>输入输出样例<br>
+输入 #1</p>
+<pre><code>6
+0 10 3
+1 5 46
+0 12 50
+1 3 96
+0 5 110
+1 6 135
+输出 #1
+36
+输入 #2
+6
+0 5 1
+0 20 16
+0 7 23
+1 18 31
+1 4 38
+1 7 68 
+输出 #2
+32
+</code></pre>
+<p>乘坐地铁的价格可以直接加入ans，主要处理在公交车是否免费的判断上。<br>
+因为队列的性质是先进先出，而题目恰好要求如果有多张优惠票满足条件，则优先消耗获得最早的优惠票。所以可以模拟队列，其中用一个结构体来表示优惠票的改变。</p>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+struct node{
+	int pr,time,use;
+}q[110001];//免费票的价格上限，能用的时间，是否可用；
+int n;
+int op,pri,ti,ans;
+int tail,head;//模拟队列
+int main(){
+	cin &gt;&gt; n;
+	for(int i=0;i&lt;n;i++){
+		cin &gt;&gt; op &gt;&gt; pri &gt;&gt; ti;
+		if(op==0){//如果是地铁的情况
+			ans+=pri;//直接将价格加入ans
+			q[tail].time = ti + 45;//时间范围
+			q[tail++].pr = pri; //存入票价
+		}else if(op == 1){//公交车
+			while (head &lt; tail &amp;&amp; q[head].time &lt; ti) {
+                head++;
+            }//放弃超过时间限制的票
+            bool flag = 0;//标记
+            for(int j=head;j&lt;tail;j++){
+            	if(q[j].pr &gt;= pri &amp;&amp; q[j].use == 0){//如果存在免费票大于公交车价格的票，且没有没用过
+            		flag = 1;
+            		q[j].use = 1;//标记为用过
+            		break;
+				}
+			}	
+		if(!flag){
+			ans+=pri;//如果不行，就将价格直接加入ans
+		}
+		}
+	}
+	cout &lt;&lt; ans;
+	return 0;
+}
+</code></pre>
+<p>T2<br>
+<a href="https://www.luogu.com.cn/problem/P5018">对称二叉树</a><br>
+<s>有一道做过好几遍的题</s><br>
+当时在NOI考场上我一脸懵逼，现在想来······</p>
+<p>一棵有点权的有根树如果满足以下条件，则被轩轩称为对称二叉树：<br>
+二叉树；<br>
+将这棵树所有节点的左右子树交换，新树和原树对应位置的结构相同且点权相等。<br>
+下图中节点内的数字为权值，节点外的 id 表示节点编号。</p>
+<p>现在给出一棵二叉树，希望你找出它的一棵子树，该子树为对称二叉树，且节点数 最多。请输出这棵子树的节点数。</p>
+<p>注意：只有树根的树也是对称二叉树。本题中约定，以节点 TT 为子树根的一棵“子 树”指的是：节点TT 和它的全部后代节点构成的二叉树。</p>
+<p>输入格式<br>
+第一行一个正整数 n，表示给定的树的节点的数目，规定节点编号 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>∼</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">1∼n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>，其中节点 11 是树根。</p>
+<p>第二行 n 个正整数，用一个空格分隔，第 i 个正整数 v_i 代表节点 i 的权值。</p>
+<p>接下来 n 行，每行两个正整数 l_i, r_i ，分别表示节点 ii 的左右孩子的编号。如果不存在左 / 右孩子，则以 -1−1 表示。两个数之间用一个空格隔开。<br>
+输出格式<br>
+输出文件共一行，包含一个整数，表示给定的树的最大对称二叉子树的节点数。<br>
+输入输出样例</p>
+<pre><code>输入 #1
+2 
+1 3 
+2 -1 
+-1 -1 
+输出 #1
+1
+输入 #2
+10 
+2 2 5 5 5 5 4 4 2 3 
+9 10 
+-1 -1 
+-1 -1 
+-1 -1 
+-1 -1 
+-1 2 
+3 4 
+5 6 
+-1 -1 
+7 8
+输出 #2
+3
+</code></pre>
+<p>DFS可以水过去。<br>
+搜索思路比较好想，以每个节点为根节点，判断左子树的值是否等于右子树值，就能找到它们是否是对称二叉树。</p>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+
+int n;
+int l[1010000],r[1010010];//左子树，右子树
+bool vis;int a[10100100];
+int ans=1 ;
+int dfs(int x,int y,int s)//正在访问的节点，s为当前节点。
+{
+	if(x==-1&amp;&amp;y==-1)return 0;//返回条件
+	if(x==-1||y==-1&amp;&amp;x!=y){
+		vis=1;
+		return 0;	
+	}//对称二叉树
+	if(a[x]!=a[y]){
+		vis=1;
+		return 0;
+	}//对称
+	return  dfs(l[x],r[y],2) + dfs(r[x],l[y],2) + s;
+}
+
+int main(){
+	scanf(&quot;%d&quot;,&amp;n);
+	for(int i=1;i&lt;=n;i++){
+		scanf(&quot;%d&quot;,&amp;a[i]);
+	}
+	for(int i=1;i&lt;=n;i++){
+		scanf(&quot;%d%d&quot;,&amp;l[i],&amp;r[i]);
+	}
+	for(int i=1;i&lt;=n;i++){
+		if(dfs(l[i],r[i],3)&gt;ans&amp;&amp;vis==0){
+			ans = dfs(l[i],r[i],3);
+		}
+		vis = 0;
+	}
+	cout &lt;&lt; ans;
+	return 0;
+}
+</code></pre>
+<p>T3<br>
+<a href="http://forioi.com/p/6217">photo</a></p>
+<p>啊这。。状压DP？<s>（然鹅考场上并不会）</s></p>
+<p>有N个人，来自K个家族.他们排成一行准备照相，但是由于天生的排外性，每个人都希望和本家族的人站在一起,中间不要加入别的家族的人.问最少从队列中去掉多少个就可以达到这个目的.<br>
+输入<br>
+第一行给出N,K。N在[1,100]，K在[1,5] 第二行给出N个数，每个数为1到K中的某个数。<br>
+输出<br>
+最少从队列中去掉多少个就可以达到这个目的</p>
+<p>样例<br>
+输入<br>
+10 3<br>
+2 1 2 2 1 1 3 1 3 3</p>
+<p>输出<br>
+2</p>
+<p>DP求解可以保留最多的人数，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>−</mo><mi>a</mi><mi>n</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">n-ans</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span></span></span></span>即为所求。<br>
+所以就看那种方法最优，要么当前状态是一个新的家族，要么保持连通，当前这个人与上一个同属于一个家族。</p>
+<p>用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>p</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo><mo>[</mo><mi>k</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">dp[i][j][k]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mclose">]</span></span></span></span>三个量来表示第i个人，第j状态，前一个人是第K家族的保留人数。</p>
+<p>一为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>p</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo><mo>[</mo><mi>a</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>]</mo><mo>=</mo><mi>m</mi><mi>a</mi><mi>x</mi><mo>(</mo><mi>d</mi><mi>p</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo><mo>[</mo><mi>a</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>]</mo><mo separator="true">,</mo><mi>d</mi><mi>p</mi><mo>[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo>]</mo><mo>[</mo><msup><mi>j</mi><mo>(</mo></msup><mn>1</mn><mo>&lt;</mo><mo>&lt;</mo><mi>a</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>−</mo><mn>1</mn><mo>)</mo><mo>]</mo><mo>[</mo><mo>+</mo><mn>1</mn><mo>)</mo><mo separator="true">;</mo></mrow><annotation encoding="application/x-tex">dp[i][j][a[i]] = max(dp[i][j][a[i]], dp[i - 1][j ^ (1 &lt;&lt; a[i] - 1)][+ 1);</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault">a</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mopen">(</span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault">a</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.138em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8879999999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mopen mtight">(</span></span></span></span></span></span></span></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span></span><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">a</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord">+</span><span class="mord">1</span><span class="mclose">)</span><span class="mpunct">;</span></span></span></span> 当前出现的家族。<br>
+二为与上一个家族的人相同，即<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>p</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo><mo>[</mo><mi>a</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>]</mo><mo>=</mo><mi>m</mi><mi>a</mi><mi>x</mi><mo>(</mo><mi>d</mi><mi>p</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo><mo>[</mo><mi>a</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>]</mo><mo separator="true">,</mo><mi>d</mi><mi>p</mi><mo>[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo>]</mo><mo>[</mo><mi>j</mi><mo>]</mo><mo>[</mo><mi>a</mi><mo>[</mo><mi>i</mi><mo>]</mo><mo>]</mo><mo>+</mo><mn>1</mn><mo>)</mo><mo separator="true">;</mo></mrow><annotation encoding="application/x-tex">dp[i][j][a[i]] = max(dp[i][j][a[i]], dp[i - 1][j][a[i]] + 1);</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault">a</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">a</span><span class="mord mathdefault">x</span><span class="mopen">(</span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault">a</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">p</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathdefault">a</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mpunct">;</span></span></span></span></p>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+ int ans = 0;
+int n, k, a[101001];
+int dp[200][1000][10];
+int main() {
+    cin &gt;&gt; n &gt;&gt;k;
+    for(int i = 1; i &lt;= n; i++){
+    cin &gt;&gt; a[i];	
+    }
+     
+    for(int i = 1; i &lt;= n; i++) {
+        memcpy(dp[i], dp[i - 1], sizeof dp[i - 1]);
+                 
+        for(int j = 0; j &lt; (1 &lt;&lt; k); j++) {
+            if(j &amp; (1 &lt;&lt; a[i] - 1)) {
+                dp[i][j][a[i]] = max(dp[i][j][a[i]], dp[i - 1][j][a[i]] + 1);
+                for(int l = 0; l &lt;= k; l++){
+                	dp[i][j][a[i]] = max(dp[i][j][a[i]], dp[i - 1][j ^ (1 &lt;&lt; a[i] - 1)][l] + 1);
+            		}
+				}     
+        }
+    }
+    for(int j = 0; j &lt; (1 &lt;&lt; k); j++)
+        for(int l = 0; l &lt;= k; l++) 
+            ans = max(ans, dp[n][j][l]);
+             
+    cout &lt;&lt;  n - ans;
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[差分约束]]></title>
+        <id>https://ACLYH.github.io/post/chai-fen-yue-shu/</id>
+        <link href="https://ACLYH.github.io/post/chai-fen-yue-shu/">
+        </link>
+        <updated>2020-10-28T10:57:40.000Z</updated>
+        <summary type="html"><![CDATA[<h4 id="1差分约束系统system-of-difference-constraints">1.差分约束系统（system of difference constraints）</h4>
+<p>如果一个系统由n个变量和m个约束条件组成，形成m个形如ai-aj≤k的不等式(i,j∈[1,n],k为常数),则称其为差分约束系统(system of difference constraints)。亦即，差分约束系统是求解关于一组变量的特殊不等式组的方法。</p>
+]]></summary>
+        <content type="html"><![CDATA[<h4 id="1差分约束系统system-of-difference-constraints">1.差分约束系统（system of difference constraints）</h4>
+<p>如果一个系统由n个变量和m个约束条件组成，形成m个形如ai-aj≤k的不等式(i,j∈[1,n],k为常数),则称其为差分约束系统(system of difference constraints)。亦即，差分约束系统是求解关于一组变量的特殊不等式组的方法。</p>
+<!-- more -->
+<p>求解差分约束系统，可以转化成图论的单源最短路径（或最长路径）问题。<br>
+——百度百科<br>
+如下列的不等式组</p>
+<pre><code>x1-x5≤-1
+x2-x5≤1
+x3-x1≤5
+x4-x1≤4
+x4-x3≤-1
+x5-x3≤-3
+x5-x4≤-3
+</code></pre>
+<p>比如1式 x1-x5≤-1，其中一个未知数x1与x5的差小于等于-1，就相当于设两个未知数x，y差为某一常数，由这些不等式构成的不等式方程组为差分约束系统。</p>
+<h4 id="2例题">2.例题</h4>
+<h6 id="小k的农场">小K的农场</h6>
+<p>关于洛谷一道蓝题。<br>
+<a href="https://www.luogu.org/problemnew/show/P1993">P1993 小K的农场</a><br>
+但因为在另一篇题解中写过了，所以不多做阐述，解题看好差分约束条件就行了。<br>
+<a href="https://blog.csdn.net/weixin_43913349/article/details/89280139">小K的农场（差分约束）题解</a></p>
+<p>然后是另外两道题</p>
+<h6 id="蒜头君的银行卡">蒜头君的银行卡</h6>
+<p>Description</p>
+<p>虽然蒜头君并没有多少钱，但是蒜头君办了很多张银行卡，共有 n 张，以至于他自己都忘记了每张银行卡里有多少钱了。他只记得一些含糊的信息，这些信息主要以下列三种形式描述：</p>
+<p>银行卡 a 比银行卡 b 至少多 c 元。<br>
+银行卡 a 比银行卡 b 至多多 c 元。<br>
+银行卡 a 和银行卡 c 里的存款一样多。<br>
+但是由于蒜头君的记忆有些差，他想知道是否存在一种情况，使得银行卡的存款情况和他记忆中的所有信息吻合。</p>
+<p>Input<br>
+第一行输入两个整数 n 和 m，分别表示银行卡数目和蒜头君记忆中的信息的数目。(1≤n,m≤10000)</p>
+<p>接下来 m 行：</p>
+<p>如果每行第一个数是 1，接下来有三个整数 a,b,c，表示银行卡 a 比银行卡 b 至少多 c元。</p>
+<p>如果每行第一个数是 2，接下来有三个整数 a,b,c，表示银行卡 a 比银行卡 b 至多多 c元。</p>
+<p>如果每行第一个数是 3，接下来有两个整数 a,b，表示银行卡 a 和 b 里的存款一样多。(1≤n,m,a,b,c≤10000)</p>
+<p>Output<br>
+如果存在某种情况与蒜头君的记忆吻合，输出Yes，否则输出No。</p>
+<p>Sample Input 1</p>
+<p>3 3<br>
+3 1 2<br>
+1 1 3 1<br>
+2 2 3 2<br>
+Sample Output 1</p>
+<p>Yes</p>
+<p>很明显，题目中出现了几个约束条件：<br>
+银行卡 a 比银行卡 b 至少多 c 元。<br>
+银行卡 a 比银行卡 b 至多多 c 元。<br>
+银行卡 a 和银行卡 c 里的存款一样多。</p>
+<p>转化为不等式方程组：</p>
+<p>a-b&gt;=c<br>
+a-b&lt;=c<br>
+a=c</p>
+<p>找到了解题的关键，然后将差分约束转化为最短路求解 。</p>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+
+const int maxn=10100;
+const int inf=0x3f3f3f3f;
+
+int n,m;
+
+struct node{
+	int v,w;
+	node(){ }
+	node(int _v,int _w){
+		v=_v;
+		w=_w;
+	}
+};
+
+vector &lt;node&gt; g[maxn];
+int dst[maxn];
+queue &lt;int&gt; qu;
+bool inq[maxn];
+int cnt[maxn];
+
+
+int add(int u,int v,int w){
+	g[u].push_back(node(v,w));
+//	g[v].push_back(node());
+}
+
+int spfa(int u){
+	memset(inq,0,sizeof inq);
+	memset(dst,inf,sizeof dst);
+	memset(cnt,0,sizeof cnt);
+	dst[u]=0;
+	qu.push(u);
+	inq[u]=1;
+	cnt[u]=1;
+	while(!qu.empty()){
+		u=qu.front();
+		qu.pop();
+		inq[u]=0;
+		for(int i=0;i&lt;g[u].size();i++){
+			int v=g[u][i].v;
+			int w=g[u][i].w;
+			if(dst[v]&gt;dst[u]+w){
+				dst[v]=dst[u]+w;
+				if(!inq[v]){
+					qu.push(v);
+					inq[v]=1;
+					cnt[v]++;
+					if(cnt[v]&gt;n+1){
+					return 0;	
+					}
+				}
+			}
+		}
+	}
+	return 1;
+}
+
+
+int main(){
+	cin &gt;&gt; n &gt;&gt; m;
+	
+	for(int i=0;i&lt;m;i++){
+		int d,a,b,c;
+		cin &gt;&gt; d;
+		if(d==1){
+			cin &gt;&gt;a&gt;&gt;b&gt;&gt;c;
+			g[a].push_back(node(b,-c));
+		}else if(d==2){
+			cin &gt;&gt;a&gt;&gt;b&gt;&gt;c;
+			g[b].push_back(node(a,-c));
+		}else{
+			cin &gt;&gt;a&gt;&gt;b;
+			g[a].push_back(node(b,0));
+			g[b].push_back(node(a,0));
+		}
+	}
+	
+	for(int i=1;i&lt;=n;i++){
+		add(0,i,0);
+	}
+	if(spfa(0)){
+	cout &lt;&lt; &quot;Yes&quot;&lt;&lt;endl;
+}else{
+	cout &lt;&lt; &quot;No&quot;;
+}
+	return 0;
+}
+</code></pre>
+<h6 id="蒜头君当大厨">蒜头君当大厨</h6>
+<pre><code>Description
+
+蒜头君苦练厨艺，终于成为了某高档酒店的大厨。
+
+每天上班，蒜头君会被要求做 n 份菜。既然是高档酒店，那么客人们当然是很讲究的，尤其对于上菜的时间有很多要求。客人们的要求被分成下列四种：
+
+菜品 a 的上菜时间必须比菜品 b 的上菜时间早 d 分钟或者更早。
+
+菜品 a 的上菜时间必须比菜品 b 的上菜时间迟 d 分钟或者更迟。
+
+菜品 a 的上菜时间在 d 分钟以后(包含 d 分钟)。
+
+菜品 a 的上菜时间在 d 分钟之前(包含 d 分钟)。
+
+蒜头君的上班时间记为 0 分钟。为了节约时间，在满足客人们要求的情况下，蒜头君希望最后上的一道菜的时间尽可能的早。（每道菜的上菜时间必须不早于蒜头君的上班时间）
+
+
+Input
+第一行输入一个整数 n，表示一共需要上 n 道菜。
+
+第二行输入一个整数 m，表示客人们的要求数量。
+
+接下里 m 行，每行先输入一个整数 op。
+
+如果 op=1，表示描述里的第 1 种要求，后面跟着三个整数 a,b,d。
+如果 op=2，表示描述里的第 2 种要求，后面跟着三个整数 a,b,d。
+如果 op=3，表示描述里的第 3 种要求，后面跟着两个整数 a,d。
+如果 op=4，表示描述里的第 4 种要求，后面跟着两个整数 a,d。
+
+Output
+如果蒜头君能满足客人们的要求，输出最后一道菜的上菜时间；否则输出一行 'I can't'。
+
+数据范围和约定
+
+对于所有的数据：1≤n,m≤20000，1≤∣d∣≤10000 ,1≤a,b≤n，a≠b。
+
+样例解释 1
+
+1,2,3 的上菜时间分别为 0,2,12，这样能满足输入客人们的所有要求，并且时间最短。
+
+
+
+Sample Input 1 
+
+3
+5
+2 3 2 10
+2 2 1 2
+2 3 2 5
+1 2 3 7
+3 3 9
+Sample Output 1
+
+12
+Sample Input 2 
+
+3
+4
+3 1 3
+2 3 1 9
+2 1 3 -1
+1 1 2 5
+Sample Output 2
+
+I can't
+Sample Input 3 
+
+17
+20
+2 6 3 -21
+1 8 2 54
+3 7 -95
+4 11 44
+1 5 15 40
+3 9 1
+3 3 30
+3 8 23
+2 9 12 -15
+4 13 61
+2 3 7 31
+1 5 10 -15
+2 16 1 43
+2 12 3 -79
+2 14 16 -51
+3 6 48
+4 7 0
+2 10 11 -59
+2 12 17 -29
+3 4 10
+Sample Output 3
+
+77
+</code></pre>
+<p>与蒜头君的银行卡差不多，都是找到差分约束条件：<br>
+菜品 a 的上菜时间必须比菜品 b 的上菜时间早 d 分钟或者更早。</p>
+<p>菜品 a 的上菜时间必须比菜品 b 的上菜时间迟 d 分钟或者更迟。</p>
+<p>菜品 a 的上菜时间在 d 分钟以后(包含 d 分钟)。</p>
+<p>菜品 a 的上菜时间在 d 分钟之前(包含 d 分钟)。</p>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+
+const int maxn=20010;
+
+int n,m;
+
+struct node{
+	int v,w;
+	node(){ }
+	node(int _v,int _w){
+		v=_v;
+		w=_w;
+	}
+};
+
+vector &lt;node&gt; g[maxn];
+int dst[maxn];
+queue &lt;int&gt; qu;
+bool inq[maxn];
+int cnt[maxn];
+int flag;
+
+int add(int u,int v,int w){
+	g[u].push_back(node(v,w));
+//	g[v].push_back(node());
+}
+
+void spfa(int u){
+	memset(inq,0,sizeof inq);
+	memset(dst,0x80,sizeof dst);
+	memset(cnt,0,sizeof cnt);
+	dst[u]=0;
+	qu.push(u);
+	inq[u]=1;
+	cnt[u]=1;
+	while(!qu.empty()){
+		u=qu.front();
+		qu.pop();
+		inq[u]=0;
+		for(int i=0;i&lt;g[u].size();i++){
+			int v=g[u][i].v;
+			int w=g[u][i].w;
+			if(dst[v]&lt;dst[u]+w){
+				dst[v]=dst[u]+w;
+				if(!inq[v]){
+					qu.push(v);
+					inq[v]=1;
+					cnt[v]++;
+					if(cnt[v]&gt;n+1){
+						return;
+					}
+					if(cnt[v]==n+1){
+						flag=1;
+					}
+				}
+			}
+		}
+	}
+	return;
+}
+
+
+int main(){
+	cin &gt;&gt; n &gt;&gt; m;
+	
+	for(int i=0;i&lt;m;i++){
+		int d,a,b,c;
+		cin &gt;&gt; d;
+		if(d==1){
+			cin &gt;&gt;a&gt;&gt;b&gt;&gt;c;
+			g[a].push_back(node(b,c));
+		}else if(d==2){
+			cin &gt;&gt;a&gt;&gt;b&gt;&gt;c;
+			g[b].push_back(node(a,c));
+		}else if(d==3){
+			cin &gt;&gt;a&gt;&gt;b;
+			g[0].push_back(node(a,b));
+		}else{
+			cin &gt;&gt;a&gt;&gt;b;
+			g[0].push_back(node(0,-b));
+		}
+	}
+	
+	for(int i=1;i&lt;=n;i++){
+		add(0,i,0);
+	}
+int ans=0;
+spfa(0);
+
+if(flag){
+	cout&lt;&lt;&quot;I can't&quot;;
+	return 0;
+}
+ 
+ for(int i=1;i&lt;=n;i++){
+ ans=max(ans,dst[i]);
+}
+cout &lt;&lt; ans;
+	return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[Noip2010]机器翻译-C++]]></title>
+        <id>https://ACLYH.github.io/post/noip2010ji-qi-fan-yi-c/</id>
+        <link href="https://ACLYH.github.io/post/noip2010ji-qi-fan-yi-c/">
+        </link>
+        <updated>2020-10-28T10:37:32.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="description">Description</h2>
+<p>小晨的电脑上安装了一个机器翻译软件，他经常用这个软件来翻译英语文章。这个翻译软件的原理很简单，它只是<br>
+从头到尾，依次将每个英文单词用对应的中文含义来替换。对于每个英文单词，软件会先在内存中查找这个单词的<br>
+中文含义</p>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="description">Description</h2>
+<p>小晨的电脑上安装了一个机器翻译软件，他经常用这个软件来翻译英语文章。这个翻译软件的原理很简单，它只是<br>
+从头到尾，依次将每个英文单词用对应的中文含义来替换。对于每个英文单词，软件会先在内存中查找这个单词的<br>
+中文含义</p>
+<!-- more -->
+<p>，如果内存中有，软件就会用它进行翻译；如果内存中没有，软件就会在外存中的词典内查找，查出单词<br>
+的中文含义然后翻译，并将这个单词和译义放入内存，以备后续的查找和翻译。假设内存中有 M 个单元，每单元<br>
+能存放一个单词和译义。每当软件将一个新单词存入内存前，如果当前内存中已存入的单词数不超过 M?1，软件会<br>
+将新单词存入一个未使用的内存单元；若内存中已存入 M 个单词，软件会清空最早进入内存的那个单词，腾出单<br>
+元来，存放新单词。假设一篇英语文章的长度为 N个单词。给定这篇待译文章，翻译软件需要去外存查找多少次词<br>
+典？假设在翻译开始前，内存中没有任何单词。</p>
+<h2 id="input">Input</h2>
+<p>输入文件共 2 行。每行中两个数之间用一个空格隔开。<br>
+第一行为两个正整数 M和 N，代表内存容量和文章的长度。<br>
+第二行为 N 个非负整数，按照文章的顺序，每个数（大小不超过 1000）代表一个英文 单词。文章中两个单词是<br>
+同一个单词，当且仅当它们对应的非负整数相同。<br>
+0&lt;M≤100，0&lt;N≤1000</p>
+<h2 id="output">Output</h2>
+<p>包含一个整数，为软件需要查词典的次数。</p>
+<h2 id="sample-input">Sample Input</h2>
+<p>3 7<br>
+1 2 1 5 4 4 1</p>
+<h2 id="sample-output">Sample Output</h2>
+<p>5<br>
+//整个查字典过程如下：每行表示一个单词的翻译，冒号前为本次翻译后的内存状况：<br>
+空：内存初始状态为空。<br>
+1． 1：查找单词1 并调入内存。<br>
+2． 1 2：查找单词 2 并调入内存。<br>
+3． 1 2：在内存中找到单词 1。<br>
+4． 1 2 5：查找单词 5 并调入内存。<br>
+5． 2 5 4：查找单词 4 并调入内存替代单词 1。<br>
+6． 2 5 4：在内存中找到单词 4。<br>
+7． 5 4 1：查找单词 1 并调入内存替代单词 2。<br>
+共计查了 5次词典。</p>
+<p>其实就是队列的操作，找到一个新单词，就将它存入队列不断更新。</p>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int a[10000];
+int main(){
+    queue&lt;int&gt; q;
+    int m,n,ans=0;
+    int b;
+    cin  &gt;&gt; m &gt;&gt; n;
+    for(int i=1;i&lt;=n;i++){
+        cin &gt;&gt; b;
+        if(!a[b]){
+            ans++;
+            if(q.size()&lt;m){
+                a[b]=1;
+                q.push(b);
+            }else if(m!=0){
+                a[q.front()]=0;
+                a[b]=1;
+                q.pop();
+                q.push(b);
+            }
+        }
+         
+    }
+    cout &lt;&lt; ans &lt;&lt; endl;
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[栈]]></title>
         <id>https://ACLYH.github.io/post/zhan/</id>
