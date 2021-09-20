@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="心之所向，素履以往，生如逆旅，一苇以航。">
 <meta name="theme-color" content="#000">
-<title>最短路（单源） | Lanthanum</title>
+<title>Lanthanum</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1632144592581">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -38,8 +38,6 @@
 
 
 
-  <meta name="description" content="最短路（单源）" />
-  <meta name="keywords" content="" />
 </head>
 
 <body>
@@ -172,25 +170,10 @@
   <div class="main-continer">
     
     <div
-      class="section-layout gemini ">
+      class="section-layout  gemini">
       <div class="section-layout-wrapper">
-        
-
-<div class="sidebar">
-  
-    <div class="sidebar-box box-shadow-wrapper bg-color right-motion" id="sidebar">
-      
-        <div class="post-list-sidebar">
-          <div class="sidebar-title">
-            <span id="tocSideBar" class="sidebar-title-item sidebar-title-active language" data-lan="index">文章目录</span>
-            <span id="metaSideBar" class="sidebar-title-item language" data-lan="preview">站点概览</span>
-          </div>
-        </div>
-      
-      <div class="sidebar-body gemini" id="sidebar_body">
-        
-          
-            
+        <div id="sidebarMeta" class="sidebar">
+    
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="/images/avatar.png"/>
@@ -235,525 +218,118 @@
 
 
 </div>
-          
-        
-      </div>
-    </div>
-  
 </div>
 <script>
-  const SIDEBAR_TITLE_ACTIVE = 'sidebar-title-active';
-  const SIDEBAR_BODY_ACTIVE = 'sidebar-body-active';
-  const SLIDE_UP_IN = 'slide-up-in';
-
-  let sidebar = document.querySelector('#sidebar'),
-  tocSideBar = document.querySelector('#tocSideBar'),
-  metaSideBar = document.querySelector('#metaSideBar'),
-  postToc = document.querySelector('#post_toc'),
-  postSiteMeta = document.querySelector('#post_side_meta'),
-  sidebarTitle = document.querySelector('.sidebar-title'),
-  sidebarBody = document.querySelector('#sidebar_body');
-
-  tocSideBar && tocSideBar.addEventListener('click', (e) => {
-    toggleSidebar(e);
-  });
-
-  metaSideBar && metaSideBar.addEventListener('click', (e) => {
-    toggleSidebar(e);
-  });
-
-  function toggleSidebar(e) {
-    let currentTitle = document.querySelector("."+SIDEBAR_TITLE_ACTIVE);
-    if (currentTitle == e.srcElement) {
-      return ;
-    }
-    let current, showElement, hideElement;
-    if (e.srcElement == metaSideBar) {
-      showElement = postSiteMeta;
-      hideElement = postToc;
-    } else if (e.srcElement == tocSideBar){
-      showElement = postToc;
-      hideElement = postSiteMeta;
-    }
-    currentTitle.classList.remove(SIDEBAR_TITLE_ACTIVE);
-    e.srcElement.classList.add(SIDEBAR_TITLE_ACTIVE);
-
-    window.Velocity(hideElement, 'stop');
-    window.Velocity(hideElement, 'transition.slideUpOut', {
-      display: 'none',
-      duration: 200,
-      complete: function () {
-        window.Velocity(showElement, 'transition.slideDownIn', {
-          duration: 200
-        });
+  let sidebarMeta = document.querySelector('#sidebarMeta');
+  let scheme = 'gemini';
+  let sidebarWrapper = document.querySelector('.sidebar-wrapper');
+  if (sidebarMeta && (scheme === 'pisces' || scheme === 'gemini')) {
+    document.addEventListener('scroll', function(e) {
+      if (document.scrollingElement.scrollTop > parseInt(sidebarMeta.style.marginTop) + 10) {
+        sidebarWrapper.classList.add('home-sidebar-fixed')
+      } else {
+        sidebarWrapper.classList.remove('home-sidebar-fixed')
       }
-    })
-    hideElement.classList.remove(SIDEBAR_BODY_ACTIVE);
-    showElement.classList.add(SIDEBAR_BODY_ACTIVE);
+    });
   }
-
-  postToc && postToc.addEventListener('transitionend', function() {
-    this.classList.remove(SLIDE_UP_IN);
-  });
-
-  if (sidebarBody) {
-    if (sidebarBody.classList.contains('pisces') || sidebarBody.classList.contains('gemini')) {
-      let hasFix = false;
-      let scrollEl = document.querySelector('.main-continer');
-      let limitTop = document.querySelector('#nav_ul').children.length * 42 + 162;
-      window.addEventListener('scroll', function(e) {
-        if (document.scrollingElement.scrollTop >= limitTop) {
-          if (!hasFix) {
-            sidebar.classList.add('sidebar-fixed');
-            hasFix = true;
-          }
-        } else {
-          if (hasFix) {
-            sidebar.classList.remove('sidebar-fixed');
-            hasFix = false;
-          }
-        }
-      });
-    }
-  }
-  
-</script>
-        <div class="section-box box-shadow-wrapper">
-          <div class="section bg-color post post-page">
-            <header class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://ACLYH.github.io/post/zui-duan-lu-dan-yuan/">
-      最短路（单源）
-    </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span class="language" data-lan="publish">发布于</span>
-      <span>2020-10-28</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span>8<span class="language" data-lan="minute">分钟</span></span>
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span>1506<span class="pc-show language" data-lan="words">字数</span></span>
-    </span>
-    
-    
-    
-    <span id="/post/zui-duan-lu-dan-yuan/" data-flag-title="最短路（单源）" class="meta-item pc-show leancloud_visitors">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-eye"></i>
-      <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
-    </span>
-    
-  </div>
-</header>
-            <div class="post-body next-md-body" id="post_body">
-              <p>Dijkstra算法和SPFA算法用于求单源最短路。<br>
-最短路就是求两点之间的最短路径。</p>
-<!-- more -->
-<p>最短路径怎么求呢？<br>
-更新就是了（松弛）。<br>
-<img src="https://img-blog.csdnimg.cn/20190419201104445.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxMzM0OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" loading="lazy">先赋予厚望（先假设无穷大）<br>
-<img src="https://img-blog.csdnimg.cn/20190419201303886.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxMzM0OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" loading="lazy">然后依次更新<br>
-<img src="https://img-blog.csdnimg.cn/20190419202104933.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxMzM0OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" loading="lazy"><br>
-通过起点1来比较哪条路到终点20最短</p>
-<p><img src="https://img-blog.csdnimg.cn/20190419202225404.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxMzM0OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" loading="lazy">暂时选择这条绿色的路<br>
-继续比较<br>
-<img src="https://img-blog.csdnimg.cn/20190419202710202.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzkxMzM0OQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" loading="lazy"><br>
-所以蓝色的路是最短的。<br>
-然后看一道纯模板题。</p>
-<pre><code>骑车比赛
-
-Description
-
-小信准备去参加骑车比赛，比赛在 n 个城市间进行，编号从 1 到 n。选手们都从城市 1 出发，终点在城市 n。
-
-已知城市间有 m 条道路，每条道路连接两个城市，注意道路是双向的。现在小信知道了他经过每条道路需要花费的时间，他想请你帮他计算一下，他这次比赛最少需要花多少时间完成。
-
-Input
-
-第一行输入两个整数 n,m（1≤n≤1,000,1≤m≤5,000），分别代表城市个数和道路总数。接下来输入 m 行，每行输入三个数字 a,b,c（1≤a,b≤n,1≤c≤200），分别代表道路的起点和道路的终点，以及小信骑车通过这条道路需要花费的时间。保证输入的图是连通的。
-
-Output
-
-输出一行，输出一个整数，输出小信完成比赛需要的最少时间。
-
-Sample Input 1
-
-5 6
-1 2 2
-2 3 3
-2 5 5
-3 4 2
-3 5 1
-4 5 1
-
-Sample Output 1
-
-6
-
-
-</code></pre>
-<p>典型的最短路<br>
-Dijkstra模板：</p>
-<pre><code>#include&lt;bits/stdc++.h&gt;
-using namespace std;
-
-
-int n,m;
-
-struct node{//结构体
-	int v,w;
-	node(){ };
-	node(int _v,int _w){
-		v=_v;
-		w=_w;
-	}
-};
-
-vector &lt;node&gt; g[10100];
-
-bool vis[10100];
-int dst[10100];
-
-void add(int u,int v,int w){//建图
-	g[u].push_back(node(v,w));
-	g[v].push_back(node(u,w));
-}
-
-
-void dij(int s){
-	memset(dst,0x3f,sizeof dst);
-	
-	int u = s;
-	dst[u]=0;
-	vis[u]=1;
-	
-	int nn=n;
-	while(nn--){
-		for(int j=0;j&lt;g[u].size();j++){
-			
-			int v = g[u][j].v;
-			int w = g[u][j].w;
-			dst[v] = min(dst[v],dst[u]+w);
-			
-		}
-		
-		int mi=0x3f3f3f3f;//无穷大
-		for(int j=1;j&lt;=n;j++){
-			if(!vis[j]&amp;&amp;mi&gt;dst[j]){
-				mi = dst[j];
-				u = j;	
-			}
-		}
-		vis[u] = 1;	
-	}
-}
-
-
-int main(){
-	cin &gt;&gt; n &gt;&gt;m;
-	int u,v,w;
-	while (m--){
-		cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;
-		add(u,v,w);
-	}
-	
-	dij(1);
-	cout &lt;&lt; dst[n];
-	
-	return 0;
-}
-</code></pre>
-<p>SPFA模板</p>
-<pre><code>#include&lt;bits/stdc++.h&gt;
-using namespace std;
-
-const int maxn=1010;
-const int inf=0x3f3f3f3f;
-
-int n,m;
-
-struct node{
-	int v,w;
-	node(){ }
-	node(int _v,int _w){
-		v=_v;
-		w=_w;
-	}
-};
-
-vector &lt;node&gt; g[maxn];
-int dst[maxn];
-queue &lt;int&gt; qu;
-int inq[maxn];
-
-int add(int u,int v,int w){
-	g[u].push_back(node(v,w));
-	g[v].push_back(node(u,w));
-}
-
-void spfa(int s){
-	memset(dst,inf,sizeof dst);
-	int u=s;
-	dst[u]=0;
-	qu.push(u);
-	inq[u]=1;
-	while(!qu.empty()){
-		u=qu.front();
-		qu.pop();
-		inq[u]=0;
-		for(int i=0;i&lt;g[u].size();i++){
-			int v=g[u][i].v;
-			int w=g[u][i].w;
-			if(dst[v]&gt;dst[u]+w){
-				dst[v]=dst[u]+w;
-				if(!inq[v]){
-					qu.push(v);
-					inq[v]=1;
-				}
-			}
-		}
-	}
-}
-
-
-int main(){
-	cin &gt;&gt; n &gt;&gt; m;
-	int u , v , w; 
-	while (m--){
-		cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;
-		add(u,v,w);
-	}
-	spfa(1);
-	cout &lt;&lt; dst[n]&lt;&lt;endl;
-	return 0;
-}
-</code></pre>
-<pre><code>迷阵突围
-
-Description
-
-小信陷入了坐标系上的一个迷阵，迷阵上有 n个点，编号从 1 到 n。小信在编号为 1 的位置，他想到编号为 n 的位置上。小信当然想尽快到达目的地，但是他觉得最短的路径可能有风险，所以他会选择第二短的路径。现在小信知道了 n 个点的坐标，以及哪些点之间是相连的，他想知道第二短的路径长度是多少。
-
-注意，每条路径上不能重复经过同一个点。
-
-Input
-
-第一行输入两个整数 n (1≤n≤200) 和 m，表示一共有 n 个点和 m 条边。
-
-接下来输入 n 行，每行输入两个整数 xi,yi (−500≤xi,yi≤500)，代表第 i 个点的坐标。
-
-接下来输入 m 行，每行输入两个整数 pj,qj (1≤pj,qj≤n)，表示点 pj 和点 qj 之间相连。
-
-Output
-
-输出一行，输出包含一个数，表示第二短的路径长度（小数点后面保留两位），如果第一短路径有多条，则答案就是第一最短路径的长度；如果第二最短路径不存在，则输出 -1。
-
-Sample Input 1
-
-3 3
-1 1
-2 2
-3 2
-1 2
-2 3
-1 3
-
-Sample Output 1
-
-2.41
-
-
-</code></pre>
-<p>模板改进。（两个dij函数）</p>
-<pre><code>#include&lt;bits/stdc++.h&gt;
-using namespace std;
-
-int n,m;
-
-struct node{
-	int v;
-	double w;
-	node(){ };
-	node(int _v,double _w){
-		v=_v;
-		w=_w;
-	}
-};
-
-vector &lt;node&gt; g[10100];
-
-bool vis[10100];
-double dst[10100];
-
-int x[10100],y[10100];
-int pre[10100];
-void add(int u,int v,double w){
-	g[u].push_back(node(v,w));
-	g[v].push_back(node(u,w));
-}
-
-
-void dij(int s){
-
-	memset(vis,0,sizeof vis);
-	for(int i=1;i&lt;=n;i++){
-		dst[i]=1e20;
-	}
-	
-	int u = s;
-	dst[u]=0;
-	vis[u]=1;
-	
-	int nn=n;
-	while(nn--){
-		for(int j=0;j&lt;g[u].size();j++){
-			
-			int v = g[u][j].v;
-			double w = g[u][j].w;
-	
-			if(dst[v]&gt;dst[u]+w){
-				dst[v]=dst[u]+w;
-				pre[v]=u;
-			}
-		}
-		
-		double mi=1e20;
-		for(int j=1;j&lt;=n;j++){
-			if(!vis[j]&amp;&amp;mi&gt;dst[j]){
-				mi = dst[j];
-				u = j;	
-			}
-		}
-		vis[u] = 1;	
-	}
-
-}
-
-
-void dij2(int s,int uu,int vv){
-	
-	memset(vis,0,sizeof vis);
-	for(int i=1;i&lt;=n;i++){
-		dst[i]=1e20;
-	}
-	
-	int u = s;
-	dst[u]=0;
-	vis[u]=1;
-	
-	int nn=n;
-	while(nn--){
-		for(int j=0;j&lt;g[u].size();j++){
-			int v = g[u][j].v;
-			double w = g[u][j].w;
-	
-			if(uu ==u &amp;&amp; vv==v || uu==v &amp;&amp; vv == u){
-				continue;
-			}
-	
-			dst[v] = min(dst[v],dst[u]+w);
-
-	}
-		double mi=1e20;
-		for(int j=1;j&lt;=n;j++){
-			if(!vis[j]&amp;&amp;mi&gt;dst[j]){
-				mi = dst[j];
-				u = j;	
-			}
-		}
-		vis[u] = 1;	
-	 
-	}
-
-}
-
-
-int main(){
-	cin &gt;&gt; n &gt;&gt;m;
-	int u,v;
-	double w;
-	
-	for(int i=1;i&lt;=n;i++){
-		cin &gt;&gt; x[i] &gt;&gt;y[i];
-	}
-	
-	while (m--){
-		cin &gt;&gt; u &gt;&gt; v;
-		w=sqrt((x[u]-x[v])*(x[u]-x[v])+(y[u]-y[v])*(y[u]-y[v]));
-		add(u,v,w);
-	}
-	
-	dij(1);
-
-	
-	double mi=1e20;
-	for(int i=n;pre[i]!=0;i=pre[i]){
-		dij2(1,i,pre[i]);
-		mi=min(mi,dst[n]);
-	}
-	     if(mi == 1e20){
-	      cout &lt;&lt; &quot;-1&quot;&lt;&lt;endl;
-		 }else{
-			 cout&lt;&lt;fixed&lt;&lt;setprecision(2)&lt;&lt;mi&lt;&lt;endl;
-		}
-	
-	return 0;
-}
-</code></pre>
-
-            </div>
-            
-            
-              <div class="post-footer">
-  <ul class="post-copyright">
-    <li class="post-copyright-author">
-      <strong class="language" data-lan="author">本文作者：</strong>
-      Lanthanum
-    </li>
-    <li class="post-copyright-link">
-      <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://ACLYH.github.io/post/zui-duan-lu-dan-yuan/" title="最短路（单源）">https://ACLYH.github.io/post/zui-duan-lu-dan-yuan/</a>
-    </li>
-    <li class="post-copyright-license">
-      <strong class="language" data-lan="copyright">版权声明： </strong>
-      本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！
-    </li>
-  </ul>
-  <div class="tags">
-    
-  </div>
-  <div class="nav">
-    <div class="nav-prev">
+  </script>
+        <div class="section-box tag-line box-shadow-wrapper">
+          <section class="section tags-section posts-expand bg-color">
+            <div class="padding-wrapper">
+  <div class="tag-timeline-box">
+    <div class="tag-timeline-wrapper">
+      <div class="tag-timeline-title">
+        <h2>
+          随笔
+          <small class="language" data-lan="tag">标签</small>
+        </h2>
+      </div>
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="最小生成树模板" href="https://ACLYH.github.io/post/zui-xiao-sheng-cheng-shu-mo-ban/">最小生成树模板</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="最小生成树模板" href="https://ACLYH.github.io/post/zui-xiao-sheng-cheng-shu-mo-ban/">上一篇</a>
       
-    </div>
-    <div class="nav-next">
       
-        <a class="nav-pc-next" title="二分查找法" href="https://ACLYH.github.io/post/er-fen-cha-zhao-fa/">二分查找法</a>
-        <a class="nav-mobile-next" title="二分查找法" href="https://ACLYH.github.io/post/er-fen-cha-zhao-fa/">下一篇</a>
-        <i class="fa fa-chevron-right"></i>
+      <a href="https://ACLYH.github.io/post/ye-li/">
+        <div class="motion-warpper">
+          <div class="tag-post-node">
+            <h1>
+              09-20
+              <small>夜里</small>
+            </h1>
+          </div>
+        </div>
+      </a>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       
     </div>
   </div>
 </div>
-            
-            
-  
-
-          </div>
+          </section>
         </div>
       </div>
     </div>
@@ -940,253 +516,6 @@ int main(){
   }
 
 </script>
-    <div class="light-box" id="light_box"></div>
-<script>
-  let imgs = document.querySelectorAll('.post-body img');
-  let lightBox = document.querySelector('#light_box');
-  lightBox.addEventListener('mousedown', (e) => {
-    e.preventDefault()
-  })
-  lightBox.addEventListener('mousewheel', (e) => {
-    e.preventDefault()
-  })
-  let width = window.innerWidth * 0.8;
-  lightBox.onclick = () => {
-    let img = lightBox.querySelector('img');
-    lightBox.style = '';
-    img && img.remove();
-  }
-  imgs.forEach(item => {
-    item.onclick = function (e) {
-      let lightImg = document.createElement('img');
-      lightImg.src = this.src;
-      lightBox.style = `height: 100%; opacity: 1; background-color: rgba(0, 0, 0, 0.5);cursor: zoom-out;`;
-      lightImg.style = `width: ${width}px; border: 1px solid #fff; border-radius: 2px;`;
-      lightImg.onclick = function () {
-        lightBox.style = '';
-        this.remove();
-      }
-      lightBox.append(lightImg);
-    }
-  })
-</script>
-    <div class="reward-mask" style="display: none;">
-  <div class="reward-relative">
-    <span class="close" aria-hidden="true">x</span>
-    <div class="reward-body">
-      <h2>感谢您的支持，我会继续努力的!</h2>
-      <div class="reward-img-box">
-        <div style="position: relative; width: 140px; height: 140px;">
-          
-          
-          
-        </div>
-      </div>
-      <p class="reward-word">扫码打赏，你说多少就多少</p>
-      <p class="reward-tip">打开微信扫一扫，即可进行扫码打赏哦</p>
-    </div>
-    <div class="bottom">
-      
-      
-    </div>
-  </div>
-</div>
-<style>
-  .reward-mask {
-    position: fixed;
-    z-index: 99999;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: #00000054;
-  }
-
-  .reward-relative {
-    position: relative;
-    width: 480px;
-    text-align: center;
-    margin: 0 auto;
-    border-radius: 5px;
-    background-color: #fff;
-    top: 50%;
-    margin-top: -205px;
-  }
-
-  .reward-relative .close {
-    position: absolute;
-    right: 10px;
-    font-weight: normal;
-    font-size: 16px;
-    color: #929292;
-  }
-
-  .reward-body {
-    padding: 40px 20px 20px;
-  }
-
-  .bottom {
-    display: flex;
-  }
-
-  .reward-btn {
-    text-align: center;
-  }
-
-  .reward-btn-text {
-    display: inline-block;
-    cursor: pointer;
-    width: 60px;
-    height: 60px;
-    line-height: 60px;
-    border-radius: 50%;
-    background-color: #ff9734;
-    color: #FFF;
-    margin-top: 20px;
-  }
-
-  .pay-text {
-    margin-top: 10px;
-    padding: 10px;
-    flex: 1;
-    transition: all .2s linear;
-  }
-
-  .pay-text:hover {
-    background-color: #a5a5a536;
-  }
-
-  .reward-body h2 {
-    padding-top: 10px;
-    text-align: center;
-    color: #a3a3a3;
-    font-size: 16px;
-    font-weight: normal;
-    margin: 0 0 20px;
-  }
-
-  .reward-body h2:after,
-  .reward-body h2:before {
-    font-family: Arial, Helvetica, sans-serif;
-    background: 0 0;
-    width: 0;
-    height: 0;
-    font-style: normal;
-    color: #eee;
-    font-size: 80px;
-    position: absolute;
-    top: 20px;
-  }
-
-  .reward-body h2:before {
-    content: '\201c';
-    left: 50px;
-  }
-
-  .reward-body h2:after {
-    content: '\201d';
-    right: 80px;
-  }
-
-  .reward-img-box {
-    display: inline-block;
-    padding: 10px;
-    border: 6px solid #ea5f00;
-    margin: 0 auto;
-    border-radius: 3px;
-    position: relative;
-  }
-
-  .reward-img {
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-  }
-
-  @media (max-width: 767px) {
-    .reward-relative {
-      height: 100%;
-      top: 0px;
-      margin-top: 0;
-      width: auto;
-    }
-
-    .reward-relative .bottom {
-      flex-direction: column;
-    }
-
-    .reward-relative .pay-text {
-      width: 80%;
-      margin: 5px auto;
-      border: 1px solid silver;
-      padding: 6px;
-      border-radius: 4px;
-    }
-
-    .reward-body h2:after {
-      right: 40px;
-    }
-
-    .reward-body h2:after,
-    .reward-body h2:before {
-      font-size: 60px;
-    }
-
-    .reward-body h2:before {
-      left: 20px;
-    }
-  }
-</style>
-<script>
-  !function () {
-    var mask = document.querySelector('.reward-mask');
-    let close = document.querySelector('.reward-relative .close');
-    let rewardBtn = document.querySelector('.reward-btn');
-
-    let zfb = document.querySelector('#zfb'),
-      wx = document.querySelector('#wx'),
-      zfbBtn = document.querySelector('#zfbBtn'),
-      wxBtn = document.querySelector('#wxBtn');
-
-    if (zfbBtn && wxBtn) {
-      zfbBtn.addEventListener('click', () => {
-        window.Velocity(zfb, 'transition.slideLeftIn', {
-          duration: 400
-        });
-        window.Velocity(wx, 'transition.slideRightOut', {
-          display: 'none',
-          duration: 400
-        });
-      });
-
-      wxBtn.addEventListener('click', () => {
-        window.Velocity(wx, 'transition.slideRightIn', {
-          duration: 400
-        });
-        window.Velocity(zfb, 'transition.slideLeftOut', {
-          display: 'none',
-          duration: 400
-        });
-      });
-    }
-
-    rewardBtn.addEventListener('click', (e) => {
-      window.Velocity(mask, 'transition.slideDownIn', {
-        duration: 400
-      })
-    });
-
-    close.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.Velocity(mask, 'transition.slideUpOut', {
-        duration: 400
-      })
-    })
-  }()
-</script>
-
   </div>
 </body>
 
@@ -4590,6 +3919,7 @@ int main(){
     speed: 200
   });
 </script>
+
 
 
 
